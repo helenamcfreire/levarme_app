@@ -4,9 +4,11 @@ package me.levar;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import com.facebook.*;
@@ -17,7 +19,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.List;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 import static java.util.Arrays.asList;
 
@@ -26,6 +29,7 @@ public class FaceFragment extends Fragment {
     private UiLifecycleHelper uiHelper;
     private LoginButton loginButton;
     private ListView eventsListView;
+    private FriendFragment friendFragment;
 
     @Override
     public View onCreateView(LayoutInflater inflater,
@@ -35,10 +39,11 @@ public class FaceFragment extends Fragment {
         View view = inflater.inflate(R.layout.main, container, false);
 
         loginButton = (LoginButton) view.findViewById(R.id.loginButton);
+        loginButton.setLoginBehavior(SessionLoginBehavior.SUPPRESS_SSO);
         loginButton.setFragment(this);
         loginButton.setReadPermissions(asList("user_events", "friends_events"));
 
-        eventsListView = (ListView) view.findViewById(R.id.events);
+        eventsListView = (ListView) view.findViewById(R.id.eventsList);
 
         return view;
     }
@@ -96,12 +101,12 @@ public class FaceFragment extends Fragment {
         uiHelper.onSaveInstanceState(outState);
     }
 
-    private void carregarEventos(Session session) {
+    private void carregarEventos(final Session session) {
 
         if (session != null) {
 
             StringBuilder builder = new StringBuilder();
-            builder.append(" SELECT name, start_time FROM event WHERE eid IN ");
+            builder.append(" SELECT name, start_time, eid FROM event WHERE eid IN ");
             builder.append(" (SELECT eid FROM event_member WHERE uid = me()) ");
             builder.append(" ORDER BY start_time DESC ");
 
@@ -119,10 +124,25 @@ public class FaceFragment extends Fragment {
                         public void onCompleted(Response response) {
 
                             try {
-                                List<String> eventsLevarMe = getEventsLevarMe(response);
+                                final Map<String, String> eventosLevarMe = getEventosLevarMe(response);
 
-                                ArrayAdapter<String> eventsAdapter = new ArrayAdapter<String>(getActivity(), R.layout.event, eventsLevarMe);
+                                ArrayAdapter<String> eventsAdapter = new ArrayAdapter<String>(getActivity(), R.layout.row, new ArrayList<String>(eventosLevarMe.keySet()));
                                 eventsListView.setAdapter(eventsAdapter);
+                                eventsListView.setOnItemClickListener(new AdapterView.OnItemClickListener()
+                                {
+                                    public void onItemClick(AdapterView<?> arg0, View v, int position, long id)
+                                    {
+                                        String evento = (String) eventsListView.getItemAtPosition(position);
+                                        String idEvento = eventosLevarMe.get(evento);
+
+                                        //Mudar para a view de amigos
+                                        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                                        transaction.setCustomAnimations(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
+                                        friendFragment = new FriendFragment(idEvento);
+                                        transaction.replace(android.R.id.content, friendFragment);
+                                        transaction.commit();
+                                    }
+                                });
 
                             } catch (Throwable t) {
                                 t.printStackTrace();
@@ -136,23 +156,24 @@ public class FaceFragment extends Fragment {
 
     }
 
-    private List<String> getEventsLevarMe(Response response) throws JSONException {
+    private Map<String, String> getEventosLevarMe(Response response) throws JSONException {
 
         GraphObject graphObject  = response.getGraphObject();
         JSONObject jsonObject = graphObject.getInnerJSONObject();
         JSONArray eventsByFacebook = jsonObject.getJSONArray("data");
 
-        List<String> eventsLevarMe = new ArrayList<String>();
+        Map<String, String> retorno = new LinkedHashMap<String, String>();
 
         for (int i = 0; i < (eventsByFacebook.length()); i++) {
-            JSONObject data = eventsByFacebook.getJSONObject(i);
+            JSONObject obj = eventsByFacebook.getJSONObject(i);
 
-            String name = data.getString("name");
-            eventsLevarMe.add(name);
+            String name = obj.getString("name");
+            String id = obj.getString("eid");
 
+            retorno.put(name, id);
         }
 
-        return eventsLevarMe;
+        return retorno;
     }
 
 }
