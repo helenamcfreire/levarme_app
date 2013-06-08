@@ -5,7 +5,6 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import com.facebook.HttpMethod;
 import com.facebook.Request;
@@ -17,8 +16,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.Map;
+import java.util.List;
 
 public class FriendFragment extends Fragment {
 
@@ -63,13 +61,11 @@ public class FriendFragment extends Fragment {
                     new Request.Callback(){
                         public void onCompleted(Response response) {
 
-                            System.out.println("Response >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>" + response);
-
-                            Map<String, String> participantes = null;
+                            List<Pessoa> participantes = null;
                             try {
                                 participantes = getParticipantes(response);
-                                System.out.println("Response >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>" + participantes.keySet());
-                                ArrayAdapter<String> participantesAdapter = new ArrayAdapter<String>(getActivity(), R.layout.row, new ArrayList<String>(participantes.keySet()));
+
+                                FriendAdapter<Pessoa> participantesAdapter = new FriendAdapter<Pessoa>(getActivity(), R.layout.rowfriend, participantes);
                                 friendsListView.setAdapter(participantesAdapter);
                             } catch (JSONException e) {
                                 e.printStackTrace();
@@ -83,25 +79,27 @@ public class FriendFragment extends Fragment {
 
     }
 
-    private Map<String, String> getParticipantes(Response response) throws JSONException {
+    private List<Pessoa> getParticipantes(Response response) throws JSONException {
 
         GraphObject graphObject  = response.getGraphObject();
         JSONObject jsonObject = graphObject.getInnerJSONObject();
         JSONArray data = jsonObject.getJSONArray("data");
         JSONArray participantesDoEvento = data.getJSONObject(1).getJSONArray("fql_result_set");
 
-        Map<String, String> retorno = new LinkedHashMap<String, String>();
-
+        List<Pessoa> amigos = new ArrayList<Pessoa>();
         for (int i = 0; i < (participantesDoEvento.length()); i++) {
             JSONObject obj = participantesDoEvento.getJSONObject(i);
 
-            String name = obj.getString("name");
             String id = obj.getString("uid");
+            String nome = obj.getString("name");
+            String foto = obj.getString("pic_square");
 
-            retorno.put(name, id);
+            Pessoa amigo = new Pessoa(id, nome, foto);
+
+            amigos.add(amigo);
         }
 
-        return retorno;
+        return amigos;
     }
 
 }

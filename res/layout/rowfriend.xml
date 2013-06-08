@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="5dip" >
+
+    <!--  Foto do perfil do amigo -->
+    <LinearLayout android:id="@+id/thumbnail"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:padding="3dip"
+                  android:layout_alignParentLeft="true"
+                  android:layout_marginRight="5dip">
+
+        <ImageView
+                android:id="@+id/imageFriend"
+                android:layout_width="50dip"
+                android:layout_height="50dip"/>
+
+    </LinearLayout>
+
+    <!-- Nome do amigo -->
+    <TextView
+            android:id="@+id/nameFriend"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/thumbnail"
+            android:layout_toRightOf="@+id/thumbnail"
+            android:textColor="#ffffff"
+            android:typeface="sans"
+            android:textSize="15dip"
+            android:textStyle="bold"/>
+
+    <!-- Button Posso te buscar? -->
+    <Button
+            android:id="@+id/possoBuscar"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_below="@id/nameFriend"
+            android:textSize="10dip"
+            android:layout_marginTop="5dip"
+            android:layout_toRightOf="@+id/thumbnail"
+            android:text="@string/posso_buscar" />
+
+</RelativeLayout>

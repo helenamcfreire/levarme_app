@@ -2,4 +2,5 @@
 <resources>
     <string name="app_id">163906770450178</string> <!-- id do facebook -->
     <string name="app_name">Levar.me</string>
+    <string name="posso_buscar">Posso te buscar?</string>
 </resources>

@@ -126,7 +126,7 @@ public class FaceFragment extends Fragment {
                             try {
                                 final Map<String, String> eventosLevarMe = getEventosLevarMe(response);
 
-                                ArrayAdapter<String> eventsAdapter = new ArrayAdapter<String>(getActivity(), R.layout.row, new ArrayList<String>(eventosLevarMe.keySet()));
+                                ArrayAdapter<String> eventsAdapter = new ArrayAdapter<String>(getActivity(), R.layout.rowevent, new ArrayList<String>(eventosLevarMe.keySet()));
                                 eventsListView.setAdapter(eventsAdapter);
                                 eventsListView.setOnItemClickListener(new AdapterView.OnItemClickListener()
                                 {
