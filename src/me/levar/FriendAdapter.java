@@ -67,6 +67,7 @@ public class FriendAdapter<P> extends ArrayAdapter<Pessoa> {
                 transaction.setCustomAnimations(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
                 notificationFragment = new NotificationFragment(uid, nomeEvento);
                 transaction.replace(android.R.id.content, notificationFragment);
+                transaction.addToBackStack(null);
                 transaction.commit();
 
             }
