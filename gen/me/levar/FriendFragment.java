@@ -20,13 +20,14 @@ import java.util.List;
 
 public class FriendFragment extends Fragment {
 
-
     private ListView friendsListView;
     private String idEvento;
+    private String nomeEvento;
 
 
-    public FriendFragment(String idEvento) {
+    public FriendFragment(String idEvento, String nomeEvento) {
         this.idEvento = idEvento;
+        this.nomeEvento = nomeEvento;
     }
 
     @Override
@@ -38,6 +39,7 @@ public class FriendFragment extends Fragment {
 
         friendsListView = (ListView) view.findViewById(R.id.friendsList);
         carregarAmigosQueEstaoNoEvento(idEvento);
+
 
         return view;
     }
@@ -65,7 +67,7 @@ public class FriendFragment extends Fragment {
                             try {
                                 participantes = getParticipantes(response);
 
-                                FriendAdapter<Pessoa> participantesAdapter = new FriendAdapter<Pessoa>(getActivity(), R.layout.rowfriend, participantes);
+                                FriendAdapter<Pessoa> participantesAdapter = new FriendAdapter<Pessoa>(getActivity(), R.layout.rowfriend, participantes, getFragmentManager(), nomeEvento);
                                 friendsListView.setAdapter(participantesAdapter);
                             } catch (JSONException e) {
                                 e.printStackTrace();

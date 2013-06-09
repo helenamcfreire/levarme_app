@@ -132,13 +132,13 @@ public class FaceFragment extends Fragment {
                                 {
                                     public void onItemClick(AdapterView<?> arg0, View v, int position, long id)
                                     {
-                                        String evento = (String) eventsListView.getItemAtPosition(position);
-                                        String idEvento = eventosLevarMe.get(evento);
+                                        String nomeEvento = (String) eventsListView.getItemAtPosition(position);
+                                        String idEvento = eventosLevarMe.get(nomeEvento);
 
                                         //Mudar para a view de amigos
                                         FragmentTransaction transaction = getFragmentManager().beginTransaction();
                                         transaction.setCustomAnimations(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
-                                        friendFragment = new FriendFragment(idEvento);
+                                        friendFragment = new FriendFragment(idEvento, nomeEvento);
                                         transaction.replace(android.R.id.content, friendFragment);
                                         transaction.commit();
                                     }
