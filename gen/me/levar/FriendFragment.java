@@ -2,9 +2,11 @@ package me.levar;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import com.facebook.HttpMethod;
 import com.facebook.Request;
@@ -16,13 +18,16 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 public class FriendFragment extends Fragment {
 
     private ListView friendsListView;
     private String idEvento;
     private String nomeEvento;
+    private NotificationFragment notificationFragment;
 
 
     public FriendFragment(String idEvento, String nomeEvento) {
@@ -50,9 +55,21 @@ public class FriendFragment extends Fragment {
 
         if (session != null) {
 
-            String fqlQuery = "{" +
-                    " 'participantes': 'select uid from event_member where uid in (select uid1 from friend where uid2 = me()) and eid = " + idEvento + "', " +
-                    " 'nomeparticipante':   'SELECT name, pic_square, uid FROM user WHERE uid IN (SELECT uid FROM #participantes)',}";
+            List<String> idsPessoasCadastradas = getPessoasCadastradasNoLevarMe();
+
+            StringBuilder builder = new StringBuilder();
+            builder.append(" {'participantes': 'select uid from event_member where uid in (select uid1 from friend where uid2 = me()) and eid = ");
+            builder.append(idEvento);
+            builder.append(" ', ");
+            builder.append(" 'nomeparticipante':  'SELECT name, pic_square, uid, mutual_friend_count FROM user WHERE (uid IN (SELECT uid FROM #participantes) ");
+            builder.append(" OR uid IN ( ");
+            builder.append(Arrays.toString(idsPessoasCadastradas.toArray()).replace("[", "").replace("]", ""));
+            builder.append(" )) ");
+            builder.append(" AND uid != me() ");
+            builder.append(" ',} ");
+
+            String fqlQuery = builder.toString();
+
             Bundle params = new Bundle();
             params.putString("q", fqlQuery);
             params.putString("access_token", session.getAccessToken());
@@ -67,8 +84,23 @@ public class FriendFragment extends Fragment {
                             try {
                                 participantes = getParticipantes(response);
 
-                                FriendAdapter<Pessoa> participantesAdapter = new FriendAdapter<Pessoa>(getActivity(), R.layout.rowfriend, participantes, getFragmentManager(), nomeEvento);
+                                FriendAdapter<Pessoa> participantesAdapter = new FriendAdapter<Pessoa>(getActivity(), R.layout.rowfriend, participantes);
                                 friendsListView.setAdapter(participantesAdapter);
+                                friendsListView.setOnItemClickListener(new AdapterView.OnItemClickListener()
+                                {
+                                    public void onItemClick(AdapterView<?> arg0, View v, int position, long id)
+                                    {
+                                        Pessoa amigo = (Pessoa) friendsListView.getItemAtPosition(position);
+
+                                        //Mudar para a view de amigos
+                                        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                                        transaction.setCustomAnimations(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
+                                        notificationFragment = new NotificationFragment(amigo.getUid(), nomeEvento);
+                                        transaction.replace(android.R.id.content, notificationFragment);
+                                        transaction.addToBackStack(null);
+                                        transaction.commit();
+                                    }
+                                });
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }
@@ -79,6 +111,31 @@ public class FriendFragment extends Fragment {
 
         }
 
+    }
+
+    private List<String> getPessoasCadastradasNoLevarMe() {
+
+        List<String> ids = new ArrayList<String>();
+        try {
+            String pessoasCadastradas = new RequestPessoaTask().execute("http://www.levar.me/pessoa/list").get();
+            try {
+                JSONArray jsonArray = new JSONArray(pessoasCadastradas);
+                for (int i = 0; i < (jsonArray.length()); i++) {
+                    JSONObject obj = jsonArray.getJSONObject(i);
+                    String id = obj.getString("uid");
+                    ids.add(id);
+                }
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
+
+        return ids;
     }
 
     private List<Pessoa> getParticipantes(Response response) throws JSONException {
@@ -95,8 +152,9 @@ public class FriendFragment extends Fragment {
             String id = obj.getString("uid");
             String nome = obj.getString("name");
             String foto = obj.getString("pic_square");
+            String qtdAmigosEmComum = obj.getString("mutual_friend_count");
 
-            Pessoa amigo = new Pessoa(id, nome, foto);
+            Pessoa amigo = new Pessoa(id, nome, foto, qtdAmigosEmComum);
 
             amigos.add(amigo);
         }

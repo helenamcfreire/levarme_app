@@ -8,10 +8,8 @@ import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import com.facebook.Session;
-import com.facebook.SessionLoginBehavior;
-import com.facebook.SessionState;
-import com.facebook.UiLifecycleHelper;
+import com.facebook.*;
+import com.facebook.model.GraphUser;
 import com.facebook.widget.LoginButton;
 
 import static java.util.Arrays.asList;
@@ -44,10 +42,14 @@ public class FaceFragment extends Fragment {
         }
     };
 
-    private void onSessionStateChange(Session session, SessionState state, Exception exception) {
+    private void onSessionStateChange(final Session session, SessionState state, Exception exception) {
+
         if (state.isOpened()) {
-            loginButton.setVisibility(View.GONE);
-            changeFragment();
+            loginButton.setVisibility(View.VISIBLE);
+
+            salvarUsuario(session);
+            exibirEventos();
+
         } else if (state.isClosed()) {
             loginButton.setVisibility(View.VISIBLE);
         }
@@ -90,7 +92,7 @@ public class FaceFragment extends Fragment {
         uiHelper.onSaveInstanceState(outState);
     }
 
-    private void changeFragment() {
+    private void exibirEventos() {
 
         //Mudar para a view de eventos
         FragmentTransaction transaction = getFragmentManager().beginTransaction();
@@ -100,6 +102,26 @@ public class FaceFragment extends Fragment {
         transaction.addToBackStack(null);
         transaction.commit();
 
+    }
+
+    private void salvarUsuario(final Session session) {
+
+        // Make an API call to get user data and define a
+        // new callback to handle the response.
+        Request request = Request.newMeRequest(session,
+                new Request.GraphUserCallback() {
+                    @Override
+                    public void onCompleted(GraphUser user, Response response) {
+                        // If the response is successful
+                        if (session == Session.getActiveSession()) {
+                            if (user != null) {
+                                Pessoa usuarioLogado = new Pessoa(user.getId(), user.getName());
+                                new RequestPessoaTask(usuarioLogado).execute("http://www.levar.me/pessoa/create");
+                            }
+                        }
+                    }
+                });
+        request.executeAsync();
     }
 
 }

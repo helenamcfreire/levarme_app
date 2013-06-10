@@ -5,14 +5,21 @@ public class Pessoa {
     private String uid;
     private String nome;
     private String pic_square;
+    private String qtdAmigosEmComum;
 
     public Pessoa() {
     }
 
-    public Pessoa(String uid, String nome, String pic_square) {
+    public Pessoa(String uid, String nome) {
+        this.uid = uid;
+        this.nome = nome;
+    }
+
+    public Pessoa(String uid, String nome, String pic_square, String qtdAmigosEmComum) {
         this.uid = uid;
         this.nome = nome;
         this.pic_square = pic_square;
+        this.qtdAmigosEmComum = qtdAmigosEmComum;
     }
 
     public String getUid() {
@@ -37,5 +44,13 @@ public class Pessoa {
 
     public void setPic_square(String pic_square) {
         this.pic_square = pic_square;
+    }
+
+    public String getQtdAmigosEmComum() {
+        return qtdAmigosEmComum;
+    }
+
+    public void setQtdAmigosEmComum(String qtdAmigosEmComum) {
+        this.qtdAmigosEmComum = qtdAmigosEmComum;
     }
 }

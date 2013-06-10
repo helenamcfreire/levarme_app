@@ -40,7 +40,6 @@ public class DrawableFromUrlTask extends AsyncTask<String, Void, Object> {
             InputStream stream = (InputStream) new URL(url).getContent();
             return Drawable.createFromStream(stream, "src name");
         } catch (Exception e) {
-            System.out.println("Exc="+e);
             return null;
         }
     }

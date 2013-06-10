@@ -32,15 +32,22 @@
             android:textSize="15dip"
             android:textStyle="bold"/>
 
-    <!-- Button Posso te buscar? -->
-    <Button
-            android:id="@+id/possoBuscar"
-            android:layout_width="wrap_content"
-            android:layout_height="30dp"
+    <!-- Qtd de amigos em comum -->
+    <TextView
+            android:id="@+id/amigosEmComum"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
             android:layout_below="@id/nameFriend"
+            android:textColor="#c0c0c0"
             android:textSize="10dip"
-            android:layout_marginTop="5dip"
-            android:layout_toRightOf="@+id/thumbnail"
-            android:text="@string/posso_buscar" />
+            android:layout_marginTop="1dip"
+            android:layout_toRightOf="@+id/thumbnail"/>
+
+    <!-- Pessoa que vai ser buscada -->
+    <ImageView android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:src="@drawable/arrow"
+               android:layout_alignParentRight="true"
+               android:layout_centerVertical="true"/>
 
 </RelativeLayout>
