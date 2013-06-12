@@ -32,6 +32,16 @@ public class FaceFragment extends Fragment {
         loginButton.setFragment(this);
         loginButton.setReadPermissions(asList("user_events", "friends_events"));
 
+        Session session = Session.getActiveSession();
+
+        if (session != null && session.isOpened()) {
+            loginButton.setVisibility(View.GONE);
+            salvarUsuario(session);
+            exibirEventos();
+        } else {
+            loginButton.setVisibility(View.VISIBLE);
+        }
+
         return view;
     }
 
@@ -45,8 +55,7 @@ public class FaceFragment extends Fragment {
     private void onSessionStateChange(final Session session, SessionState state, Exception exception) {
 
         if (state.isOpened()) {
-            loginButton.setVisibility(View.VISIBLE);
-
+            loginButton.setVisibility(View.GONE);
             salvarUsuario(session);
             exibirEventos();
 
@@ -99,7 +108,6 @@ public class FaceFragment extends Fragment {
         transaction.setCustomAnimations(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
         eventFragment = new EventFragment();
         transaction.replace(android.R.id.content, eventFragment);
-        transaction.addToBackStack(null);
         transaction.commit();
 
     }

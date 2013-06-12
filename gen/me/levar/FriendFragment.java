@@ -97,7 +97,6 @@ public class FriendFragment extends Fragment {
                                         transaction.setCustomAnimations(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
                                         notificationFragment = new NotificationFragment(amigo.getUid(), nomeEvento);
                                         transaction.replace(android.R.id.content, notificationFragment);
-                                        transaction.addToBackStack(null);
                                         transaction.commit();
                                     }
                                 });

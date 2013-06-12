@@ -2,7 +2,6 @@ package me.levar;
 
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
-import android.view.KeyEvent;
 
 public class FaceActivity extends FragmentActivity {
 
@@ -18,7 +17,6 @@ public class FaceActivity extends FragmentActivity {
             getSupportFragmentManager()
                     .beginTransaction()
                     .add(android.R.id.content, faceFragment)
-                    .addToBackStack(null)
                     .commit();
         } else {
             // Or set the fragment from restored state info
@@ -26,16 +24,6 @@ public class FaceActivity extends FragmentActivity {
                     .findFragmentById(android.R.id.content);
         }
 
-    }
-
-    @Override
-    public boolean onKeyDown(int keyCode, KeyEvent event) {
-
-        if (keyCode == KeyEvent.KEYCODE_BACK) {
-            getFragmentManager().popBackStack();
-        }
-
-        return super.onKeyDown(keyCode, event);
     }
 
 }
