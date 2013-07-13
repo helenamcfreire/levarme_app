@@ -1,16 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="AndroidConfiguredLogFilters">
-    <filters>
-      <filter>
-        <option name="logLevel" value="verbose" />
-        <option name="logMessagePattern" value="" />
-        <option name="logTagPattern" value="" />
-        <option name="name" value="levar" />
-        <option name="pid" value="" />
-      </filter>
-    </filters>
-  </component>
   <component name="AndroidDesignerProfile">
     <option name="fullProfile">
       <profile>
@@ -35,28 +24,22 @@
       </GlobalState>
     </option>
   </component>
-  <component name="AndroidLogFilters">
-    <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="levar" />
-  </component>
   <component name="ChangeListManager">
-    <list default="true" id="3c3f29b5-00e4-463c-9789-24175dff5532" name="Default" comment="Crian">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/levarme_app.apk" afterPath="$PROJECT_DIR$/levarme_app.apk" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AndroidManifest.xml" afterPath="$PROJECT_DIR$/AndroidManifest.xml" />
+    <list default="true" id="3c3f29b5-00e4-463c-9789-24175dff5532" name="Default" comment="">
+      <change type="DELETED" beforePath="C:\Users\Helena\Projetos\Android\levarme_app\levarme.apk" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gen/me/levar/EventFragment.java" afterPath="$PROJECT_DIR$/gen/me/levar/EventFragment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/me/levar/FaceActivity.java" afterPath="$PROJECT_DIR$/src/me/levar/FaceActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/me/levar/FaceFragment.java" afterPath="$PROJECT_DIR$/src/me/levar/FaceFragment.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gen/me/levar/FriendFragment.java" afterPath="$PROJECT_DIR$/gen/me/levar/FriendFragment.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="levarme_app.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="3c3f29b5-00e4-463c-9789-24175dff5532" time="1370999763927" ignored="false" />
+    <file path="/Dummy.txt" changelist="3c3f29b5-00e4-463c-9789-24175dff5532" time="1373727292591" ignored="false" />
     <file path="/FaceFragment.java" changelist="3c3f29b5-00e4-463c-9789-24175dff5532" time="1371007216611" ignored="false" />
     <file path="/main.xml" changelist="3c3f29b5-00e4-463c-9789-24175dff5532" time="1370743125568" ignored="false" />
     <file path="C:/Java/facebook-android-sdk-3.0.1/facebook-android-sdk-3.0.1/samples/HelloFacebookSample/project.properties" changelist="3c3f29b5-00e4-463c-9789-24175dff5532" time="1370557595236" ignored="false" />
     <file path="/FaceActivity.java" changelist="3c3f29b5-00e4-463c-9789-24175dff5532" time="1371002082367" ignored="false" />
-    <file path="/fragment.java" changelist="3c3f29b5-00e4-463c-9789-24175dff5532" time="1371002365863" ignored="false" />
-    <file path="/FriendFragment.java" changelist="3c3f29b5-00e4-463c-9789-24175dff5532" time="1371003396816" ignored="false" />
+    <file path="/fragment.java" changelist="3c3f29b5-00e4-463c-9789-24175dff5532" time="1373728946929" ignored="false" />
+    <file path="/FriendFragment.java" changelist="3c3f29b5-00e4-463c-9789-24175dff5532" time="1373727661673" ignored="false" />
     <file path="/friends.xml" changelist="3c3f29b5-00e4-463c-9789-24175dff5532" time="1370714757316" ignored="false" />
     <file path="/row.xml" changelist="3c3f29b5-00e4-463c-9789-24175dff5532" time="1370714951966" ignored="false" />
     <file path="/a.dummy" changelist="3c3f29b5-00e4-463c-9789-24175dff5532" time="1371003512778" ignored="false" />
@@ -74,7 +57,7 @@
     <file path="/PresentationActivity.java" changelist="3c3f29b5-00e4-463c-9789-24175dff5532" time="1370747727072" ignored="false" />
     <file path="/AndroidManifest.xml" changelist="3c3f29b5-00e4-463c-9789-24175dff5532" time="1371000976075" ignored="false" />
     <file path="/presentation.xml" changelist="3c3f29b5-00e4-463c-9789-24175dff5532" time="1370748732687" ignored="false" />
-    <file path="/EventFragment.java" changelist="3c3f29b5-00e4-463c-9789-24175dff5532" time="1370793718765" ignored="false" />
+    <file path="/EventFragment.java" changelist="3c3f29b5-00e4-463c-9789-24175dff5532" time="1373727382337" ignored="false" />
     <file path="/RequestTask.java" changelist="3c3f29b5-00e4-463c-9789-24175dff5532" time="1370818583085" ignored="false" />
     <file path="$PROJECT_DIR$/src/me/levar/FriendFragmentTest.java" changelist="3c3f29b5-00e4-463c-9789-24175dff5532" time="1370827632419" ignored="false" />
     <file path="/FriendFragmentTest.java" changelist="3c3f29b5-00e4-463c-9789-24175dff5532" time="1370827632419" ignored="false" />
@@ -94,7 +77,6 @@
     <disable_hints />
   </component>
   <component name="DebuggerManager">
-    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_any default_suspend_policy="SuspendAll" default_condition_enabled="true">
       <breakpoint>
         <option name="NOTIFY_CAUGHT" value="true" />
@@ -131,6 +113,7 @@
         <option name="LOG_MESSAGE" value="&#13;&#13;JAVA" />
       </breakpoint>
     </breakpoint_any>
+    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_rules />
     <ui_properties />
   </component>
@@ -175,10 +158,10 @@
         <option value="$PROJECT_DIR$/src/me/levar/RequestPessoaTask.java" />
         <option value="$PROJECT_DIR$/src/me/levar/FriendFragmentTest.java" />
         <option value="$PROJECT_DIR$/AndroidManifest.xml" />
-        <option value="$PROJECT_DIR$/gen/me/levar/FriendFragment.java" />
-        <option value="$PROJECT_DIR$/gen/me/levar/EventFragment.java" />
         <option value="$PROJECT_DIR$/src/me/levar/FaceActivity.java" />
         <option value="$PROJECT_DIR$/src/me/levar/FaceFragment.java" />
+        <option value="$PROJECT_DIR$/gen/me/levar/EventFragment.java" />
+        <option value="$PROJECT_DIR$/gen/me/levar/FriendFragment.java" />
       </list>
     </option>
   </component>
@@ -228,7 +211,7 @@
     </ignored-problems>
   </component>
   <component name="ProjectView">
-    <navigator proportions="" version="1" splitterProportion="0.5">
+    <navigator currentView="ProjectPane" proportions="" version="1" splitterProportion="0.5">
       <flattenPackages />
       <showMembers />
       <showModules />
@@ -239,35 +222,48 @@
       <autoscrollFromSource />
       <sortByType />
     </navigator>
-    <panes />
+    <panes>
+      <pane id="PackagesPane" />
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="levarme_app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+    </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="SHOW_ALL_PROCESSES" value="false" />
+    <property name="last_directory_selection" value="$PROJECT_DIR$/src/me/levar" />
+    <property name="GoToFile.includeJavaFiles" value="false" />
     <property name="project.structure.last.edited" value="Modules" />
+    <property name="SHOW_ALL_PROCESSES" value="false" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit3" />
-    <property name="OverrideImplement.combined" value="true" />
     <property name="project.structure.proportion" value="0.15" />
-    <property name="ExportedApkPath" value="C:\Users\Helena\Projetos\Android\levarme_app\out\production\levarme_app\levarme_app.apk" />
-    <property name="MemberChooser.sorted" value="false" />
+    <property name="OverrideImplement.combined" value="true" />
     <property name="recentsLimit" value="5" />
+    <property name="MemberChooser.sorted" value="false" />
+    <property name="ExportedApkPath" value="C:\Users\Helena\Projetos\Android\levarme_app\out\production\levarme_app\levarme_app.apk" />
     <property name="ExportedModule" value="levarme_app" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Java/Set" />
-    <property name="GoToClass.includeJavaFiles" value="false" />
-    <property name="DEBUGGABLE_DEVICE" value="emulator-5554 (MyAvd0)" />
-    <property name="DEBUGGABLE_PROCESS" value="me.levar" />
-    <property name="GoToClass.toSaveIncludeLibraries" value="false" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="FullScreen" value="false" />
-    <property name="MemberChooser.showClasses" value="true" />
-    <property name="GoToClass.includeLibraries" value="false" />
-    <property name="GoToFile.includeJavaFiles" value="false" />
-    <property name="last_directory_selection" value="$PROJECT_DIR$/src/me/levar" />
     <property name="AndroidLayoutSelectedEditor" value="text-editor" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="MemberChooser.copyJavadoc" value="false" />
+    <property name="GoToClass.includeJavaFiles" value="false" />
+    <property name="DEBUGGABLE_DEVICE" value="304D19684364201F" />
+    <property name="DEBUGGABLE_PROCESS" value="me.levar" />
+    <property name="GoToClass.toSaveIncludeLibraries" value="false" />
     <property name="AndroidRunProguardForReleaseBuild" value="false" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.includeInheritedMembers" value="false" />
     <property name="restartRequiresConfirmation" value="true" />
+    <property name="MemberChooser.showClasses" value="true" />
+    <property name="FullScreen" value="false" />
+    <property name="GoToClass.includeLibraries" value="false" />
   </component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.Recents.Supers">
@@ -323,19 +319,6 @@
       <option name="PORT" value="5005" />
       <method />
     </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <method />
-    </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <module name="" />
@@ -362,6 +345,19 @@
       <envs />
       <properties />
       <listeners />
+      <method />
+    </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
       <method />
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -490,8 +486,32 @@
       <created>1370794514874</created>
       <updated>1370794514874</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Corrigindo alguns erros.">
+      <created>1371007688121</created>
+      <updated>1371007688121</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
+  </component>
+  <component name="TodoView" selected-index="0">
+    <todo-panel id="selected-file">
+      <are-packages-shown value="false" />
+      <are-modules-shown value="false" />
+      <flatten-packages value="false" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <are-modules-shown value="false" />
+      <flatten-packages value="false" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="default-changelist">
+      <are-packages-shown value="false" />
+      <are-modules-shown value="false" />
+      <flatten-packages value="false" />
+      <is-autoscroll-to-source value="false" />
+    </todo-panel>
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -500,19 +520,18 @@
       <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.33890748" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32998884" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3979933" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3400223" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32998884" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32998884" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32998884" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="CDI" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3188406" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32998884" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -525,6 +544,7 @@
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32977587" sideWeight="0.67001116" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32977587" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32998884" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -570,7 +590,7 @@
     <option name="WRAP_WHEN_TYPING_REACHES_RIGHT_MARGIN" value="false" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implementando botão Voltar" />
+    <option name="LAST_COMMIT_MESSAGE" value="Corrigindo alguns erros." />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -590,6 +610,7 @@
     <MESSAGE value="Criando o código para notificação do facebook." />
     <MESSAGE value="Atualizando a versão para 1.5" />
     <MESSAGE value="Implementando botão Voltar" />
+    <MESSAGE value="Corrigindo alguns erros." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -603,67 +624,29 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="84" selection-start="738" selection-end="738" vertical-scroll-proportion="0.46303502">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Java/adt-bundle-windows-x86_64-20130219/adt-bundle-windows-x86_64-20130219/sdk/extras/android/support/v4/android-support-v4.jar!/android/support/v4/app/FragmentTransaction.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="47" column="63" selection-start="2346" selection-end="2346" vertical-scroll-proportion="0.34969324">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/me/levar/RequestPessoaTask.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="53" column="0" selection-start="1747" selection-end="1747" vertical-scroll-proportion="0.45809415">
-          <folding />
-        </state>
+        <state line="53" column="0" selection-start="1747" selection-end="1747" vertical-scroll-proportion="0.45809415" />
       </provider>
     </entry>
     <entry file="jar://C:/Java/adt-bundle-windows-x86_64-20130219/adt-bundle-windows-x86_64-20130219/sdk/extras/android/support/v4/android-support-v4.jar!/android/support/v4/app/DialogFragment.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="53" column="16" selection-start="2197" selection-end="2197" vertical-scroll-proportion="0.44680852">
-          <folding />
-        </state>
+        <state line="53" column="16" selection-start="2197" selection-end="2197" vertical-scroll-proportion="0.44680852" />
       </provider>
     </entry>
     <entry file="file://C:/Java/adt-bundle-windows-x86_64-20130219/adt-bundle-windows-x86_64-20130219/sdk/sources/android-17/android/content/res/TypedArray.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="688" column="16" selection-start="26801" selection-end="26801" vertical-scroll-proportion="0.33268481">
-          <folding />
-        </state>
+        <state line="688" column="16" selection-start="26801" selection-end="26801" vertical-scroll-proportion="0.33268481" />
       </provider>
     </entry>
     <entry file="jar://C:/Java/adt-bundle-windows-x86_64-20130219/adt-bundle-windows-x86_64-20130219/sdk/extras/android/support/v4/android-support-v4.jar!/android/support/v4/app/Fragment.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="210" column="22" selection-start="8606" selection-end="8606" vertical-scroll-proportion="-6.84">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/gen/me/levar/FriendFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/gen/me/levar/NotificationFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="210" column="22" selection-start="8606" selection-end="8606" vertical-scroll-proportion="-6.84" />
       </provider>
     </entry>
     <entry file="file://C:/Java/adt-bundle-windows-x86_64-20130219/adt-bundle-windows-x86_64-20130219/sdk/sources/android-17/android/app/Instrumentation.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="1048" column="0" selection-start="40123" selection-end="40123" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="1048" column="0" selection-start="40123" selection-end="40123" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://C:/Java/facebook-android-sdk-3.0.1/facebook-android-sdk-3.0.1/facebook/src/com/facebook/Session.java">
@@ -677,34 +660,17 @@
     </entry>
     <entry file="file://C:/Java/facebook-android-sdk-3.0.1/facebook-android-sdk-3.0.1/facebook/src/com/facebook/Request.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="1239" column="0" selection-start="53744" selection-end="53744" vertical-scroll-proportion="0.2238806">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/gen/me/levar/EventFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="104" column="0" selection-start="3995" selection-end="3995" vertical-scroll-proportion="0.5510907">
-          <folding>
-            <element signature="e#2270#2278#0" expanded="true" />
-          </folding>
-        </state>
+        <state line="1239" column="0" selection-start="53744" selection-end="53744" vertical-scroll-proportion="0.2238806" />
       </provider>
     </entry>
     <entry file="file://C:/Java/facebook-android-sdk-3.0.1/facebook-android-sdk-3.0.1/facebook/gen/com/facebook/android/R.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="19" selection-start="168" selection-end="168" vertical-scroll-proportion="0.16536964">
-          <folding />
-        </state>
+        <state line="5" column="19" selection-start="168" selection-end="168" vertical-scroll-proportion="0.16536964" />
       </provider>
     </entry>
     <entry file="file://C:/Java/facebook-android-sdk-3.0.1/facebook-android-sdk-3.0.1/facebook/src/com/facebook/widget/LoginButton.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="527" column="0" selection-start="21231" selection-end="21231" vertical-scroll-proportion="0.33333334">
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
+        <state line="527" column="0" selection-start="21231" selection-end="21231" vertical-scroll-proportion="0.33333334" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/me/levar/FaceFragment.java">
@@ -714,9 +680,44 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://C:/Java/facebook-android-sdk-3.0.1/facebook-android-sdk-3.0.1/facebook/src/com/facebook/LoginActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="jar://C:/Java/adt-bundle-windows-x86_64-20130219/adt-bundle-windows-x86_64-20130219/sdk/extras/android/support/v4/android-support-v4.jar!/android/support/v4/app/FragmentTransaction.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="43" column="63" selection-start="2169" selection-end="2169" vertical-scroll-proportion="0.48699763" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gen/me/levar/FriendFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="107" column="178" selection-start="4588" selection-end="4588" vertical-scroll-proportion="0.6486797">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gen/me/levar/EventFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="43" column="0" selection-start="1169" selection-end="1169" vertical-scroll-proportion="0.019517796">
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2327#2335#0" expanded="true" />
+            <element signature="e#4244#4260#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/me/levar/FaceActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="37" selection-start="438" selection-end="438" vertical-scroll-proportion="0.27324915">
+        <state line="16" column="12" selection-start="460" selection-end="487" vertical-scroll-proportion="0.29276693">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gen/me/levar/NotificationFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="89" column="1" selection-start="3568" selection-end="3568" vertical-scroll-proportion="0.8828932">
           <folding />
         </state>
       </provider>
@@ -761,7 +762,7 @@
       </state>
       <state key="JdkListConfigurable.UI">
         <settings>
-          <last-edited>1.7</last-edited>
+          <last-edited>Android 4.2.2 Platform</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>

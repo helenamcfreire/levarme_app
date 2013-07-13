@@ -51,6 +51,7 @@ public class EventFragment extends Fragment {
             StringBuilder builder = new StringBuilder();
             builder.append(" SELECT name, start_time, eid FROM event WHERE eid IN ");
             builder.append(" (SELECT eid FROM event_member WHERE uid = me()) ");
+            builder.append(" AND start_time >= now() ");
             builder.append(" ORDER BY start_time DESC ");
 
             String fqlQuery = builder.toString();

@@ -55,17 +55,22 @@ public class FriendFragment extends Fragment {
 
         if (session != null) {
 
-            List<String> idsPessoasCadastradas = getPessoasCadastradasNoLevarMe();
+            List<String> pessoasCadastradasNoLevarMe = getPessoasCadastradasNoLevarMe();
 
             StringBuilder builder = new StringBuilder();
-            builder.append(" {'participantes': 'select uid from event_member where uid in (select uid1 from friend where uid2 = me()) and eid = ");
+            builder.append(" {'participantes': 'select uid from event_member where ");
+            builder.append(" ( ");
+            builder.append(" uid in (select uid1 from friend where uid2 = me()) ");
+            builder.append(" OR uid IN ( ");
+            builder.append(Arrays.toString(pessoasCadastradasNoLevarMe.toArray()).replace("[", "").replace("]", ""));
+            builder.append(" )) ");
+            builder.append(" and eid =  ");
             builder.append(idEvento);
             builder.append(" ', ");
             builder.append(" 'nomeparticipante':  'SELECT name, pic_square, uid, mutual_friend_count FROM user WHERE (uid IN (SELECT uid FROM #participantes) ");
-            builder.append(" OR uid IN ( ");
-            builder.append(Arrays.toString(idsPessoasCadastradas.toArray()).replace("[", "").replace("]", ""));
-            builder.append(" )) ");
+            builder.append(" ) ");
             builder.append(" AND uid != me() ");
+            builder.append(" ORDER BY name ");
             builder.append(" ',} ");
 
             String fqlQuery = builder.toString();
