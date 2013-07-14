@@ -26,16 +26,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3c3f29b5-00e4-463c-9789-24175dff5532" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/levarme_app.apk" afterPath="$PROJECT_DIR$/levarme_app.apk" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gen/me/levar/EventFragment.java" afterPath="$PROJECT_DIR$/gen/me/levar/EventFragment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/me/levar/FaceFragment.java" afterPath="$PROJECT_DIR$/src/me/levar/FaceFragment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gen/me/levar/FriendFragment.java" afterPath="$PROJECT_DIR$/gen/me/levar/FriendFragment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gen/me/levar/NotificationFragment.java" afterPath="$PROJECT_DIR$/gen/me/levar/NotificationFragment.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="levarme_app.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="3c3f29b5-00e4-463c-9789-24175dff5532" time="1373761761986" ignored="false" />
+    <file path="/Dummy.txt" changelist="3c3f29b5-00e4-463c-9789-24175dff5532" time="1373763010998" ignored="false" />
     <file path="/FaceFragment.java" changelist="3c3f29b5-00e4-463c-9789-24175dff5532" time="1373762030241" ignored="false" />
     <file path="/main.xml" changelist="3c3f29b5-00e4-463c-9789-24175dff5532" time="1370743125568" ignored="false" />
     <file path="C:/Java/facebook-android-sdk-3.0.1/facebook-android-sdk-3.0.1/samples/HelloFacebookSample/project.properties" changelist="3c3f29b5-00e4-463c-9789-24175dff5532" time="1370557595236" ignored="false" />
@@ -124,7 +119,17 @@
     <favorites_list name="levarme_app" />
   </component>
   <component name="FileEditorManager">
-    <leaf />
+    <leaf>
+      <file leaf-file-name="NotificationFragment.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/gen/me/levar/NotificationFragment.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="71" column="29" selection-start="2788" selection-end="2788" vertical-scroll-proportion="1.4444444">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FindManager">
     <FindUsagesManager>
@@ -213,7 +218,7 @@
     </ignored-problems>
   </component>
   <component name="ProjectView">
-    <navigator currentView="ProjectPane" proportions="" version="1" splitterProportion="0.5">
+    <navigator proportions="" version="1" splitterProportion="0.5">
       <flattenPackages />
       <showMembers />
       <showModules />
@@ -224,20 +229,7 @@
       <autoscrollFromSource />
       <sortByType />
     </navigator>
-    <panes>
-      <pane id="PackagesPane" />
-      <pane id="ProjectPane">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="levarme_app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
-      <pane id="Scope" />
-    </panes>
+    <panes />
   </component>
   <component name="PropertiesComponent">
     <property name="SHOW_ALL_PROCESSES" value="false" />
@@ -500,7 +492,11 @@
       <created>1373729455478</created>
       <updated>1373729455478</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Fazendo uns ajustes na transição de um fragmento para o outro">
+      <created>1373763020588</created>
+      <updated>1373763020588</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -600,7 +596,7 @@
     <option name="WRAP_WHEN_TYPING_REACHES_RIGHT_MARGIN" value="false" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Versão 1.7" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fazendo uns ajustes na transição de um fragmento para o outro" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -622,6 +618,7 @@
     <MESSAGE value="Implementando botão Voltar" />
     <MESSAGE value="Corrigindo alguns erros." />
     <MESSAGE value="Versão 1.7" />
+    <MESSAGE value="Fazendo uns ajustes na transição de um fragmento para o outro" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -711,16 +708,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/gen/me/levar/NotificationFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="30" selection-start="564" selection-end="564" vertical-scroll-proportion="0.019517796">
-          <folding>
-            <element signature="e#1471#3035#0" expanded="true" />
-            <element signature="e#3015#3016#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/gen/me/levar/FriendFragment.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="96" column="36" selection-start="3743" selection-end="3743" vertical-scroll-proportion="0.6831229">
@@ -749,6 +736,13 @@
             <element signature="e#2327#2335#0" expanded="true" />
             <element signature="e#4343#4359#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gen/me/levar/NotificationFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="71" column="29" selection-start="2788" selection-end="2788" vertical-scroll-proportion="1.4444444">
+          <folding />
         </state>
       </provider>
     </entry>
