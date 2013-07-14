@@ -26,11 +26,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3c3f29b5-00e4-463c-9789-24175dff5532" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/imgs/banner_136x88.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/imgs/banner_155x100.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/imgs/banner_204x132.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/imgs/banner_272x176.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/imgs/banner_800x150.png" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="levarme_app.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="3c3f29b5-00e4-463c-9789-24175dff5532" time="1373763010998" ignored="false" />
+    <file path="/Dummy.txt" changelist="3c3f29b5-00e4-463c-9789-24175dff5532" time="1373770172367" ignored="false" />
     <file path="/FaceFragment.java" changelist="3c3f29b5-00e4-463c-9789-24175dff5532" time="1373762030241" ignored="false" />
     <file path="/main.xml" changelist="3c3f29b5-00e4-463c-9789-24175dff5532" time="1370743125568" ignored="false" />
     <file path="C:/Java/facebook-android-sdk-3.0.1/facebook-android-sdk-3.0.1/samples/HelloFacebookSample/project.properties" changelist="3c3f29b5-00e4-463c-9789-24175dff5532" time="1370557595236" ignored="false" />
@@ -496,7 +501,11 @@
       <created>1373763020588</created>
       <updated>1373763020588</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Fazendo uns ajustes na transição de um fragmento para o outro">
+      <created>1373770143660</created>
+      <updated>1373770143660</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
