@@ -83,6 +83,7 @@ public class EventFragment extends Fragment {
                                         FragmentTransaction transaction = getFragmentManager().beginTransaction();
                                         transaction.setCustomAnimations(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
                                         friendFragment = new FriendFragment(idEvento, nomeEvento);
+                                        transaction.addToBackStack(EventFragment.class.getName());
                                         transaction.replace(android.R.id.content, friendFragment);
                                         transaction.commit();
                                     }

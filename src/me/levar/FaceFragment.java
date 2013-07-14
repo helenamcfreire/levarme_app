@@ -107,6 +107,7 @@ public class FaceFragment extends Fragment {
         FragmentTransaction transaction = getFragmentManager().beginTransaction();
         transaction.setCustomAnimations(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
         eventFragment = new EventFragment();
+        transaction.addToBackStack(FaceFragment.class.getName());
         transaction.replace(android.R.id.content, eventFragment);
         transaction.commit();
 

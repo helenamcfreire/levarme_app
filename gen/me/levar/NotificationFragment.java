@@ -2,6 +2,7 @@ package me.levar;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -50,15 +51,9 @@ public class NotificationFragment extends Fragment {
                     public void onComplete(Bundle values,
                                            FacebookException error) {
                         if (error != null) {
-                            if (error instanceof FacebookOperationCanceledException) {
-                                Toast.makeText(getActivity().getApplicationContext(),
-                                        "Request cancelled",
-                                        Toast.LENGTH_SHORT).show();
-                            } else {
-                                Toast.makeText(getActivity().getApplicationContext(),
-                                        "Network Error",
-                                        Toast.LENGTH_SHORT).show();
-                            }
+
+                            getFragmentManager().popBackStack(FriendFragment.class.getName(), FragmentManager.POP_BACK_STACK_INCLUSIVE);
+
                         } else {
                             final String requestId = values.getString("request");
                             if (requestId != null) {
@@ -75,9 +70,9 @@ public class NotificationFragment extends Fragment {
                                 relativeLayout.addView(boaDiversao);
 
                             } else {
-                                Toast.makeText(getActivity().getApplicationContext(),
-                                        "Request cancelled",
-                                        Toast.LENGTH_SHORT).show();
+
+                                getFragmentManager().popBackStack(FriendFragment.class.getName(), FragmentManager.POP_BACK_STACK_INCLUSIVE);
+
                             }
                         }
                     }

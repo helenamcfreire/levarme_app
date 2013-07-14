@@ -101,6 +101,7 @@ public class FriendFragment extends Fragment {
                                         FragmentTransaction transaction = getFragmentManager().beginTransaction();
                                         transaction.setCustomAnimations(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
                                         notificationFragment = new NotificationFragment(amigo.getUid(), nomeEvento);
+                                        transaction.addToBackStack(FriendFragment.class.getName());
                                         transaction.replace(android.R.id.content, notificationFragment);
                                         transaction.commit();
                                     }
