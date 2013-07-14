@@ -26,16 +26,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3c3f29b5-00e4-463c-9789-24175dff5532" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/imgs/banner_136x88.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/imgs/banner_155x100.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/imgs/banner_204x132.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/imgs/banner_272x176.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/imgs/banner_800x150.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/levarme_app.apk" afterPath="$PROJECT_DIR$/levarme_app.apk" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AndroidManifest.xml" afterPath="$PROJECT_DIR$/AndroidManifest.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="levarme_app.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="3c3f29b5-00e4-463c-9789-24175dff5532" time="1373770172367" ignored="false" />
+    <file path="/Dummy.txt" changelist="3c3f29b5-00e4-463c-9789-24175dff5532" time="1373770196935" ignored="false" />
     <file path="/FaceFragment.java" changelist="3c3f29b5-00e4-463c-9789-24175dff5532" time="1373762030241" ignored="false" />
     <file path="/main.xml" changelist="3c3f29b5-00e4-463c-9789-24175dff5532" time="1370743125568" ignored="false" />
     <file path="C:/Java/facebook-android-sdk-3.0.1/facebook-android-sdk-3.0.1/samples/HelloFacebookSample/project.properties" changelist="3c3f29b5-00e4-463c-9789-24175dff5532" time="1370557595236" ignored="false" />
@@ -65,6 +62,7 @@
     <file path="/FriendFragmentTest.java" changelist="3c3f29b5-00e4-463c-9789-24175dff5532" time="1370827632419" ignored="false" />
     <file path="$PROJECT_DIR$/../../Java/Set/src/test/java/AlgumaFacadeTest.java" changelist="3c3f29b5-00e4-463c-9789-24175dff5532" time="1370828163330" ignored="false" />
     <file path="/AlgumaFacadeTest.java" changelist="3c3f29b5-00e4-463c-9789-24175dff5532" time="1370828163330" ignored="false" />
+    <file path="$PROJECT_DIR$/gen/me/levar/BuildConfig.java" changelist="3c3f29b5-00e4-463c-9789-24175dff5532" time="1373770289285" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -124,17 +122,7 @@
     <favorites_list name="levarme_app" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="NotificationFragment.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/gen/me/levar/NotificationFragment.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="71" column="29" selection-start="2788" selection-end="2788" vertical-scroll-proportion="1.4444444">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf />
   </component>
   <component name="FindManager">
     <FindUsagesManager>
@@ -168,12 +156,12 @@
         <option value="$PROJECT_DIR$/src/me/levar/RequestTask.java" />
         <option value="$PROJECT_DIR$/src/me/levar/RequestPessoaTask.java" />
         <option value="$PROJECT_DIR$/src/me/levar/FriendFragmentTest.java" />
-        <option value="$PROJECT_DIR$/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/src/me/levar/FaceActivity.java" />
         <option value="$PROJECT_DIR$/gen/me/levar/EventFragment.java" />
         <option value="$PROJECT_DIR$/src/me/levar/FaceFragment.java" />
         <option value="$PROJECT_DIR$/gen/me/levar/FriendFragment.java" />
         <option value="$PROJECT_DIR$/gen/me/levar/NotificationFragment.java" />
+        <option value="$PROJECT_DIR$/AndroidManifest.xml" />
       </list>
     </option>
   </component>
@@ -505,7 +493,11 @@
       <created>1373770143660</created>
       <updated>1373770143660</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Incluindo os banners para o facebook">
+      <created>1373770202220</created>
+      <updated>1373770202220</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -532,7 +524,7 @@
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="false" />
     <layout>
-      <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.46934226" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20958751" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -605,7 +597,7 @@
     <option name="WRAP_WHEN_TYPING_REACHES_RIGHT_MARGIN" value="false" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fazendo uns ajustes na transição de um fragmento para o outro" />
+    <option name="LAST_COMMIT_MESSAGE" value="Incluindo os banners para o facebook" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -628,6 +620,7 @@
     <MESSAGE value="Corrigindo alguns erros." />
     <MESSAGE value="Versão 1.7" />
     <MESSAGE value="Fazendo uns ajustes na transição de um fragmento para o outro" />
+    <MESSAGE value="Incluindo os banners para o facebook" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -645,7 +638,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="523" column="25" selection-start="21443" selection-end="21443" vertical-scroll-proportion="0.0">
           <folding>
-            <element signature="n#!!doc" expanded="true" />
+            <element signature="n#!!doc" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -682,13 +675,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="75" selection-start="607" selection-end="607" vertical-scroll-proportion="0.27830833">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://C:/Java/adt-bundle-windows-x86_64-20130219/adt-bundle-windows-x86_64-20130219/sdk/sources/android-17/java/lang/Class.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="994" column="18" selection-start="40286" selection-end="40286" vertical-scroll-proportion="0.3328786">
@@ -721,8 +707,8 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="96" column="36" selection-start="3743" selection-end="3743" vertical-scroll-proportion="0.6831229">
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#4595#4596#0" expanded="true" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#4595#4596#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -731,8 +717,8 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="109" column="65" selection-start="3355" selection-end="3355" vertical-scroll-proportion="0.37543055">
           <folding>
-            <element signature="e#3695#4321#0" expanded="true" />
-            <element signature="e#4302#4303#0" expanded="true" />
+            <element signature="e#3695#4321#0" expanded="false" />
+            <element signature="e#4302#4303#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -741,16 +727,23 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="85" column="96" selection-start="3504" selection-end="3504" vertical-scroll-proportion="0.66590124">
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2327#2335#0" expanded="true" />
-            <element signature="e#4343#4359#0" expanded="true" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#2327#2335#0" expanded="false" />
+            <element signature="e#4343#4359#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/gen/me/levar/NotificationFragment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="71" column="29" selection-start="2788" selection-end="2788" vertical-scroll-proportion="1.4444444">
+        <state line="71" column="29" selection-start="2788" selection-end="2788" vertical-scroll-proportion="0.74626863">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="34" selection-start="205" selection-end="205" vertical-scroll-proportion="0.078071184">
           <folding />
         </state>
       </provider>
