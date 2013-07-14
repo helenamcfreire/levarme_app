@@ -1,11 +1,13 @@
 package me.levar;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import com.facebook.HttpMethod;
@@ -28,6 +30,7 @@ public class FriendFragment extends Fragment {
     private String idEvento;
     private String nomeEvento;
     private NotificationFragment notificationFragment;
+    private ProgressDialog spinner;
 
 
     public FriendFragment(String idEvento, String nomeEvento) {
@@ -43,6 +46,11 @@ public class FriendFragment extends Fragment {
         View view = inflater.inflate(R.layout.friends, container, false);
 
         friendsListView = (ListView) view.findViewById(R.id.friendsList);
+
+        spinner = new ProgressDialog(getActivity());
+        spinner.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        spinner.setMessage(getActivity().getString(com.facebook.android.R.string.com_facebook_loading));
+
         carregarAmigosQueEstaoNoEvento(idEvento);
 
 
@@ -50,6 +58,8 @@ public class FriendFragment extends Fragment {
     }
 
     private void carregarAmigosQueEstaoNoEvento(String idEvento) {
+
+        spinner.show();
 
         Session session = Session.getActiveSession();
 
@@ -104,8 +114,12 @@ public class FriendFragment extends Fragment {
                                         transaction.addToBackStack(FriendFragment.class.getName());
                                         transaction.replace(android.R.id.content, notificationFragment);
                                         transaction.commit();
+
                                     }
                                 });
+
+                                spinner.dismiss();
+
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }

@@ -1,11 +1,13 @@
 package me.levar;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
@@ -26,6 +28,7 @@ public class EventFragment extends Fragment {
 
     private ListView eventsListView;
     private FriendFragment friendFragment;
+    private ProgressDialog spinner;
 
 
     @Override
@@ -36,13 +39,19 @@ public class EventFragment extends Fragment {
         View view = inflater.inflate(R.layout.events, container, false);
 
         eventsListView = (ListView) view.findViewById(R.id.eventsList);
-        carregarEventos();
 
+        spinner = new ProgressDialog(getActivity());
+        spinner.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        spinner.setMessage(getActivity().getString(com.facebook.android.R.string.com_facebook_loading));
+
+        carregarEventos();
 
         return view;
     }
 
     private void carregarEventos() {
+
+        spinner.show();
 
         Session session = Session.getActiveSession();
 
@@ -86,8 +95,11 @@ public class EventFragment extends Fragment {
                                         transaction.addToBackStack(EventFragment.class.getName());
                                         transaction.replace(android.R.id.content, friendFragment);
                                         transaction.commit();
+
                                     }
                                 });
+
+                                spinner.dismiss();
 
                             } catch (Throwable t) {
                                 t.printStackTrace();
