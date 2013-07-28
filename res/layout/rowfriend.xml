@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
@@ -27,7 +28,7 @@
             android:layout_height="wrap_content"
             android:layout_alignTop="@+id/thumbnail"
             android:layout_toRightOf="@+id/thumbnail"
-            android:textColor="#ffffff"
+            android:textColor="#1f1d1d"
             android:typeface="sans"
             android:textSize="15dip"
             android:textStyle="bold"/>
@@ -38,16 +39,19 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/nameFriend"
-            android:textColor="#c0c0c0"
+            android:textColor="#ABA7A7"
             android:textSize="10dip"
             android:layout_marginTop="1dip"
             android:layout_toRightOf="@+id/thumbnail"/>
 
-    <!-- Pessoa que vai ser buscada -->
-    <ImageView android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:src="@drawable/arrow"
-               android:layout_alignParentRight="true"
-               android:layout_centerVertical="true"/>
+    <!-- Setinha -->
+    <CheckBox
+            android:id="@+id/selecionado"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:layout_centerVertical="true" />
 
 </RelativeLayout>

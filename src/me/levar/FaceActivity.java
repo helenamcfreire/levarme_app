@@ -1,9 +1,13 @@
 package me.levar;
 
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.widget.Toast;
+import me.levar.actionbar.ActionBarActivity;
 
-public class FaceActivity extends FragmentActivity {
+public class FaceActivity extends ActionBarActivity {
 
     private FaceFragment faceFragment;
 
@@ -24,6 +28,31 @@ public class FaceActivity extends FragmentActivity {
                     .findFragmentById(android.R.id.content);
         }
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.main, menu);
+
+        // Calling super after populating the menu is necessary here to ensure that the
+        // action bar helpers have a chance to handle this event.
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                getSupportFragmentManager().popBackStack();
+                break;
+
+            case R.id.menu_chat:
+                Toast.makeText(this, "Fake refreshing...", Toast.LENGTH_SHORT).show();
+                break;
+
+        }
+        return super.onOptionsItemSelected(item);
     }
 
 }

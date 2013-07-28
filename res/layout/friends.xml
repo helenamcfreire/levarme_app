@@ -1,14 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:orientation="vertical">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent">
 
-    <ListView
-            android:id="@+id/friendsList"
-            android:layout_width="wrap_content"
+    <Button android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            />
+            android:id="@+id/doneButton"
+            android:text="@string/done"
+            android:layout_alignParentTop="true"
+            android:background="@drawable/button"
+            style="@style/button_text"/>
 
-</LinearLayout>
+    <ListView android:layout_width="fill_parent"
+              android:layout_height="fill_parent"
+              android:id="@+id/friendsList"
+              android:layout_alignParentBottom="true"
+              android:layout_below="@id/doneButton" />
+
+</RelativeLayout>

@@ -4,8 +4,10 @@ public class Pessoa {
 
     private String uid;
     private String nome;
+    private String username;
     private String pic_square;
     private String qtdAmigosEmComum;
+    private boolean selecionado = false;
 
     public Pessoa() {
     }
@@ -52,5 +54,21 @@ public class Pessoa {
 
     public void setQtdAmigosEmComum(String qtdAmigosEmComum) {
         this.qtdAmigosEmComum = qtdAmigosEmComum;
+    }
+
+    public boolean isSelecionado() {
+        return selecionado;
+    }
+
+    public void setSelecionado(boolean selecionado) {
+        this.selecionado = selecionado;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 }

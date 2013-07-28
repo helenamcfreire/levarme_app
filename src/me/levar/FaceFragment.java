@@ -36,6 +36,13 @@ public class FaceFragment extends Fragment {
 
         if (session != null && session.isOpened()) {
             loginButton.setVisibility(View.GONE);
+
+            if (!session.getPermissions().contains("publish_stream")) {
+                session.requestNewPublishPermissions(new Session.NewPermissionsRequest(this, asList("publish_stream"))
+                        .setCallback(callback)
+                        .setLoginBehavior(SessionLoginBehavior.SUPPRESS_SSO));
+            }
+
             salvarUsuario(session);
             exibirEventos();
         } else {

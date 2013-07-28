@@ -61,7 +61,7 @@ public class EventFragment extends Fragment {
             builder.append(" SELECT name, start_time, eid FROM event WHERE eid IN ");
             builder.append(" (SELECT eid FROM event_member WHERE uid = me()) ");
             builder.append(" AND start_time >= now() ");
-            builder.append(" ORDER BY start_time DESC ");
+            builder.append(" ORDER BY start_time ");
 
             String fqlQuery = builder.toString();
 
@@ -88,14 +88,7 @@ public class EventFragment extends Fragment {
                                         String nomeEvento = (String) eventsListView.getItemAtPosition(position);
                                         String idEvento = eventosLevarMe.get(nomeEvento);
 
-                                        //Mudar para a view de amigos
-                                        FragmentTransaction transaction = getFragmentManager().beginTransaction();
-                                        transaction.setCustomAnimations(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
-                                        friendFragment = new FriendFragment(idEvento, nomeEvento);
-                                        transaction.addToBackStack(EventFragment.class.getName());
-                                        transaction.replace(android.R.id.content, friendFragment);
-                                        transaction.commit();
-
+                                        irParaTelaDeParticipantesDoEvento(idEvento);
                                     }
                                 });
 
@@ -111,6 +104,16 @@ public class EventFragment extends Fragment {
 
         }
 
+    }
+
+    private void irParaTelaDeParticipantesDoEvento(String idEvento) {
+        //Mudar para a view de amigos
+        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+        transaction.setCustomAnimations(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
+        friendFragment = new FriendFragment(idEvento);
+        transaction.addToBackStack(EventFragment.class.getName());
+        transaction.replace(android.R.id.content, friendFragment);
+        transaction.commit();
     }
 
     private Map<String, String> getEventosLevarMe(Response response) throws JSONException {

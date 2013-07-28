@@ -8,7 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
-import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
 import com.facebook.HttpMethod;
 import com.facebook.Request;
@@ -20,22 +20,20 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 public class FriendFragment extends Fragment {
 
+    private FriendAdapter<Pessoa> participantesAdapter;
     private ListView friendsListView;
     private String idEvento;
-    private String nomeEvento;
-    private NotificationFragment notificationFragment;
+    private ChatFragment chatFragment;
     private ProgressDialog spinner;
 
 
-    public FriendFragment(String idEvento, String nomeEvento) {
+    public FriendFragment(String idEvento) {
         this.idEvento = idEvento;
-        this.nomeEvento = nomeEvento;
     }
 
     @Override
@@ -53,7 +51,6 @@ public class FriendFragment extends Fragment {
 
         carregarAmigosQueEstaoNoEvento(idEvento);
 
-
         return view;
     }
 
@@ -61,7 +58,7 @@ public class FriendFragment extends Fragment {
 
         spinner.show();
 
-        Session session = Session.getActiveSession();
+        final Session session = Session.getActiveSession();
 
         if (session != null) {
 
@@ -72,7 +69,7 @@ public class FriendFragment extends Fragment {
             builder.append(" ( ");
             builder.append(" uid in (select uid1 from friend where uid2 = me()) ");
             builder.append(" OR uid IN ( ");
-            builder.append(Arrays.toString(pessoasCadastradasNoLevarMe.toArray()).replace("[", "").replace("]", ""));
+            builder.append(pessoasCadastradasNoLevarMe.toString().replace("[", "").replace("]", ""));
             builder.append(" )) ");
             builder.append(" and eid =  ");
             builder.append(idEvento);
@@ -85,7 +82,7 @@ public class FriendFragment extends Fragment {
 
             String fqlQuery = builder.toString();
 
-            Bundle params = new Bundle();
+            final Bundle params = new Bundle();
             params.putString("q", fqlQuery);
             params.putString("access_token", session.getAccessToken());
             Request request = new Request(session,
@@ -97,26 +94,12 @@ public class FriendFragment extends Fragment {
 
                             List<Pessoa> participantes = null;
                             try {
-                                participantes = getParticipantes(response);
+                                participantes = getParticipantesDoEventoNoFace(response);
 
-                                FriendAdapter<Pessoa> participantesAdapter = new FriendAdapter<Pessoa>(getActivity(), R.layout.rowfriend, participantes);
+                                participantesAdapter = new FriendAdapter<Pessoa>(getActivity(), R.layout.rowfriend, participantes);
                                 friendsListView.setAdapter(participantesAdapter);
-                                friendsListView.setOnItemClickListener(new AdapterView.OnItemClickListener()
-                                {
-                                    public void onItemClick(AdapterView<?> arg0, View v, int position, long id)
-                                    {
-                                        Pessoa amigo = (Pessoa) friendsListView.getItemAtPosition(position);
 
-                                        //Mudar para a view de amigos
-                                        FragmentTransaction transaction = getFragmentManager().beginTransaction();
-                                        transaction.setCustomAnimations(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
-                                        notificationFragment = new NotificationFragment(amigo.getUid(), nomeEvento);
-                                        transaction.addToBackStack(FriendFragment.class.getName());
-                                        transaction.replace(android.R.id.content, notificationFragment);
-                                        transaction.commit();
-
-                                    }
-                                });
+                                getParticipantesSelecionados();
 
                                 spinner.dismiss();
 
@@ -129,6 +112,66 @@ public class FriendFragment extends Fragment {
             Request.executeBatchAsync(request);
 
         }
+
+    }
+
+    private void getParticipantesSelecionados() {
+
+        final List<String> nomes = new ArrayList<String>();
+
+        Button doneButton = (Button) getView().findViewById(R.id.doneButton);
+        doneButton.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                List<Pessoa> participantes = participantesAdapter.participantes;
+                for (Pessoa participante : participantes) {
+                    if (participante.isSelecionado()) {
+                        nomes.add(participante.getNome());
+                    }
+                }
+
+               postarNoMuralDoEvento(nomes);
+
+            }
+        });
+
+    }
+
+    private void postarNoMuralDoEvento(List<String> nomes) {
+
+        final Session session = Session.getActiveSession();
+
+        JSONObject json = new JSONObject();
+        try {
+            json.put("message", "Estou indo para o evento pelo Levar.me - com " + nomes.toString().replace("[", "").replace("]", ""));
+            json.put("link", "https://fbcdn-photos-d-a.akamaihd.net/hphotos-ak-ash3/851556_163928327114689_1890741039_n.png");
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        //Postando no mural do evento
+        Request request = Request.newPostRequest(session, "606369459403782/feed", GraphObject.Factory.create(json), new Request.Callback() {
+            @Override
+            public void onCompleted(Response response) {
+
+                irParaTelaDeNotificacao();
+
+            }
+        });
+        request.executeAsync();
+
+    }
+
+    private void irParaTelaDeNotificacao() {
+
+        //Mudar para a view de notificacao
+        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+        transaction.setCustomAnimations(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
+        chatFragment = new ChatFragment();
+        transaction.addToBackStack(FriendFragment.class.getName());
+        transaction.replace(android.R.id.content, chatFragment);
+        transaction.commit();
 
     }
 
@@ -157,7 +200,7 @@ public class FriendFragment extends Fragment {
         return ids;
     }
 
-    private List<Pessoa> getParticipantes(Response response) throws JSONException {
+    private List<Pessoa> getParticipantesDoEventoNoFace(Response response) throws JSONException {
 
         GraphObject graphObject  = response.getGraphObject();
         JSONObject jsonObject = graphObject.getInnerJSONObject();
