@@ -1,4 +1,4 @@
-package me.levar;
+package me.levar.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -7,7 +7,9 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.TextView;
-import android.widget.Toast;
+import me.levar.R;
+import me.levar.entity.Pessoa;
+import me.levar.task.DrawableFromUrlTask;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +20,7 @@ public class FriendAdapter<P> extends ArrayAdapter<Pessoa> {
      * Used to instantiate layout XML file into its corresponding View objects
      */
     private final LayoutInflater inflater;
-    protected List<Pessoa> participantes;
+    public List<Pessoa> participantes;
 
     /*
      * each list item layout ID

@@ -1,4 +1,4 @@
-package me.levar;
+package me.levar.fragment;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;
@@ -16,6 +16,7 @@ import com.facebook.Request;
 import com.facebook.Response;
 import com.facebook.Session;
 import com.facebook.model.GraphObject;
+import me.levar.R;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;

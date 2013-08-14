@@ -1,4 +1,4 @@
-package me.levar;
+package me.levar.fragment;
 
 
 import android.content.Intent;
@@ -11,6 +11,9 @@ import android.view.ViewGroup;
 import com.facebook.*;
 import com.facebook.model.GraphUser;
 import com.facebook.widget.LoginButton;
+import me.levar.entity.Pessoa;
+import me.levar.R;
+import me.levar.task.RequestPessoaTask;
 
 import static java.util.Arrays.asList;
 

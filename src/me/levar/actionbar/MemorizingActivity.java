@@ -21,7 +21,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package me.levar;
+package me.levar.actionbar;
 
 
 import android.app.Activity;
@@ -31,6 +31,7 @@ import android.content.DialogInterface.*;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import me.levar.R;
 
 public class MemorizingActivity extends Activity
 		implements OnClickListener,OnCancelListener {

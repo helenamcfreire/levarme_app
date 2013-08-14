@@ -1,0 +1,28 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="fill_parent"
+              android:layout_height="fill_parent"
+        >
+
+    <FrameLayout
+            android:id="@+id/overlay"
+            android:layout_width="56dp"
+            android:layout_height="match_parent" >
+    </FrameLayout>
+
+    <LinearLayout
+            android:layout_width="265dp"
+            android:layout_height="fill_parent"
+            android:orientation="vertical"
+            android:background="@color/cinza_facebook">
+
+        <ListView
+                android:id="@+id/menu_listview"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:divider="@android:color/darker_gray"
+                android:dividerHeight="1dip" android:layout_marginLeft="20dp"/>
+
+    </LinearLayout>
+
+
+</LinearLayout>

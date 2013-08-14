@@ -15,8 +15,10 @@
   -->
 
 <resources>
-    <color name="actionbar_title_color">#ffffff</color>
+    <color name="white">#ffffff</color>
     <color name="black">#000</color>
     <color name="blue">#00f</color>
     <color name="red">#f00</color>
+    <color name="cinza_facebook">#2A323D</color>
+
 </resources>

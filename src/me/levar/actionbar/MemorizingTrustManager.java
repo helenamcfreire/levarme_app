@@ -24,7 +24,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package me.levar;
+package me.levar.actionbar;
 
 import android.app.Activity;
 import android.app.Application;
@@ -39,6 +39,7 @@ import android.content.IntentFilter;
 import android.net.Uri;
 import android.util.Log;
 import android.os.Handler;
+import me.levar.R;
 
 import java.io.File;
 import java.security.cert.*;

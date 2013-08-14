@@ -21,7 +21,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package me.levar;
+package me.levar.actionbar;
 
 class MTMDecision {
 	public final static int DECISION_INVALID	= 0;

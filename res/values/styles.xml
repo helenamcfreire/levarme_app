@@ -54,7 +54,7 @@
     </style>
 
     <style name="ActionBarCompatTitle" parent="style/ActionBarCompatTitleBase">
-        <item name="android:textColor">@color/actionbar_title_color</item>
+        <item name="android:textColor">@color/white</item>
     </style>
 
     <style name="ActionBarCompatItem" parent="style/ActionBarCompatItemBase">

@@ -1,4 +1,4 @@
-package me.levar;
+package me.levar.entity;
 
 public class Pessoa {
 

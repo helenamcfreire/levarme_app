@@ -1,7 +1,8 @@
-package me.levar;
+package me.levar.task;
 
 
 import android.os.AsyncTask;
+import me.levar.entity.Pessoa;
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
 import org.apache.http.NameValuePair;

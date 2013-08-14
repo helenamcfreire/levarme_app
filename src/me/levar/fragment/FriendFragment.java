@@ -1,4 +1,4 @@
-package me.levar;
+package me.levar.fragment;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;
@@ -15,6 +15,10 @@ import com.facebook.Request;
 import com.facebook.Response;
 import com.facebook.Session;
 import com.facebook.model.GraphObject;
+import me.levar.adapter.FriendAdapter;
+import me.levar.entity.Pessoa;
+import me.levar.R;
+import me.levar.task.RequestPessoaTask;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -155,7 +159,7 @@ public class FriendFragment extends Fragment {
             @Override
             public void onCompleted(Response response) {
 
-                irParaTelaDeNotificacao();
+                irParaTelaDeChat();
 
             }
         });
@@ -163,7 +167,7 @@ public class FriendFragment extends Fragment {
 
     }
 
-    private void irParaTelaDeNotificacao() {
+    private void irParaTelaDeChat() {
 
         //Mudar para a view de notificacao
         FragmentTransaction transaction = getFragmentManager().beginTransaction();

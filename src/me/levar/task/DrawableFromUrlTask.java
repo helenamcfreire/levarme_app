@@ -1,9 +1,10 @@
-package me.levar;
+package me.levar.task;
 
 import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.view.View;
 import android.widget.ImageView;
+import me.levar.R;
 
 import java.io.InputStream;
 import java.net.URL;
