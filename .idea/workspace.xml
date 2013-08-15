@@ -40,56 +40,32 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3c3f29b5-00e4-463c-9789-24175dff5532" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/me/levar/chat/Chat.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/me/levar/chat/ChatListAdapter.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/me/levar/activity/FaceActivity.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/me/levar/chat/FirebaseListAdapter.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/me/levar/slidingmenu/SlideMenu.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/me/levar/slidingmenu/SlideMenuInterface.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/anim/push_left_in.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/anim/push_left_in_80.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/anim/push_left_out.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/anim/push_right_in.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/anim/push_right_out.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/anim/push_right_out_80.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/menu/slide.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/layout/slidemenu.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/layout/slidemenu_listitem.xml" />
-      <change type="DELETED" beforePath="C:\Users\Helena\Projetos\Android\levarme_app\src\me\levar\FaceActivity.java" afterPath="" />
-      <change type="MOVED" beforePath="C:\Users\Helena\Projetos\Android\levarme_app\gen\me\levar\ChatFragment.java" afterPath="$PROJECT_DIR$/src/me/levar/fragment/ChatFragment.java" />
-      <change type="MOVED" beforePath="C:\Users\Helena\Projetos\Android\levarme_app\gen\me\levar\EventFragment.java" afterPath="$PROJECT_DIR$/src/me/levar/fragment/EventFragment.java" />
-      <change type="MOVED" beforePath="C:\Users\Helena\Projetos\Android\levarme_app\gen\me\levar\FriendFragment.java" afterPath="$PROJECT_DIR$/src/me/levar/fragment/FriendFragment.java" />
-      <change type="MOVED" beforePath="C:\Users\Helena\Projetos\Android\levarme_app\src\me\levar\DrawableFromUrlTask.java" afterPath="$PROJECT_DIR$/src/me/levar/task/DrawableFromUrlTask.java" />
-      <change type="MOVED" beforePath="C:\Users\Helena\Projetos\Android\levarme_app\src\me\levar\FaceFragment.java" afterPath="$PROJECT_DIR$/src/me/levar/fragment/FaceFragment.java" />
-      <change type="MOVED" beforePath="C:\Users\Helena\Projetos\Android\levarme_app\src\me\levar\FriendAdapter.java" afterPath="$PROJECT_DIR$/src/me/levar/adapter/FriendAdapter.java" />
-      <change type="MOVED" beforePath="C:\Users\Helena\Projetos\Android\levarme_app\src\me\levar\MTMDecision.java" afterPath="$PROJECT_DIR$/src/me/levar/actionbar/MTMDecision.java" />
-      <change type="MOVED" beforePath="C:\Users\Helena\Projetos\Android\levarme_app\src\me\levar\MemorizingActivity.java" afterPath="$PROJECT_DIR$/src/me/levar/actionbar/MemorizingActivity.java" />
-      <change type="MOVED" beforePath="C:\Users\Helena\Projetos\Android\levarme_app\src\me\levar\MemorizingTrustManager.java" afterPath="$PROJECT_DIR$/src/me/levar/actionbar/MemorizingTrustManager.java" />
-      <change type="MOVED" beforePath="C:\Users\Helena\Projetos\Android\levarme_app\src\me\levar\Pessoa.java" afterPath="$PROJECT_DIR$/src/me/levar/entity/Pessoa.java" />
-      <change type="MOVED" beforePath="C:\Users\Helena\Projetos\Android\levarme_app\src\me\levar\RequestPessoaTask.java" afterPath="$PROJECT_DIR$/src/me/levar/task/RequestPessoaTask.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/me/levar/activity/ChatActivity.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/me/levar/activity/EventActivity.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/me/levar/activity/FriendActivity.java" />
+      <change type="DELETED" beforePath="C:\Users\Helena\Projetos\Android\levarme_app\src\me\levar\fragment\ChatFragment.java" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Helena\Projetos\Android\levarme_app\src\me\levar\fragment\EventFragment.java" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Helena\Projetos\Android\levarme_app\src\me\levar\fragment\FriendFragment.java" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AndroidManifest.xml" afterPath="$PROJECT_DIR$/AndroidManifest.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/me/levar/activity/FaceActivity.java" afterPath="$PROJECT_DIR$/src/me/levar/activity/FaceActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/me/levar/fragment/FaceFragment.java" afterPath="$PROJECT_DIR$/src/me/levar/fragment/FaceFragment.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/me/levar/slidingmenu/SlideMenu.java" afterPath="$PROJECT_DIR$/src/me/levar/slidingmenu/SlideMenu.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/chat.xml" afterPath="$PROJECT_DIR$/res/layout/chat.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/values/colors.xml" afterPath="$PROJECT_DIR$/res/values/colors.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/values/dimens.xml" afterPath="$PROJECT_DIR$/res/values/dimens.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/levarme_app.iml" afterPath="$PROJECT_DIR$/levarme_app.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/project.properties" afterPath="$PROJECT_DIR$/project.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/rowchat.xml" afterPath="$PROJECT_DIR$/res/layout/rowchat.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/values/strings.xml" afterPath="$PROJECT_DIR$/res/values/strings.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/values/styles.xml" afterPath="$PROJECT_DIR$/res/values/styles.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/menu/slide.xml" afterPath="$PROJECT_DIR$/res/menu/slide.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="levarme_app.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="3c3f29b5-00e4-463c-9789-24175dff5532" time="1376509115980" ignored="false" />
-    <file path="/FaceFragment.java" changelist="3c3f29b5-00e4-463c-9789-24175dff5532" time="1374432173905" ignored="false" />
+    <file path="/Dummy.txt" changelist="3c3f29b5-00e4-463c-9789-24175dff5532" time="1376520566143" ignored="false" />
+    <file path="/FaceFragment.java" changelist="3c3f29b5-00e4-463c-9789-24175dff5532" time="1376538449560" ignored="false" />
     <file path="/main.xml" changelist="3c3f29b5-00e4-463c-9789-24175dff5532" time="1376511867001" ignored="false" />
     <file path="C:/Java/facebook-android-sdk-3.0.1/facebook-android-sdk-3.0.1/samples/HelloFacebookSample/project.properties" changelist="3c3f29b5-00e4-463c-9789-24175dff5532" time="1370557595236" ignored="false" />
-    <file path="/FaceActivity.java" changelist="3c3f29b5-00e4-463c-9789-24175dff5532" time="1376512053270" ignored="false" />
-    <file path="/fragment.java" changelist="3c3f29b5-00e4-463c-9789-24175dff5532" time="1376511526866" ignored="false" />
+    <file path="/FaceActivity.java" changelist="3c3f29b5-00e4-463c-9789-24175dff5532" time="1376538481934" ignored="false" />
+    <file path="/fragment.java" changelist="3c3f29b5-00e4-463c-9789-24175dff5532" time="1376536943875" ignored="false" />
     <file path="/FriendFragment.java" changelist="3c3f29b5-00e4-463c-9789-24175dff5532" time="1376436267623" ignored="false" />
     <file path="/friends.xml" changelist="3c3f29b5-00e4-463c-9789-24175dff5532" time="1374959196740" ignored="false" />
     <file path="/row.xml" changelist="3c3f29b5-00e4-463c-9789-24175dff5532" time="1370714951966" ignored="false" />
-    <file path="/a.dummy" changelist="3c3f29b5-00e4-463c-9789-24175dff5532" time="1376517889573" ignored="false" />
+    <file path="/a.dummy" changelist="3c3f29b5-00e4-463c-9789-24175dff5532" time="1376539427932" ignored="false" />
     <file path="/CustomAdapter.java" changelist="3c3f29b5-00e4-463c-9789-24175dff5532" time="1370715553075" ignored="false" />
     <file path="/Person.java" changelist="3c3f29b5-00e4-463c-9789-24175dff5532" time="1370715630733" ignored="false" />
     <file path="/Evento.java" changelist="3c3f29b5-00e4-463c-9789-24175dff5532" time="1370715725701" ignored="false" />
@@ -102,7 +78,7 @@
     <file path="/NotificationFragment.java" changelist="3c3f29b5-00e4-463c-9789-24175dff5532" time="1374867562723" ignored="false" />
     <file path="/notifications.xml" changelist="3c3f29b5-00e4-463c-9789-24175dff5532" time="1374849326507" ignored="false" />
     <file path="/PresentationActivity.java" changelist="3c3f29b5-00e4-463c-9789-24175dff5532" time="1370747727072" ignored="false" />
-    <file path="/AndroidManifest.xml" changelist="3c3f29b5-00e4-463c-9789-24175dff5532" time="1376503766568" ignored="false" />
+    <file path="/AndroidManifest.xml" changelist="3c3f29b5-00e4-463c-9789-24175dff5532" time="1376540779564" ignored="false" />
     <file path="/presentation.xml" changelist="3c3f29b5-00e4-463c-9789-24175dff5532" time="1370748732687" ignored="false" />
     <file path="/EventFragment.java" changelist="3c3f29b5-00e4-463c-9789-24175dff5532" time="1374442009743" ignored="false" />
     <file path="/RequestTask.java" changelist="3c3f29b5-00e4-463c-9789-24175dff5532" time="1370818583085" ignored="false" />
@@ -111,7 +87,7 @@
     <file path="$PROJECT_DIR$/../../Java/Set/src/test/java/AlgumaFacadeTest.java" changelist="3c3f29b5-00e4-463c-9789-24175dff5532" time="1370828163330" ignored="false" />
     <file path="/AlgumaFacadeTest.java" changelist="3c3f29b5-00e4-463c-9789-24175dff5532" time="1370828163330" ignored="false" />
     <file path="$USER_HOME$/.IntelliJIdea12/system/compile-server/levarme_app_67024032/targets/java-production/levarme_app/android/copied_sources/me/levar/FriendFragment.java" changelist="3c3f29b5-00e4-463c-9789-24175dff5532" time="1374449458274" ignored="false" />
-    <file path="/ChatFragment.java" changelist="3c3f29b5-00e4-463c-9789-24175dff5532" time="1376502223198" ignored="false" />
+    <file path="/ChatFragment.java" changelist="3c3f29b5-00e4-463c-9789-24175dff5532" time="1376533609769" ignored="false" />
     <file path="/LoginActivity.java" changelist="3c3f29b5-00e4-463c-9789-24175dff5532" time="1374954613413" ignored="false" />
     <file path="/ActionBarActivity.java" changelist="3c3f29b5-00e4-463c-9789-24175dff5532" time="1374955239831" ignored="false" />
     <file path="/ActionBarHelperBase.java" changelist="3c3f29b5-00e4-463c-9789-24175dff5532" time="1374965939280" ignored="false" />
@@ -123,7 +99,7 @@
     <file path="/activity_main.xml" changelist="3c3f29b5-00e4-463c-9789-24175dff5532" time="1376435453856" ignored="false" />
     <file path="/HorzScrollWithListMenu.java" changelist="3c3f29b5-00e4-463c-9789-24175dff5532" time="1376507723788" ignored="false" />
     <file path="$PROJECT_DIR$/../android-sliding-menu-demo/SlidingMenuDemo/src/grimbo/android/demo/slidingmenu/HorzScrollWithListMenu.java" changelist="3c3f29b5-00e4-463c-9789-24175dff5532" time="1376507247343" ignored="false" />
-    <file path="/SlideMenu.java" changelist="3c3f29b5-00e4-463c-9789-24175dff5532" time="1376515224205" ignored="false" />
+    <file path="/SlideMenu.java" changelist="3c3f29b5-00e4-463c-9789-24175dff5532" time="1376528373131" ignored="false" />
     <file path="/menu.xml" changelist="3c3f29b5-00e4-463c-9789-24175dff5532" time="1376509091991" ignored="false" />
     <file path="/menu_listitem.xml" changelist="3c3f29b5-00e4-463c-9789-24175dff5532" time="1376509136221" ignored="false" />
     <file path="/ExtendedViewPager.java" changelist="3c3f29b5-00e4-463c-9789-24175dff5532" time="1376509318923" ignored="false" />
@@ -132,6 +108,13 @@
     <file path="$PROJECT_DIR$/../../CloneProjects/LibSlideMenu/slidemenuexample/gen/com/coboltforge/slidemenuexample/Manifest.java" changelist="3c3f29b5-00e4-463c-9789-24175dff5532" time="1376511486564" ignored="false" />
     <file path="/slidemenu.xml" changelist="3c3f29b5-00e4-463c-9789-24175dff5532" time="1376520193068" ignored="false" />
     <file path="/slidemenu_listitem.xml" changelist="3c3f29b5-00e4-463c-9789-24175dff5532" time="1376520360883" ignored="false" />
+    <file path="/ChatListFragment.java" changelist="3c3f29b5-00e4-463c-9789-24175dff5532" time="1376521879650" ignored="false" />
+    <file path="/EventActivity.java" changelist="3c3f29b5-00e4-463c-9789-24175dff5532" time="1376542877181" ignored="false" />
+    <file path="/events.xml" changelist="3c3f29b5-00e4-463c-9789-24175dff5532" time="1376539485486" ignored="false" />
+    <file path="/ids.xml" changelist="3c3f29b5-00e4-463c-9789-24175dff5532" time="1376539467293" ignored="false" />
+    <file path="/FriendActivity.java" changelist="3c3f29b5-00e4-463c-9789-24175dff5532" time="1376540427116" ignored="false" />
+    <file path="/ChatActivity.java" changelist="3c3f29b5-00e4-463c-9789-24175dff5532" time="1376543211123" ignored="false" />
+    <file path="/chat.xml" changelist="3c3f29b5-00e4-463c-9789-24175dff5532" time="1376543192066" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -183,23 +166,7 @@
         <option name="LOG_MESSAGE" value="&#13;&#13;JAVA" />
       </breakpoint>
     </breakpoint_any>
-    <line_breakpoints default_suspend_policy="SuspendAll" default_condition_enabled="true">
-      <breakpoint url="file://$PROJECT_DIR$/src/me/levar/slidingmenu/SlideMenu.java" line="178" class="me.levar.slidingmenu.SlideMenu" package="me.levar.slidingmenu">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="REMOVE_AFTER_HIT" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-    </line_breakpoints>
+    <line_breakpoints default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_rules />
     <ui_properties />
   </component>
@@ -232,22 +199,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/res/layout/horz_scroll_with_list_menu.xml" />
-        <option value="$PROJECT_DIR$/src/me/levar/slidingmenu/HorzScrollWithListMenu.java" />
-        <option value="$PROJECT_DIR$/res/layout/horz_scroll_app.xml" />
-        <option value="$PROJECT_DIR$/res/layout/horz_scroll_menu.xml" />
-        <option value="$PROJECT_DIR$/src/me/levar/slidingmenu/ViewUtils.java" />
-        <option value="$PROJECT_DIR$/res/layout/menu.xml" />
-        <option value="$PROJECT_DIR$/res/layout/menu_listitem.xml" />
-        <option value="$PROJECT_DIR$/src/me/levar/slidingmenu/ExtendedViewPager.java" />
-        <option value="$PROJECT_DIR$/src/me/levar/slidingmenu/ExtendedPagerTabStrip.java" />
-        <option value="$PROJECT_DIR$/res/values/strings.xml" />
-        <option value="$PROJECT_DIR$/res/layout/main.xml" />
-        <option value="$PROJECT_DIR$/src/me/levar/activity/FaceActivity.java" />
-        <option value="$PROJECT_DIR$/res/layout/slidemenu.xml" />
         <option value="$PROJECT_DIR$/res/values/colors.xml" />
         <option value="$PROJECT_DIR$/res/layout/slidemenu_listitem.xml" />
+        <option value="$PROJECT_DIR$/res/menu/slide.xml" />
+        <option value="$PROJECT_DIR$/src/me/levar/fragment/ChatListFragment.java" />
         <option value="$PROJECT_DIR$/src/me/levar/slidingmenu/SlideMenu.java" />
+        <option value="$PROJECT_DIR$/src/me/levar/fragment/FriendFragment.java" />
+        <option value="$PROJECT_DIR$/src/me/levar/fragment/ChatFragment.java" />
+        <option value="$PROJECT_DIR$/src/me/levar/fragment/FaceFragment.java" />
+        <option value="$PROJECT_DIR$/src/me/levar/activity/FaceActivity.java" />
+        <option value="$PROJECT_DIR$/res/layout/events.xml" />
+        <option value="$PROJECT_DIR$/res/values/ids.xml" />
+        <option value="$PROJECT_DIR$/AndroidManifest.xml" />
+        <option value="$PROJECT_DIR$/src/me/levar/activity/EventActivity.java" />
+        <option value="$PROJECT_DIR$/res/layout/chat.xml" />
+        <option value="$PROJECT_DIR$/src/me/levar/activity/ChatActivity.java" />
+        <option value="$PROJECT_DIR$/src/me/levar/activity/FriendActivity.java" />
       </list>
     </option>
   </component>
@@ -338,7 +305,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="res" />
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="levar" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -352,11 +323,59 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="res" />
+              <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="layout" />
+              <option name="myItemId" value="levar" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="slidingmenu" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="levarme_app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="levarme_app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="levar" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="fragment" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="levarme_app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="levarme_app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="levar" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="activity" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -374,28 +393,6 @@
               <option name="myItemType" value="" />
             </PATH_ELEMENT>
             <PATH_ELEMENT USER_OBJECT="levarme_app">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="levarme_app">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="levarme_app">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="src">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="me/levar">
               <option name="myItemId" value="" />
               <option name="myItemType" value="" />
             </PATH_ELEMENT>
@@ -439,7 +436,11 @@
               <option name="myItemId" value="" />
               <option name="myItemType" value="" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="res">
+            <PATH_ELEMENT USER_OBJECT="src">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="me/levar">
               <option name="myItemId" value="" />
               <option name="myItemType" value="" />
             </PATH_ELEMENT>
@@ -457,11 +458,15 @@
               <option name="myItemId" value="" />
               <option name="myItemType" value="" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="res">
+            <PATH_ELEMENT USER_OBJECT="src">
               <option name="myItemId" value="" />
               <option name="myItemType" value="" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="layout">
+            <PATH_ELEMENT USER_OBJECT="me/levar">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="activity">
               <option name="myItemId" value="" />
               <option name="myItemType" value="" />
             </PATH_ELEMENT>
@@ -533,6 +538,7 @@
       <recent name="C:\Users\Helena\Projetos\Android\levarme_app\res\anim" />
     </key>
     <key name="CreateClassDialog.RecentsKey">
+      <recent name="me.levar.activity" />
       <recent name="me.levar" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -782,7 +788,11 @@
       <created>1373827240867</created>
       <updated>1373827240867</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="Criando um menu slider (igual ao do facebook). Preparando para implementar o chat">
+      <created>1376520592424</created>
+      <updated>1376520592424</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -811,7 +821,7 @@
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32977587" sideWeight="0.580825" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32977587" sideWeight="0.580825" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.7692308" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.67892975" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32977587" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -826,13 +836,13 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32998884" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3277592" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="CDI" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3188406" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.49944258" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32998884" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2497332" sideWeight="0.580825" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24332978" sideWeight="0.5206243" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24332978" sideWeight="0.32107022" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.41917503" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="10" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
@@ -882,7 +892,7 @@
     <option name="WRAP_WHEN_TYPING_REACHES_RIGHT_MARGIN" value="false" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Versão 1.9" />
+    <option name="LAST_COMMIT_MESSAGE" value="Criando um menu slider (igual ao do facebook). Preparando para implementar o chat" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -909,6 +919,7 @@
     <MESSAGE value="Versão 1.8" />
     <MESSAGE value="Adicionando um &quot;Loading...&quot; na transição das telas." />
     <MESSAGE value="Versão 1.9" />
+    <MESSAGE value="Criando um menu slider (igual ao do facebook). Preparando para implementar o chat" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -922,13 +933,74 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/me/levar/fragment/FriendFragment.java">
+    <entry file="file://$PROJECT_DIR$/res/values/ids.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="124" column="0" selection-start="4332" selection-end="4332" vertical-scroll-proportion="0.8978186">
+        <state line="21" column="42" selection-start="887" selection-end="887" vertical-scroll-proportion="0.4219858">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/layout/events.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="50" selection-start="212" selection-end="212" vertical-scroll-proportion="0.06211937">
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/me/levar/fragment/FaceFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="119" column="0" selection-start="3542" selection-end="3683" vertical-scroll-proportion="0.43398392">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="25" column="54" selection-start="1257" selection-end="1257" vertical-scroll-proportion="0.6909091">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/me/levar/activity/FaceActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="13" selection-start="155" selection-end="155" vertical-scroll-proportion="0.11710677">
           <folding>
-            <element signature="e#5597#5762#0" expanded="true" />
-            <element signature="e#5751#5752#0" expanded="true" />
+            <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Java/adt-bundle-windows-x86_64-20130219/adt-bundle-windows-x86_64-20130219/sdk/sources/android-18/android/app/Activity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="761" column="18" selection-start="36530" selection-end="36530" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Java/adt-bundle-windows-x86_64-20130219/adt-bundle-windows-x86_64-20130219/sdk/sources/android-18/android/content/Intent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4471" column="18" selection-start="200636" selection-end="200636" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/layout/friends.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://C:/Java/adt-bundle-windows-x86_64-20130219/adt-bundle-windows-x86_64-20130219/sdk/sources/android-18/android/app/ListActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="295" column="20" selection-start="11134" selection-end="11134" vertical-scroll-proportion="0.33333334">
+          <folding />
         </state>
       </provider>
     </entry>
@@ -942,33 +1014,21 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/res/drawable-hdpi/ic_launcher.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://C:/Java/adt-bundle-windows-x86_64-20130219/adt-bundle-windows-x86_64-20130219/sdk/sources/android-18/android/widget/HorizontalScrollView.java">
+    <entry file="file://C:/Java/adt-bundle-windows-x86_64-20130219/adt-bundle-windows-x86_64-20130219/sdk/platforms/android-18/data/res/values/ids.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+        <state line="29" column="24" selection-start="1051" selection-end="1051" vertical-scroll-proportion="0.33295062">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/res/layout/chat.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="20" selection-start="693" selection-end="693" vertical-scroll-proportion="0.45554203">
+        <state line="6" column="2" selection-start="164" selection-end="164" vertical-scroll-proportion="0.12423874">
           <folding />
         </state>
       </provider>
       <provider editor-type-id="android-designer">
         <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/values/strings.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="0" selection-start="1079" selection-end="1079" vertical-scroll-proportion="0.4822695">
-          <folding />
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/res/menu/main.xml">
@@ -978,78 +1038,32 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/res/layout/main.xml">
+    <entry file="file://$PROJECT_DIR$/src/me/levar/activity/ChatActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="0" selection-start="218" selection-end="218" vertical-scroll-proportion="0.082825825">
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://C:/Java/adt-bundle-windows-x86_64-20130219/adt-bundle-windows-x86_64-20130219/sdk/sources/android-18/android/util/TypedValue.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="319" column="59" selection-start="13744" selection-end="13744" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/Java/adt-bundle-windows-x86_64-20130219/adt-bundle-windows-x86_64-20130219/sdk/sources/android-18/android/view/animation/TranslateAnimation.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="93" column="11" selection-start="3130" selection-end="3130" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/me/levar/activity/FaceActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/me/levar/slidingmenu/SlideMenu.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="95" column="36" selection-start="3198" selection-end="3198" vertical-scroll-proportion="0.2043628">
+        <state line="127" column="0" selection-start="4373" selection-end="4373" vertical-scroll-proportion="0.84385765">
           <folding>
-            <element signature="e#0#15485#0" expanded="true" />
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/res/layout/slidemenu_listitem.xml">
+    <entry file="file://$PROJECT_DIR$/src/me/levar/activity/FriendActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="44" selection-start="505" selection-end="505" vertical-scroll-proportion="0.24847747">
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/layout/slidemenu.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="54" selection-start="555" selection-end="555" vertical-scroll-proportion="0.3313033">
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/menu/slide.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="37" selection-start="626" selection-end="626" vertical-scroll-proportion="0.40189126">
-          <folding />
+        <state line="64" column="0" selection-start="1908" selection-end="1908" vertical-scroll-proportion="0.84385765">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/res/values/colors.xml">
+    <entry file="file://$PROJECT_DIR$/src/me/levar/activity/EventActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="17" selection-start="633" selection-end="638" vertical-scroll-proportion="0.34160757">
-          <folding />
+        <state line="83" column="25" selection-start="2520" selection-end="2520" vertical-scroll-proportion="0.25373134">
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#4061#4069#0" expanded="true" />
+            <element signature="e#5799#5815#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

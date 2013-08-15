@@ -1,28 +1,39 @@
-package me.levar.fragment;
+package me.levar.activity;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.DataSetObserver;
 import android.os.Bundle;
-import android.support.v4.app.ListFragment;
 import android.view.KeyEvent;
-import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+import com.facebook.Request;
+import com.facebook.Response;
+import com.facebook.Session;
+import com.facebook.model.GraphUser;
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.ValueEventListener;
 import me.levar.R;
+import me.levar.actionbar.ActionBarActivity;
 import me.levar.chat.Chat;
 import me.levar.chat.ChatListAdapter;
 
-import java.util.Random;
+/**
+ * Created with IntelliJ IDEA.
+ * User: Helena
+ * Date: 15/08/13
+ * Time: 01:25
+ * To change this template use File | Settings | File Templates.
+ */
+public class ChatActivity extends ActionBarActivity {
 
-public class ChatFragment extends ListFragment {
 
     private static final String FIREBASE_URL = "https://levarme.firebaseio.com";
 
@@ -32,52 +43,49 @@ public class ChatFragment extends ListFragment {
     private ChatListAdapter chatListAdapter;
 
 
-    public ChatFragment() {
-    }
-
     @Override
-    public View onCreateView(LayoutInflater inflater,
-                             ViewGroup container,
-                             Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
 
-        final View mainView = inflater.inflate(R.layout.chat, container, false);
+        setContentView(R.layout.chat);
 
         // Make sure we have a username
         setupUsername();
 
+        Intent intent = getIntent();
+        String idChat = intent.getStringExtra("idChat");
+
         // Setup our Firebase ref
-        ref = new Firebase(FIREBASE_URL).child("chat"); //mudar de chat para o id do user que esta começando o chat
+        ref = new Firebase(FIREBASE_URL).child(idChat); //mudar de chat para o id do user que esta começando o chat
 
         // Setup our input methods. Enter key on the keyboard or pushing the send button
-        EditText inputText = (EditText)mainView.findViewById(R.id.messageInput);
+        EditText inputText = (EditText) findViewById(R.id.messageInput);
         inputText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView textView, int actionId, KeyEvent keyEvent) {
                 if (actionId == EditorInfo.IME_NULL && keyEvent.getAction() == KeyEvent.ACTION_DOWN) {
-                    sendMessage(mainView);
+                    sendMessage();
                 }
                 return true;
             }
         });
 
-        mainView.findViewById(R.id.sendButton).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.sendButton).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                sendMessage(mainView);
+                sendMessage();
             }
         });
 
-
-        return mainView;
     }
 
     @Override
     public void onStart() {
         super.onStart();
         // Setup our view and list adapter. Ensure it scrolls to the bottom as data changes
-        final ListView listView = getListView();
+        final ListView listView = (ListView) findViewById(R.id.list);
         // Tell our list adapter that we only want 50 messages at a time
-        chatListAdapter = new ChatListAdapter(ref.limit(50), getActivity(), R.layout.rowchat, username);
+        chatListAdapter = new ChatListAdapter(ref.limit(50), this, R.layout.rowchat, username);
         listView.setAdapter(chatListAdapter);
         chatListAdapter.registerDataSetObserver(new DataSetObserver() {
             @Override
@@ -93,9 +101,9 @@ public class ChatFragment extends ListFragment {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 boolean connected = (Boolean)dataSnapshot.getValue();
                 if (connected) {
-                    Toast.makeText(getActivity(), "Connected to Firebase", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ChatActivity.this, "Connected to Firebase", Toast.LENGTH_SHORT).show();
                 } else {
-                    Toast.makeText(getActivity(), "Disconnected from Firebase", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ChatActivity.this, "Disconnected from Firebase", Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -113,19 +121,46 @@ public class ChatFragment extends ListFragment {
         chatListAdapter.cleanup();
     }
 
-    private void setupUsername() {
-        SharedPreferences prefs = getActivity().getApplication().getSharedPreferences("ChatPrefs", 0);
-        username = prefs.getString("username", null);
-        if (username == null) {
-            Random r = new Random();
-            // Assign a random user name if we don't have one saved.
-            username = "JavaUser" + r.nextInt(100000);
-            prefs.edit().putString("username", username).commit();
-        }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.main, menu);
+
+        // Calling super after populating the menu is necessary here to ensure that the
+        // action bar helpers have a chance to handle this event.
+        return super.onCreateOptionsMenu(menu);
     }
 
-    private void sendMessage(View view) {
-        EditText inputText = (EditText) view.findViewById(R.id.messageInput);
+    private void setupUsername() {
+
+        // Make an API call to get user data and define a
+        // new callback to handle the response.
+        Request request = Request.newMeRequest(Session.getActiveSession(),
+                new Request.GraphUserCallback() {
+                    @Override
+                    public void onCompleted(GraphUser user, Response response) {
+                        if (user != null) {
+                            try {
+                                SharedPreferences prefs = getApplication().getSharedPreferences("ChatPrefs", 0);
+                                username = prefs.getString("username", null);
+
+                                if (username == null) {
+                                    username = user.getName();
+                                    prefs.edit().putString("username", username).commit();
+                                }
+
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    }
+                });
+        request.executeAsync();
+
+    }
+
+    private void sendMessage() {
+        EditText inputText = (EditText) findViewById(R.id.messageInput);
         String input = inputText.getText().toString();
         if (!input.equals("")) {
             // Create our 'model', a Chat object

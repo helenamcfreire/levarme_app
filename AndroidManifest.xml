@@ -21,6 +21,9 @@
             </intent-filter>
         </activity>
         <activity android:name="com.facebook.LoginActivity" />
+        <activity android:name=".activity.EventActivity" />
+        <activity android:name=".activity.FriendActivity" />
+        <activity android:name=".activity.ChatActivity" />
     </application>
 
 </manifest>

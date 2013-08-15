@@ -1,12 +1,11 @@
-package me.levar.fragment;
+package me.levar.activity;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
-import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.ListView;
@@ -15,9 +14,10 @@ import com.facebook.Request;
 import com.facebook.Response;
 import com.facebook.Session;
 import com.facebook.model.GraphObject;
+import me.levar.R;
+import me.levar.actionbar.ActionBarActivity;
 import me.levar.adapter.FriendAdapter;
 import me.levar.entity.Pessoa;
-import me.levar.R;
 import me.levar.task.RequestPessoaTask;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -27,36 +27,47 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
-public class FriendFragment extends Fragment {
+/**
+ * Created with IntelliJ IDEA.
+ * User: Helena
+ * Date: 15/08/13
+ * Time: 01:10
+ * To change this template use File | Settings | File Templates.
+ */
+public class FriendActivity extends ActionBarActivity {
 
     private FriendAdapter<Pessoa> participantesAdapter;
     private ListView friendsListView;
-    private String idEvento;
-    private ChatFragment chatFragment;
     private ProgressDialog spinner;
 
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
 
-    public FriendFragment(String idEvento) {
-        this.idEvento = idEvento;
+        setContentView(R.layout.friends);
+
+        friendsListView = (ListView) findViewById(R.id.friendsList);
+
+        spinner = new ProgressDialog(this);
+        spinner.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        spinner.setMessage(getString(com.facebook.android.R.string.com_facebook_loading));
+
+        Intent intent = getIntent();
+        String idEvento = intent.getStringExtra("idEvento");
+
+        carregarAmigosQueEstaoNoEvento(idEvento);
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater,
-                             ViewGroup container,
-                             Bundle savedInstanceState) {
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.main, menu);
 
-        View view = inflater.inflate(R.layout.friends, container, false);
-
-        friendsListView = (ListView) view.findViewById(R.id.friendsList);
-
-        spinner = new ProgressDialog(getActivity());
-        spinner.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        spinner.setMessage(getActivity().getString(com.facebook.android.R.string.com_facebook_loading));
-
-        carregarAmigosQueEstaoNoEvento(idEvento);
-
-        return view;
+        // Calling super after populating the menu is necessary here to ensure that the
+        // action bar helpers have a chance to handle this event.
+        return super.onCreateOptionsMenu(menu);
     }
+
 
     private void carregarAmigosQueEstaoNoEvento(String idEvento) {
 
@@ -100,7 +111,7 @@ public class FriendFragment extends Fragment {
                             try {
                                 participantes = getParticipantesDoEventoNoFace(response);
 
-                                participantesAdapter = new FriendAdapter<Pessoa>(getActivity(), R.layout.rowfriend, participantes);
+                                participantesAdapter = new FriendAdapter<Pessoa>(FriendActivity.this, R.layout.rowfriend, participantes);
                                 friendsListView.setAdapter(participantesAdapter);
 
                                 getParticipantesSelecionados();
@@ -123,7 +134,7 @@ public class FriendFragment extends Fragment {
 
         final List<String> nomes = new ArrayList<String>();
 
-        Button doneButton = (Button) getView().findViewById(R.id.doneButton);
+        Button doneButton = (Button) findViewById(R.id.doneButton);
         doneButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -135,7 +146,7 @@ public class FriendFragment extends Fragment {
                     }
                 }
 
-               postarNoMuralDoEvento(nomes);
+                postarNoMuralDoEvento(nomes);
 
             }
         });
@@ -169,13 +180,7 @@ public class FriendFragment extends Fragment {
 
     private void irParaTelaDeChat() {
 
-        //Mudar para a view de notificacao
-        FragmentTransaction transaction = getFragmentManager().beginTransaction();
-        transaction.setCustomAnimations(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
-        chatFragment = new ChatFragment();
-        transaction.addToBackStack(FriendFragment.class.getName());
-        transaction.replace(android.R.id.content, chatFragment);
-        transaction.commit();
+
 
     }
 
@@ -227,5 +232,6 @@ public class FriendFragment extends Fragment {
 
         return amigos;
     }
+
 
 }

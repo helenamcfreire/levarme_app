@@ -47,6 +47,8 @@ import org.xmlpull.v1.XmlPullParser;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 
+import static java.lang.Integer.valueOf;
+
 public class SlideMenu extends LinearLayout {
 
 	// keys for saving/restoring instance state
@@ -460,9 +462,9 @@ public class SlideMenu extends LinearLayout {
 						String resId = xpp.getAttributeValue("http://schemas.android.com/apk/res/android", "id");
 
 						SlideMenuItem item = new SlideMenuItem();
-						item.id = Integer.valueOf(resId.replace("@", ""));
+						item.id = valueOf(resId.replace("@", ""));
 						if (iconId != null) {
-							item.icon = activity.getResources().getDrawable(Integer.valueOf(iconId.replace("@", "")));
+							item.icon = activity.getResources().getDrawable(valueOf(iconId.replace("@", "")));
 						}
 						item.label = resourceIdToString(textId);
 
@@ -489,7 +491,7 @@ public class SlideMenu extends LinearLayout {
 			return text;
 		} else {
 			String id = text.replace("@", "");
-			return activity.getResources().getString(Integer.valueOf(id));
+			return activity.getResources().getString(valueOf(id));
 
 		}
 	}
@@ -531,6 +533,5 @@ public class SlideMenu extends LinearLayout {
 
 		return bundle;
 	}
-
 
 }

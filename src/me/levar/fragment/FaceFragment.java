@@ -4,15 +4,15 @@ package me.levar.fragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import com.facebook.*;
 import com.facebook.model.GraphUser;
 import com.facebook.widget.LoginButton;
-import me.levar.entity.Pessoa;
 import me.levar.R;
+import me.levar.activity.EventActivity;
+import me.levar.entity.Pessoa;
 import me.levar.task.RequestPessoaTask;
 
 import static java.util.Arrays.asList;
@@ -21,7 +21,6 @@ public class FaceFragment extends Fragment {
 
     private UiLifecycleHelper uiHelper;
     private LoginButton loginButton;
-    private EventFragment eventFragment;
 
     @Override
     public View onCreateView(LayoutInflater inflater,
@@ -40,11 +39,7 @@ public class FaceFragment extends Fragment {
         if (session != null && session.isOpened()) {
             loginButton.setVisibility(View.GONE);
 
-            if (!session.getPermissions().contains("publish_stream")) {
-                session.requestNewPublishPermissions(new Session.NewPermissionsRequest(this, asList("publish_stream"))
-                        .setCallback(callback)
-                        .setLoginBehavior(SessionLoginBehavior.SUPPRESS_SSO));
-            }
+            confirmPublishPermission(session);
 
             salvarUsuario(session);
             exibirEventos();
@@ -53,6 +48,14 @@ public class FaceFragment extends Fragment {
         }
 
         return view;
+    }
+
+    private void confirmPublishPermission(Session session) {
+        if (!session.getPermissions().contains("publish_stream")) {
+            session.requestNewPublishPermissions(new Session.NewPermissionsRequest(this, asList("publish_stream"))
+                    .setCallback(callback)
+                    .setLoginBehavior(SessionLoginBehavior.SUPPRESS_SSO));
+        }
     }
 
     private Session.StatusCallback callback = new Session.StatusCallback() {
@@ -66,6 +69,7 @@ public class FaceFragment extends Fragment {
 
         if (state.isOpened()) {
             loginButton.setVisibility(View.GONE);
+            confirmPublishPermission(session);
             salvarUsuario(session);
             exibirEventos();
 
@@ -114,12 +118,8 @@ public class FaceFragment extends Fragment {
     private void exibirEventos() {
 
         //Mudar para a view de eventos
-        FragmentTransaction transaction = getFragmentManager().beginTransaction();
-        transaction.setCustomAnimations(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
-        eventFragment = new EventFragment();
-        transaction.addToBackStack(FaceFragment.class.getName());
-        transaction.replace(android.R.id.content, eventFragment);
-        transaction.commit();
+        Intent intent = new Intent(getActivity(), EventActivity.class);
+        startActivity(intent);
 
     }
 
