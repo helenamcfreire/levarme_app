@@ -3,7 +3,8 @@ package me.levar.activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.*;
+import android.view.View;
+import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
@@ -12,12 +13,7 @@ import com.facebook.Request;
 import com.facebook.Response;
 import com.facebook.Session;
 import com.facebook.model.GraphObject;
-import com.facebook.model.GraphUser;
 import me.levar.R;
-import me.levar.actionbar.ActionBarActivity;
-import me.levar.slidingmenu.SlideMenu;
-import me.levar.slidingmenu.SlideMenuInterface;
-import me.levar.task.RequestPessoaTask;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -26,8 +22,6 @@ import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-import static java.lang.Integer.valueOf;
-
 /**
  * Created with IntelliJ IDEA.
  * User: Helena
@@ -35,18 +29,14 @@ import static java.lang.Integer.valueOf;
  * Time: 00:22
  * To change this template use File | Settings | File Templates.
  */
-public class EventActivity extends ActionBarActivity implements SlideMenuInterface.OnSlideMenuItemClickListener {
+public class EventActivity extends LevarmeActivity {
 
     private ListView eventsListView;
     private ProgressDialog spinner;
-    private SlideMenu slideMenu;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        slideMenu = new SlideMenu(this, R.menu.slide, this, 333);
-        slideMenu.init(this, R.menu.slide, this, 333);
 
         setContentView(R.layout.events);
 
@@ -57,45 +47,6 @@ public class EventActivity extends ActionBarActivity implements SlideMenuInterfa
         spinner.setMessage(getString(com.facebook.android.R.string.com_facebook_loading));
 
         carregarEventos();
-
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater menuInflater = getMenuInflater();
-        menuInflater.inflate(R.menu.main, menu);
-
-        listarChats();
-
-        // Calling super after populating the menu is necessary here to ensure that the
-        // action bar helpers have a chance to handle this event.
-        return super.onCreateOptionsMenu(menu);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                getSupportFragmentManager().popBackStack();
-                break;
-
-            case R.id.menu_chat:
-                slideMenu.show();
-                break;
-
-        }
-        return super.onOptionsItemSelected(item);
-    }
-
-    @Override
-    public void onSlideMenuItemClick(int itemId) {
-
-        String idChat = String.valueOf(itemId);
-
-        //Mudar para a view de chat
-        Intent intent = new Intent(this, ChatActivity.class);
-        intent.putExtra("idChat", idChat);
-        startActivity(intent);
 
     }
 
@@ -183,49 +134,6 @@ public class EventActivity extends ActionBarActivity implements SlideMenuInterfa
         }
 
         return retorno;
-    }
-
-    private void listarChats() {
-
-        // Make an API call to get user data and define a
-        // new callback to handle the response.
-        Request request = Request.newMeRequest(Session.getActiveSession(),
-                new Request.GraphUserCallback() {
-                    @Override
-                    public void onCompleted(GraphUser user, Response response) {
-                        if (user != null) {
-                            try {
-                                String chats = new RequestPessoaTask().execute("http://www.levar.me/pessoa/list_chats?uid=" + user.getId()).get();
-                                try {
-                                    JSONArray jsonArray = new JSONArray(chats);
-                                    for (int i = 0; i < (jsonArray.length()); i++) {
-                                        JSONObject obj = jsonArray.getJSONObject(i);
-                                        String id = obj.getString("chat_id");
-                                        addChatInMenuSlider(id);
-                                    }
-
-                                } catch (JSONException e) {
-                                    e.printStackTrace();
-                                }
-                            } catch (Exception e) {
-                                e.printStackTrace();
-                            }
-                        }
-                    }
-                });
-        request.executeAsync();
-
-    }
-
-
-    private void addChatInMenuSlider(String chatId) {
-
-        // this demonstrates how to dynamically add menu items
-        SlideMenu.SlideMenuItem item = new SlideMenu.SlideMenuItem();
-        item.id = valueOf(chatId);
-        item.label = chatId;
-        slideMenu.addMenuItem(item);
-
     }
 
 }

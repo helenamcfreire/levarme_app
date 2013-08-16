@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import me.levar.fragment.FaceFragment;
 
-public class FaceActivity extends FragmentActivity {
+public class MainActivity extends FragmentActivity {
 
     private FaceFragment faceFragment;
 

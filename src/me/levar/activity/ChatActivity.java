@@ -5,8 +5,6 @@ import android.content.SharedPreferences;
 import android.database.DataSetObserver;
 import android.os.Bundle;
 import android.view.KeyEvent;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
@@ -21,7 +19,6 @@ import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.ValueEventListener;
 import me.levar.R;
-import me.levar.actionbar.ActionBarActivity;
 import me.levar.chat.Chat;
 import me.levar.chat.ChatListAdapter;
 
@@ -32,7 +29,7 @@ import me.levar.chat.ChatListAdapter;
  * Time: 01:25
  * To change this template use File | Settings | File Templates.
  */
-public class ChatActivity extends ActionBarActivity {
+public class ChatActivity extends LevarmeActivity {
 
 
     private static final String FIREBASE_URL = "https://levarme.firebaseio.com";
@@ -119,16 +116,6 @@ public class ChatActivity extends ActionBarActivity {
         super.onStop();
         ref.getRoot().child(".info/connected").removeEventListener(connectedListener);
         chatListAdapter.cleanup();
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater menuInflater = getMenuInflater();
-        menuInflater.inflate(R.menu.main, menu);
-
-        // Calling super after populating the menu is necessary here to ensure that the
-        // action bar helpers have a chance to handle this event.
-        return super.onCreateOptionsMenu(menu);
     }
 
     private void setupUsername() {

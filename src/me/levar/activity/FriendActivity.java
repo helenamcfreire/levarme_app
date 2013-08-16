@@ -3,8 +3,6 @@ package me.levar.activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
@@ -15,7 +13,6 @@ import com.facebook.Response;
 import com.facebook.Session;
 import com.facebook.model.GraphObject;
 import me.levar.R;
-import me.levar.actionbar.ActionBarActivity;
 import me.levar.adapter.FriendAdapter;
 import me.levar.entity.Pessoa;
 import me.levar.task.RequestPessoaTask;
@@ -34,7 +31,7 @@ import java.util.concurrent.ExecutionException;
  * Time: 01:10
  * To change this template use File | Settings | File Templates.
  */
-public class FriendActivity extends ActionBarActivity {
+public class FriendActivity extends LevarmeActivity {
 
     private FriendAdapter<Pessoa> participantesAdapter;
     private ListView friendsListView;
@@ -52,22 +49,15 @@ public class FriendActivity extends ActionBarActivity {
         spinner.requestWindowFeature(Window.FEATURE_NO_TITLE);
         spinner.setMessage(getString(com.facebook.android.R.string.com_facebook_loading));
 
-        Intent intent = getIntent();
-        String idEvento = intent.getStringExtra("idEvento");
+        String idEvento = getIdEvento();
 
         carregarAmigosQueEstaoNoEvento(idEvento);
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater menuInflater = getMenuInflater();
-        menuInflater.inflate(R.menu.main, menu);
-
-        // Calling super after populating the menu is necessary here to ensure that the
-        // action bar helpers have a chance to handle this event.
-        return super.onCreateOptionsMenu(menu);
+    private String getIdEvento() {
+        Intent intent = getIntent();
+        return intent.getStringExtra("idEvento");
     }
-
 
     private void carregarAmigosQueEstaoNoEvento(String idEvento) {
 
@@ -114,7 +104,7 @@ public class FriendActivity extends ActionBarActivity {
                                 participantesAdapter = new FriendAdapter<Pessoa>(FriendActivity.this, R.layout.rowfriend, participantes);
                                 friendsListView.setAdapter(participantesAdapter);
 
-                                getParticipantesSelecionados();
+                                done();
 
                                 spinner.dismiss();
 
@@ -130,47 +120,46 @@ public class FriendActivity extends ActionBarActivity {
 
     }
 
-    private void getParticipantesSelecionados() {
-
-        final List<String> nomes = new ArrayList<String>();
+    private void done() {
 
         Button doneButton = (Button) findViewById(R.id.doneButton);
         doneButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
+                ArrayList<String> ids = new ArrayList<String>();
                 List<Pessoa> participantes = participantesAdapter.participantes;
                 for (Pessoa participante : participantes) {
                     if (participante.isSelecionado()) {
-                        nomes.add(participante.getNome());
+                        ids.add(participante.getUid());
                     }
                 }
 
-                postarNoMuralDoEvento(nomes);
+                postarNoMuralDoEvento(ids);
 
             }
         });
 
     }
 
-    private void postarNoMuralDoEvento(List<String> nomes) {
+    private void postarNoMuralDoEvento(final ArrayList<String> ids) {
 
         final Session session = Session.getActiveSession();
 
         JSONObject json = new JSONObject();
         try {
-            json.put("message", "Estou indo para o evento pelo Levar.me - com " + nomes.toString().replace("[", "").replace("]", ""));
-            json.put("link", "https://fbcdn-photos-d-a.akamaihd.net/hphotos-ak-ash3/851556_163928327114689_1890741039_n.png");
+            json.put("message", "Estou indo para o evento pelo Levar.me");
+            json.put("link", "http://www.levar.me");
         } catch (JSONException e) {
             e.printStackTrace();
         }
 
         //Postando no mural do evento
-        Request request = Request.newPostRequest(session, "606369459403782/feed", GraphObject.Factory.create(json), new Request.Callback() {
+        Request request = Request.newPostRequest(session, getIdEvento()+"/feed", GraphObject.Factory.create(json), new Request.Callback() {
             @Override
             public void onCompleted(Response response) {
 
-                irParaTelaDeChat();
+                irParaTelaDeNotificacao(ids);
 
             }
         });
@@ -178,9 +167,11 @@ public class FriendActivity extends ActionBarActivity {
 
     }
 
-    private void irParaTelaDeChat() {
+    private void irParaTelaDeNotificacao(ArrayList<String> ids) {
 
-
+        Intent intent = new Intent(this, NotificationActivity.class);
+        intent.putStringArrayListExtra("idsParticipantes", ids);
+        startActivity(intent);
 
     }
 
