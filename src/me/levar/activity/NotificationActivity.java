@@ -34,7 +34,7 @@ public class NotificationActivity extends LevarmeActivity {
     private void enviarNotificacao() {
 
         Bundle params = new Bundle();
-        params.putString("message", "Learn how to make your Android apps social");
+        params.putString("message", "Venha para o evento comigo !!!");
 
         WebDialog requestsDialog = (
                 new WebDialog.RequestsDialogBuilder(this,
