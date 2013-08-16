@@ -39,14 +39,14 @@
     <option name="TOOL_WINDOW_CUSTOM_FILTER" value="me.levar" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3c3f29b5-00e4-463c-9789-24175dff5532" name="Default" comment="Adicio">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/me/levar/activity/NotificationActivity.java" afterPath="$PROJECT_DIR$/src/me/levar/activity/NotificationActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/levarme_app.iml" afterPath="$PROJECT_DIR$/levarme_app.iml" />
+    <list default="true" id="3c3f29b5-00e4-463c-9789-24175dff5532" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/levarme_app.apk" afterPath="$PROJECT_DIR$/levarme_app.apk" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AndroidManifest.xml" afterPath="$PROJECT_DIR$/AndroidManifest.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="levarme_app.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="3c3f29b5-00e4-463c-9789-24175dff5532" time="1376677194285" ignored="false" />
+    <file path="/Dummy.txt" changelist="3c3f29b5-00e4-463c-9789-24175dff5532" time="1376679421375" ignored="false" />
     <file path="/FaceFragment.java" changelist="3c3f29b5-00e4-463c-9789-24175dff5532" time="1376538449560" ignored="false" />
     <file path="/main.xml" changelist="3c3f29b5-00e4-463c-9789-24175dff5532" time="1376511867001" ignored="false" />
     <file path="C:/Java/facebook-android-sdk-3.0.1/facebook-android-sdk-3.0.1/samples/HelloFacebookSample/project.properties" changelist="3c3f29b5-00e4-463c-9789-24175dff5532" time="1370557595236" ignored="false" />
@@ -235,9 +235,9 @@
         <option value="$PROJECT_DIR$/src/me/levar/activity/MainActivity.java" />
         <option value="$PROJECT_DIR$/src/me/levar/activity/EventActivity.java" />
         <option value="$PROJECT_DIR$/src/me/levar/activity/ChatActivity.java" />
-        <option value="$PROJECT_DIR$/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/src/me/levar/activity/FriendActivity.java" />
         <option value="$PROJECT_DIR$/src/me/levar/activity/NotificationActivity.java" />
+        <option value="$PROJECT_DIR$/AndroidManifest.xml" />
       </list>
     </option>
   </component>
@@ -761,7 +761,11 @@
       <created>1376619595889</created>
       <updated>1376619595890</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="Terminando de implementar a Activity de notificação">
+      <created>1376679430559</created>
+      <updated>1376679430559</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -795,7 +799,7 @@
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3979933" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3188406" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39910814" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32998884" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -861,7 +865,7 @@
     <option name="WRAP_WHEN_TYPING_REACHES_RIGHT_MARGIN" value="false" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Criando a dialog de notificação, avisando que alguém está interessado em levá-los para um determinado evento" />
+    <option name="LAST_COMMIT_MESSAGE" value="Terminando de implementar a Activity de notificação" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -891,6 +895,7 @@
     <MESSAGE value="Criando um menu slider (igual ao do facebook). Preparando para implementar o chat" />
     <MESSAGE value="Mudando tudo pra Activity; Buscando do DB os chats cadastrados pra determinado usuário; Fazendo o fluxo de clicar no chat e abrir a tela de chat" />
     <MESSAGE value="Criando a dialog de notificação, avisando que alguém está interessado em levá-los para um determinado evento" />
+    <MESSAGE value="Terminando de implementar a Activity de notificação" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -937,13 +942,6 @@
     <entry file="file://$PROJECT_DIR$/src/me/levar/actionbar/ActionBarActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="50" column="19" selection-start="1690" selection-end="1690" vertical-scroll-proportion="0.33295062">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="56" selection-start="764" selection-end="764" vertical-scroll-proportion="0.31228474">
           <folding />
         </state>
       </provider>
@@ -1009,6 +1007,13 @@
     <entry file="file://$PROJECT_DIR$/src/me/levar/activity/NotificationActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="33" column="67" selection-start="932" selection-end="932" vertical-scroll-proportion="0.35132033">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="34" selection-start="206" selection-end="206" vertical-scroll-proportion="0.078071184">
           <folding />
         </state>
       </provider>
