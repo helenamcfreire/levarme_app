@@ -8,8 +8,13 @@ import com.facebook.FacebookOperationCanceledException;
 import com.facebook.Session;
 import com.facebook.widget.WebDialog;
 import me.levar.R;
+import me.levar.task.RequestPessoaTask;
+import org.apache.commons.lang.StringUtils;
 
+import java.net.URL;
 import java.util.List;
+
+import static org.apache.commons.lang.StringUtils.trimToEmpty;
 
 /**
  * Created with IntelliJ IDEA.
@@ -26,7 +31,8 @@ public class NotificationActivity extends LevarmeActivity {
 
         setContentView(R.layout.notifications);
 
-//        new RequestPessoaTask().execute("http://www.levar.me/pessoa/add_pessoas_chat?"+getIdsParticipantes().toString());
+        String params = getIdsParticipantes().toString().replace(" ", "%20");
+        new RequestPessoaTask().execute("http://www.levar.me/pessoa/add_pessoas_chat?idsParticipantes=" + params);
 
         enviarNotificacao();
     }
