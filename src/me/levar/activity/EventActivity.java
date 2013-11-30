@@ -97,7 +97,7 @@ public class EventActivity extends LevarmeActivity {
 
                                 spinner.dismiss();
 
-                            } catch (Throwable t) {
+                            } catch (JSONException t) {
                                 t.printStackTrace();
                             }
                         }

@@ -36,7 +36,6 @@ public class FriendActivity extends LevarmeActivity {
     private FriendAdapter<Pessoa> participantesAdapter;
     private ListView friendsListView;
     private ProgressDialog spinner;
-    private Pessoa currentUser = new Pessoa();
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -152,14 +151,40 @@ public class FriendActivity extends LevarmeActivity {
             @Override
             public void onCompleted(Response response) {
 
-                List<String> idsParticipantes = getIdsParticipantes(session, idAmigo);
-
-                new RequestPessoaTask().execute("http://www.levar.me/pessoa/add_pessoa_chat?idsParticipantes=" + idsParticipantes + "&idEvento=" + getIdEvento());
-
+                adicionarParticipantesNoChat(session, idAmigo);
                 enviarNotificacao(idAmigo);
 
             }
         });
+        request.executeAsync();
+
+    }
+
+    private void adicionarParticipantesNoChat(final Session session, final String idAmigo) {
+
+        // Make an API call to get user data and define a
+        // new callback to handle the response.
+        Request request = Request.newMeRequest(session,
+                new Request.GraphUserCallback() {
+                    @Override
+                    public void onCompleted(GraphUser user, Response response) {
+                        // If the response is successful
+                        if (session == Session.getActiveSession()) {
+                            if (user != null) {
+
+                                List<String> idsParticipantes = new ArrayList<String>();
+
+                                idsParticipantes.add(user.getId());
+                                idsParticipantes.add(idAmigo);
+
+                                String params = idsParticipantes.toString().replace(" ", "%20");
+
+                                new RequestPessoaTask().execute("http://www.levar.me/pessoa/add_pessoa_chat?idsParticipantes=" + params + "&idEvento=" + getIdEvento());
+
+                            }
+                        }
+                    }
+                });
         request.executeAsync();
 
     }
@@ -193,26 +218,7 @@ public class FriendActivity extends LevarmeActivity {
                             final String requestId = values.getString("request");
                             if (requestId != null) {
 
-                                String chatId = null;
-                                try {
-                                    List<String> idsParticipantes = getIdsParticipantes(Session.getActiveSession(), idAmigo);
-                                    String chats = new RequestPessoaTask().execute("http://www.levar.me/pessoa/list_chat?idsParticipantes=" + idsParticipantes + "&idEvento=" + getIdEvento()).get();
-                                    try {
-                                        JSONArray jsonArray = new JSONArray(chats);
-                                        for (int i = 0; i < (jsonArray.length()); i++) {
-                                            JSONObject obj = jsonArray.getJSONObject(i);
-                                            chatId = obj.getString("id");
-                                            System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"+chatId);
-                                        }
-
-                                    } catch (JSONException e) {
-                                        e.printStackTrace();
-                                    }
-                                } catch (Exception e) {
-                                    e.printStackTrace();
-                                }
-
-                                irParaTelaDeChat(chatId);
+                                buscarParticipantesDoChat(idAmigo);
 
                             } else {
                                 Toast.makeText(FriendActivity.this.getApplicationContext(), "Request cancelled", Toast.LENGTH_SHORT).show();
@@ -225,10 +231,54 @@ public class FriendActivity extends LevarmeActivity {
         requestsDialog.show();
     }
 
-    private void irParaTelaDeChat(String idChat) {
+    private void buscarParticipantesDoChat(final String idAmigo) {
+
+        // Make an API call to get user data and define a
+        // new callback to handle the response.
+        Request request = Request.newMeRequest(Session.getActiveSession(),
+                new Request.GraphUserCallback() {
+                    @Override
+                    public void onCompleted(GraphUser user, Response response) {
+                        // If the response is successful
+                        if (user != null) {
+
+                            List<String> idsParticipantes = new ArrayList<String>();
+
+                            idsParticipantes.add(user.getId());
+                            idsParticipantes.add(idAmigo);
+
+                            String params = idsParticipantes.toString().replace(" ", "%20");
+
+                            try {
+
+                                ArrayList<String> participantesId = new ArrayList<String>();
+
+                                String chats = new RequestPessoaTask().execute("http://www.levar.me/pessoa/list_chat?idsParticipantes=" + params + "&idEvento=" + getIdEvento()).get();
+                                JSONArray jsonArray = new JSONArray(chats);
+                                for (int i = 0; i < (jsonArray.length()); i++) {
+                                    JSONObject obj = jsonArray.getJSONObject(i);
+                                    String chatId = obj.getString("chat_id");
+                                    String pessoaId = obj.getString("pessoa_id");
+
+                                    participantesId.add(pessoaId);
+
+                                    irParaTelaDeChat(chatId, participantesId);
+                                }
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+
+                        }
+                    }
+                });
+        request.executeAsync();
+    }
+
+    private void irParaTelaDeChat(String idChat, ArrayList<String> participantesId) {
 
         Intent intent = new Intent(this, ChatActivity.class);
         intent.putExtra("idChat", idChat);
+        intent.putStringArrayListExtra("idsParticipantes", participantesId);
         startActivity(intent);
 
     }
@@ -281,35 +331,5 @@ public class FriendActivity extends LevarmeActivity {
 
         return amigos;
     }
-
-    private List<String> getIdsParticipantes(final Session session, final String idAmigo) {
-
-        final List<String> idsParticipantes = new ArrayList<String>();
-
-        // Make an API call to get user data and define a
-        // new callback to handle the response.
-        Request request = Request.newMeRequest(session,
-                new Request.GraphUserCallback() {
-                    @Override
-                    public void onCompleted(GraphUser user, Response response) {
-                        // If the response is successful
-                        if (session == Session.getActiveSession()) {
-                            if (user != null) {
-                                currentUser.setNome(user.getName());
-                                currentUser.setUid(user.getId());
-
-                                idsParticipantes.add(currentUser.getUid());
-                                idsParticipantes.add(idAmigo);
-
-                            }
-                        }
-                    }
-                });
-        request.executeAsync();
-
-
-        return idsParticipantes;
-    }
-
 
 }

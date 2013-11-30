@@ -10,9 +10,11 @@ import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
+import com.facebook.HttpMethod;
 import com.facebook.Request;
 import com.facebook.Response;
 import com.facebook.Session;
+import com.facebook.model.GraphObject;
 import com.facebook.model.GraphUser;
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
@@ -20,7 +22,11 @@ import com.firebase.client.ValueEventListener;
 import me.levar.R;
 import me.levar.chat.Chat;
 import me.levar.chat.ChatListAdapter;
-import me.levar.entity.Pessoa;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
 
 /**
  * Created with IntelliJ IDEA.
@@ -46,10 +52,11 @@ public class ChatActivity extends LevarmeActivity {
 
         setContentView(R.layout.chat);
 
-        setTitle("   Chat With Jonathan Korn"); //TODO MODIFICAR
-
         Intent intent = getIntent();
         String idChat = intent.getStringExtra("idChat");
+        ArrayList<String> idsParticipantes = intent.getStringArrayListExtra("idsParticipantes");
+
+        setTitleChat(idsParticipantes);
 
         // Setup our Firebase ref
         ref = new Firebase(FIREBASE_URL).child(idChat); //mudar de chat para o id do user que esta começando o chat
@@ -153,6 +160,56 @@ public class ChatActivity extends LevarmeActivity {
             ref.push().setValue(chat);
             inputText.setText("");
         }
+    }
+
+    private void setTitleChat(ArrayList<String> idsParticipantes) {
+
+        final Session session = Session.getActiveSession();
+
+        if (session != null) {
+
+            StringBuilder builder = new StringBuilder();
+            builder.append(" SELECT name, pic_square, uid FROM user WHERE uid IN (  ");
+            builder.append(idsParticipantes.toString().replace("[", "").replace("]", ""));
+            builder.append(" ) ");
+            builder.append(" AND uid != me() ");
+
+            String fqlQuery = builder.toString();
+
+            final Bundle params = new Bundle();
+            params.putString("q", fqlQuery);
+            params.putString("access_token", session.getAccessToken());
+            Request request = new Request(session,
+                    "/fql",
+                    params,
+                    HttpMethod.GET,
+                    new Request.Callback(){
+                        public void onCompleted(Response response) {
+
+                            try {
+                                GraphObject graphObject  = response.getGraphObject();
+                                JSONObject jsonObject = graphObject.getInnerJSONObject();
+                                JSONArray usersByFacebook = jsonObject.getJSONArray("data");
+
+                                for (int i = 0; i < (usersByFacebook.length()); i++) {
+                                    JSONObject obj = usersByFacebook.getJSONObject(i);
+
+                                    String name = obj.getString("name");
+                                    setTitle("   Chat With " + name);
+                                }
+
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+
+                        }
+                    });
+
+            Request.executeBatchAsync(request);
+
+        }
+
+
     }
 
 }
