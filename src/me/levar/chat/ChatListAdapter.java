@@ -1,14 +1,13 @@
 package me.levar.chat;
 
 import android.app.Activity;
-import android.graphics.Color;
 import android.view.Gravity;
 import android.view.View;
-import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
 import com.firebase.client.Query;
 import me.levar.R;
+
+import static android.widget.LinearLayout.LayoutParams;
 
 /**
  * User: greg
@@ -47,12 +46,18 @@ public class ChatListAdapter extends FirebaseListAdapter<Chat> {
         TextView messageText = ((TextView)view.findViewById(R.id.message));
         messageText.setText(chat.getMessage());
 
+        LayoutParams layoutParams = (LayoutParams) messageText.getLayoutParams();
+
+
         // If the message was sent by this user, color it differently
         if (author.equals(username)) {
             messageText.setBackgroundResource(R.drawable.speech_bubble_green);
+            layoutParams.gravity = Gravity.RIGHT;
         } else {
             messageText.setBackgroundResource(R.drawable.speech_bubble_orange);
+            layoutParams.gravity = Gravity.LEFT;
         }
+        messageText.setLayoutParams(layoutParams);
 
     }
 }

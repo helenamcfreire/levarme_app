@@ -87,20 +87,7 @@ public class ChatActivity extends LevarmeActivity {
         super.onStart();
 
         // Make sure we have a username
-        setupUsername();
-
-        // Setup our view and list adapter. Ensure it scrolls to the bottom as data changes
-        final ListView listView = (ListView) findViewById(R.id.list);
-        // Tell our list adapter that we only want 50 messages at a time
-        chatListAdapter = new ChatListAdapter(ref.limit(50), this, R.layout.rowchat, username);
-        listView.setAdapter(chatListAdapter);
-        chatListAdapter.registerDataSetObserver(new DataSetObserver() {
-            @Override
-            public void onChanged() {
-                super.onChanged();
-                listView.setSelection(chatListAdapter.getCount() - 1);
-            }
-        });
+        setupCurrentUser();
 
         // Finally, a little indication of connection status
         connectedListener = ref.getRoot().child(".info/connected").addValueEventListener(new ValueEventListener() {
@@ -122,7 +109,7 @@ public class ChatActivity extends LevarmeActivity {
         chatListAdapter.cleanup();
     }
 
-    private void setupUsername() {
+    private void setupCurrentUser() {
 
         // Make an API call to get user data and define a
         // new callback to handle the response.
@@ -139,6 +126,19 @@ public class ChatActivity extends LevarmeActivity {
                                     username = user.getName();
                                     prefs.edit().putString("username", username).commit();
                                 }
+
+                                // Setup our view and list adapter. Ensure it scrolls to the bottom as data changes
+                                final ListView listView = (ListView) findViewById(R.id.list);
+                                // Tell our list adapter that we only want 50 messages at a time
+                                chatListAdapter = new ChatListAdapter(ref.limit(50), ChatActivity.this, R.layout.rowchat, username);
+                                listView.setAdapter(chatListAdapter);
+                                chatListAdapter.registerDataSetObserver(new DataSetObserver() {
+                                    @Override
+                                    public void onChanged() {
+                                        super.onChanged();
+                                        listView.setSelection(chatListAdapter.getCount() - 1);
+                                    }
+                                });
 
                             } catch (Exception e) {
                                 e.printStackTrace();
