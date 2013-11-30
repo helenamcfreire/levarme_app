@@ -6,7 +6,7 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
 
-    <uses-sdk android:minSdkVersion="3" android:targetSdkVersion="14" />
+    <uses-sdk android:minSdkVersion="7" android:targetSdkVersion="17" />
 
     <uses-feature android:name="android.hardware.touchscreen" android:required="false"/>
 
@@ -24,7 +24,6 @@
         <activity android:name=".activity.EventActivity" />
         <activity android:name=".activity.FriendActivity" />
         <activity android:name=".activity.ChatActivity" />
-        <activity android:name=".activity.NotificationActivity" />
         <activity android:name=".activity.LevarmeActivity" />
     </application>
 

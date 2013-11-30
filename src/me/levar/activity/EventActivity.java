@@ -40,6 +40,8 @@ public class EventActivity extends LevarmeActivity {
 
         setContentView(R.layout.events);
 
+        setTitle("   Which party?");
+
         eventsListView = (ListView) findViewById(R.id.eventsList);
 
         spinner = new ProgressDialog(this);
@@ -89,7 +91,7 @@ public class EventActivity extends LevarmeActivity {
                                         String nomeEvento = (String) eventsListView.getItemAtPosition(position);
                                         String idEvento = eventosLevarMe.get(nomeEvento);
 
-                                        irParaTelaDeParticipantesDoEvento(idEvento);
+                                        irParaTelaDeParticipantesDoEvento(idEvento, nomeEvento);
                                     }
                                 });
 
@@ -107,11 +109,12 @@ public class EventActivity extends LevarmeActivity {
 
     }
 
-    private void irParaTelaDeParticipantesDoEvento(String idEvento) {
+    private void irParaTelaDeParticipantesDoEvento(String idEvento, String nomeEvento) {
 
         //Mudar para a view de amigos
         Intent intent = new Intent(this, FriendActivity.class);
         intent.putExtra("idEvento", idEvento);
+        intent.putExtra("nomeEvento", nomeEvento);
         startActivity(intent);
 
     }

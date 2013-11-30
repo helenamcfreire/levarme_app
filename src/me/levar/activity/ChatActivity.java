@@ -10,7 +10,6 @@ import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 import com.facebook.Request;
 import com.facebook.Response;
 import com.facebook.Session;
@@ -21,6 +20,7 @@ import com.firebase.client.ValueEventListener;
 import me.levar.R;
 import me.levar.chat.Chat;
 import me.levar.chat.ChatListAdapter;
+import me.levar.entity.Pessoa;
 
 /**
  * Created with IntelliJ IDEA.
@@ -46,8 +46,7 @@ public class ChatActivity extends LevarmeActivity {
 
         setContentView(R.layout.chat);
 
-        // Make sure we have a username
-        setupUsername();
+        setTitle("   Chat With Jonathan Korn"); //TODO MODIFICAR
 
         Intent intent = getIntent();
         String idChat = intent.getStringExtra("idChat");
@@ -79,6 +78,10 @@ public class ChatActivity extends LevarmeActivity {
     @Override
     public void onStart() {
         super.onStart();
+
+        // Make sure we have a username
+        setupUsername();
+
         // Setup our view and list adapter. Ensure it scrolls to the bottom as data changes
         final ListView listView = (ListView) findViewById(R.id.list);
         // Tell our list adapter that we only want 50 messages at a time
@@ -96,12 +99,6 @@ public class ChatActivity extends LevarmeActivity {
         connectedListener = ref.getRoot().child(".info/connected").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                boolean connected = (Boolean)dataSnapshot.getValue();
-                if (connected) {
-                    Toast.makeText(ChatActivity.this, "Connected to Firebase", Toast.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(ChatActivity.this, "Disconnected from Firebase", Toast.LENGTH_SHORT).show();
-                }
             }
 
             @Override

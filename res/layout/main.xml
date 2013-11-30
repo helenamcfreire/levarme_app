@@ -3,11 +3,36 @@
                 android:layout_height="fill_parent"
                 xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <TextView
+            android:layout_width="190dp"
+            android:layout_height="wrap_content"
+            android:text="Welcome to Levar.me Ridesharing. Cabsharing to parties"
+            android:id="@+id/textView"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:textSize="19dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="32dp" android:layout_alignParentRight="true"
+            android:layout_alignParentLeft="true" android:padding="24dp" android:textIsSelectable="false"
+            />
+
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="We need to connect to your Facebook in order to access your friendslist and see which events you're going to. Ready?"
+            android:id="@+id/textView1"
+            android:layout_alignLeft="@+id/loginButton"
+            android:layout_alignParentTop="true"
+            android:textAlignment="textStart"
+            android:layout_marginTop="190dp"
+            android:layout_alignRight="@+id/loginButton" android:textSize="12dp" android:paddingLeft="20dp"/>
+
     <com.facebook.widget.LoginButton
             android:id="@+id/loginButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="300dp"
             />
 
 </RelativeLayout>

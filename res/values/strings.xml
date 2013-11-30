@@ -1,26 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <string name="app_id">163906770450178</string> <!-- id do facebook -->
     <string name="app_name">Levar.me</string>
     <string name="posso_buscar">Posso te buscar?</string>
-    <string name="done">Done</string>
-    <string name="mtm_accept_cert">Accept Unknown Certificate?</string>
-    <string name="mtm_decision_always">Always</string>
-    <string name="mtm_decision_once">Once</string>
-    <string name="mtm_decision_abort">Abort</string>
-    <string name="mtm_notification">Certificate Verification</string>
-    <string name="send">send</string>
-
-
-    <string name="menu_chat">Refresh</string>
-    <string name="menu_search">Search</string>
-    <string name="menu_share">Share</string>
-
-
-    <string name="item_one">Menu Item One</string>
-    <string name="item_two">Menu Item Two</string>
-    <string name="item_three">Menu Item Three</string>
-    <string name="item_four">Menu Item Four</string>
-    <string name="menubutton">If you do not happen to have an ActionBar, click here to activate the SlideMenu!</string>
+    <string name="send">Send</string>
 
 </resources>

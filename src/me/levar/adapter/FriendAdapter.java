@@ -49,15 +49,6 @@ public class FriendAdapter<P> extends ArrayAdapter<Pessoa> {
         TextView amigosEmComum = (TextView) convertView.findViewById(R.id.amigosEmComum);
         amigosEmComum.setText(amigo.getQtdAmigosEmComum() + " amigos em comum");
 
-        CheckBox selecionado = (CheckBox) convertView.findViewById(R.id.selecionado);
-        selecionado.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                CheckBox checkBox = (CheckBox) view;
-                amigo.setSelecionado(checkBox.isChecked());
-            }
-        });
-
         new DrawableFromUrlTask(convertView).execute(amigo.getPic_square());
 
         return convertView;

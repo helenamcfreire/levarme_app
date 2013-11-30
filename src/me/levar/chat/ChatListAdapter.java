@@ -2,7 +2,10 @@ package me.levar.chat;
 
 import android.app.Activity;
 import android.graphics.Color;
+import android.view.Gravity;
 import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
 import com.firebase.client.Query;
 import me.levar.R;
@@ -38,14 +41,18 @@ public class ChatListAdapter extends FirebaseListAdapter<Chat> {
     protected void populateView(View view, Chat chat) {
         // Map a Chat object to an entry in our listview
         String author = chat.getAuthor();
-        TextView authorText = (TextView)view.findViewById(R.id.author);
-        authorText.setText(author + ": ");
+        //TextView authorText = (TextView)view.findViewById(R.id.author);
+        //authorText.setText(author + ": ");
+
+        TextView messageText = ((TextView)view.findViewById(R.id.message));
+        messageText.setText(chat.getMessage());
+
         // If the message was sent by this user, color it differently
         if (author.equals(username)) {
-            authorText.setTextColor(Color.RED);
+            messageText.setBackgroundResource(R.drawable.speech_bubble_green);
         } else {
-            authorText.setTextColor(Color.BLUE);
+            messageText.setBackgroundResource(R.drawable.speech_bubble_orange);
         }
-        ((TextView)view.findViewById(R.id.message)).setText(chat.getMessage());
+
     }
 }

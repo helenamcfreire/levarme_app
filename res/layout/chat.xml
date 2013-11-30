@@ -10,6 +10,7 @@
         android:layout_alignParentTop="true"
         android:layout_above="@+id/listFooter"
         android:transcriptMode="alwaysScroll"
+        android:divider="@null"
         />
 
   <LinearLayout android:id="@+id/listFooter"
@@ -28,12 +29,17 @@
         android:inputType="textShortMessage"
         android:singleLine="true" />
 
-    <ImageButton
+    <Button
         android:id="@+id/sendButton"
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
-        android:src="@android:drawable/ic_menu_send"
+        android:text="@string/send"
+        android:height="45sp"
+        android:width="70sp"
+        android:textColor="@android:color/white"
+        android:background="@color/send_button"
         />
+
   </LinearLayout>
 
 

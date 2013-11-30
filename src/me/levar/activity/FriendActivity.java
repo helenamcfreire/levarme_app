@@ -5,13 +5,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
-import android.widget.Button;
+import android.widget.AdapterView;
 import android.widget.ListView;
-import com.facebook.HttpMethod;
-import com.facebook.Request;
-import com.facebook.Response;
-import com.facebook.Session;
+import android.widget.Toast;
+import com.facebook.*;
 import com.facebook.model.GraphObject;
+import com.facebook.model.GraphUser;
+import com.facebook.widget.WebDialog;
 import me.levar.R;
 import me.levar.adapter.FriendAdapter;
 import me.levar.entity.Pessoa;
@@ -36,6 +36,7 @@ public class FriendActivity extends LevarmeActivity {
     private FriendAdapter<Pessoa> participantesAdapter;
     private ListView friendsListView;
     private ProgressDialog spinner;
+    private Pessoa currentUser = new Pessoa();
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -44,6 +45,8 @@ public class FriendActivity extends LevarmeActivity {
         setContentView(R.layout.friends);
 
         friendsListView = (ListView) findViewById(R.id.friendsList);
+
+        setTitle("   Who's going to " + getNomeEvento());
 
         spinner = new ProgressDialog(this);
         spinner.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -57,6 +60,11 @@ public class FriendActivity extends LevarmeActivity {
     private String getIdEvento() {
         Intent intent = getIntent();
         return intent.getStringExtra("idEvento");
+    }
+
+    private String getNomeEvento() {
+        Intent intent = getIntent();
+        return intent.getStringExtra("nomeEvento");
     }
 
     private void carregarAmigosQueEstaoNoEvento(String idEvento) {
@@ -103,8 +111,15 @@ public class FriendActivity extends LevarmeActivity {
 
                                 participantesAdapter = new FriendAdapter<Pessoa>(FriendActivity.this, R.layout.rowfriend, participantes);
                                 friendsListView.setAdapter(participantesAdapter);
+                                friendsListView.setOnItemClickListener(new AdapterView.OnItemClickListener()
+                                {
+                                    public void onItemClick(AdapterView<?> arg0, View v, int position, long id)
+                                    {
+                                        Pessoa amigo = (Pessoa) friendsListView.getItemAtPosition(position);
 
-                                done();
+                                        postarNoMuralDoEvento(amigo.getUid());
+                                    }
+                                });
 
                                 spinner.dismiss();
 
@@ -120,29 +135,7 @@ public class FriendActivity extends LevarmeActivity {
 
     }
 
-    private void done() {
-
-        Button doneButton = (Button) findViewById(R.id.doneButton);
-        doneButton.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                ArrayList<String> ids = new ArrayList<String>();
-                List<Pessoa> participantes = participantesAdapter.participantes;
-                for (Pessoa participante : participantes) {
-                    if (participante.isSelecionado()) {
-                        ids.add(participante.getUid());
-                    }
-                }
-
-                postarNoMuralDoEvento(ids);
-
-            }
-        });
-
-    }
-
-    private void postarNoMuralDoEvento(final ArrayList<String> ids) {
+    private void postarNoMuralDoEvento(final String idAmigo) {
 
         final Session session = Session.getActiveSession();
 
@@ -159,7 +152,11 @@ public class FriendActivity extends LevarmeActivity {
             @Override
             public void onCompleted(Response response) {
 
-                irParaTelaDeNotificacao(ids);
+                List<String> idsParticipantes = getIdsParticipantes(session, idAmigo);
+
+                new RequestPessoaTask().execute("http://www.levar.me/pessoa/add_pessoa_chat?idsParticipantes=" + idsParticipantes + "&idEvento=" + getIdEvento());
+
+                enviarNotificacao(idAmigo);
 
             }
         });
@@ -167,10 +164,71 @@ public class FriendActivity extends LevarmeActivity {
 
     }
 
-    private void irParaTelaDeNotificacao(ArrayList<String> ids) {
+    private void enviarNotificacao(final String idAmigo) {
 
-        Intent intent = new Intent(this, NotificationActivity.class);
-        intent.putStringArrayListExtra("idsParticipantes", ids);
+        Bundle params = new Bundle();
+        params.putString("message", "Venha para o evento comigo !!!");
+
+        WebDialog requestsDialog = (
+                new WebDialog.RequestsDialogBuilder(this,
+                        Session.getActiveSession(),
+                        params))
+                .setTo(idAmigo)
+                .setTitle("Convide seus amigos")
+                .setOnCompleteListener(new WebDialog.OnCompleteListener() {
+
+                    @Override
+                    public void onComplete(Bundle values, FacebookException error) {
+                        if (error != null) {
+                            if (error instanceof FacebookOperationCanceledException) {
+
+                                Toast.makeText(FriendActivity.this.getApplicationContext(), "Request cancelled", Toast.LENGTH_SHORT).show();
+
+                            } else {
+
+                                Toast.makeText(FriendActivity.this.getApplicationContext(), "Network Error", Toast.LENGTH_SHORT).show();
+
+                            }
+                        } else {
+                            final String requestId = values.getString("request");
+                            if (requestId != null) {
+
+                                String chatId = null;
+                                try {
+                                    List<String> idsParticipantes = getIdsParticipantes(Session.getActiveSession(), idAmigo);
+                                    String chats = new RequestPessoaTask().execute("http://www.levar.me/pessoa/list_chat?idsParticipantes=" + idsParticipantes + "&idEvento=" + getIdEvento()).get();
+                                    try {
+                                        JSONArray jsonArray = new JSONArray(chats);
+                                        for (int i = 0; i < (jsonArray.length()); i++) {
+                                            JSONObject obj = jsonArray.getJSONObject(i);
+                                            chatId = obj.getString("id");
+                                            System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"+chatId);
+                                        }
+
+                                    } catch (JSONException e) {
+                                        e.printStackTrace();
+                                    }
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+                                }
+
+                                irParaTelaDeChat(chatId);
+
+                            } else {
+                                Toast.makeText(FriendActivity.this.getApplicationContext(), "Request cancelled", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    }
+
+                })
+                .build();
+        requestsDialog.show();
+    }
+
+    private void irParaTelaDeChat(String idChat) {
+
+        Intent intent = new Intent(this, ChatActivity.class);
+        intent.putExtra("idChat", idChat);
         startActivity(intent);
 
     }
@@ -222,6 +280,35 @@ public class FriendActivity extends LevarmeActivity {
         }
 
         return amigos;
+    }
+
+    private List<String> getIdsParticipantes(final Session session, final String idAmigo) {
+
+        final List<String> idsParticipantes = new ArrayList<String>();
+
+        // Make an API call to get user data and define a
+        // new callback to handle the response.
+        Request request = Request.newMeRequest(session,
+                new Request.GraphUserCallback() {
+                    @Override
+                    public void onCompleted(GraphUser user, Response response) {
+                        // If the response is successful
+                        if (session == Session.getActiveSession()) {
+                            if (user != null) {
+                                currentUser.setNome(user.getName());
+                                currentUser.setUid(user.getId());
+
+                                idsParticipantes.add(currentUser.getUid());
+                                idsParticipantes.add(idAmigo);
+
+                            }
+                        }
+                    }
+                });
+        request.executeAsync();
+
+
+        return idsParticipantes;
     }
 
 
