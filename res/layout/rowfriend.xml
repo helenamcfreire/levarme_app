@@ -33,15 +33,46 @@
             android:textSize="15dip"
             android:textStyle="bold"/>
 
-    <!-- Qtd de amigos em comum -->
+    <!-- Titulo Friends in Common -->
     <TextView
-            android:id="@+id/amigosEmComum"
-            android:layout_width="fill_parent"
+            android:id="@+id/commonFriends"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/nameFriend"
-            android:textColor="#ABA7A7"
+            android:layout_alignLeft="@id/nameFriend"
+            android:textColor="#70838C"
+            android:typeface="sans"
             android:textSize="10dip"
-            android:layout_marginTop="1dip"
-            android:layout_toRightOf="@+id/thumbnail"/>
+            android:text="@string/commonFriends"
+            android:textStyle="bold"
+            android:layout_marginTop="5dp"/>
+
+    <!-- Fotos dos Amigos em Comum -->
+    <me.levar.fragment.RoundedImageView
+            android:id="@+id/imageMutualFriends1"
+            android:layout_width="40dip"
+            android:layout_height="40dip"
+            android:layout_below="@+id/commonFriends"
+            android:layout_alignLeft="@+id/commonFriends"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="10dp"
+            />
+
+    <me.levar.fragment.RoundedImageView
+            android:id="@+id/imageMutualFriends2"
+            android:layout_width="40dip"
+            android:layout_height="40dip"
+            android:layout_toRightOf="@+id/imageMutualFriends1"
+            android:layout_alignTop="@+id/imageMutualFriends1"
+            android:layout_marginRight="30dp"
+            />
+
+    <me.levar.fragment.RoundedImageView
+            android:id="@+id/imageMutualFriends3"
+            android:layout_width="40dip"
+            android:layout_height="40dip"
+            android:layout_toRightOf="@+id/imageMutualFriends2"
+            android:layout_alignTop="@+id/imageMutualFriends2"
+            />
 
 </RelativeLayout>

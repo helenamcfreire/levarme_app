@@ -1,13 +1,15 @@
 package me.levar.entity;
 
-public class Pessoa {
+import java.util.List;
+
+public class Pessoa implements Comparable<Pessoa> {
 
     private String uid;
     private String nome;
     private String username;
     private String pic_square;
-    private String qtdAmigosEmComum;
     private boolean selecionado = false;
+    private List<Pessoa> amigosEmComum;
 
     public Pessoa() {
     }
@@ -17,11 +19,10 @@ public class Pessoa {
         this.nome = nome;
     }
 
-    public Pessoa(String uid, String nome, String pic_square, String qtdAmigosEmComum) {
+    public Pessoa(String uid, String nome, String pic_square) {
         this.uid = uid;
         this.nome = nome;
         this.pic_square = pic_square;
-        this.qtdAmigosEmComum = qtdAmigosEmComum;
     }
 
     public String getUid() {
@@ -48,14 +49,6 @@ public class Pessoa {
         this.pic_square = pic_square;
     }
 
-    public String getQtdAmigosEmComum() {
-        return qtdAmigosEmComum;
-    }
-
-    public void setQtdAmigosEmComum(String qtdAmigosEmComum) {
-        this.qtdAmigosEmComum = qtdAmigosEmComum;
-    }
-
     public boolean isSelecionado() {
         return selecionado;
     }
@@ -70,5 +63,18 @@ public class Pessoa {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public List<Pessoa> getAmigosEmComum() {
+        return amigosEmComum;
+    }
+
+    public void setAmigosEmComum(List<Pessoa> amigosEmComum) {
+        this.amigosEmComum = amigosEmComum;
+    }
+
+    @Override
+    public int compareTo(Pessoa another) {
+        return this.getNome().compareTo(another.getNome());
     }
 }

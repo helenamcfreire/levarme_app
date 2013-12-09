@@ -21,6 +21,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
@@ -74,23 +75,22 @@ public class FriendActivity extends LevarmeActivity {
 
         if (session != null) {
 
-            List<String> pessoasCadastradasNoLevarMe = getPessoasCadastradasNoLevarMe();
+            List<String> usersLevarMe = getPessoasCadastradasNoLevarMe();
 
             StringBuilder builder = new StringBuilder();
             builder.append(" {'participantes': 'select uid from event_member where ");
             builder.append(" ( ");
             builder.append(" uid in (select uid1 from friend where uid2 = me()) ");
             builder.append(" OR uid IN ( ");
-            builder.append(pessoasCadastradasNoLevarMe.toString().replace("[", "").replace("]", ""));
+            builder.append(idsUsersLevarMe(usersLevarMe));
             builder.append(" )) ");
             builder.append(" and eid =  ");
             builder.append(idEvento);
+            builder.append(" and rsvp_status= \"attending\" ");
             builder.append(" ', ");
-            builder.append(" 'nomeparticipante':  'SELECT name, pic_square, uid, mutual_friend_count FROM user WHERE (uid IN (SELECT uid FROM #participantes) ");
-            builder.append(" ) ");
-            builder.append(" AND uid != me() ");
-            builder.append(" ORDER BY name ");
-            builder.append(" ',} ");
+            builder.append(" 'dados_participante':  'SELECT name, pic_square, uid FROM user WHERE (uid IN (SELECT uid FROM #participantes)) ");
+            builder.append(" AND uid != me()' ");
+            builder.append(" ,} ");
 
             String fqlQuery = builder.toString();
 
@@ -106,21 +106,10 @@ public class FriendActivity extends LevarmeActivity {
 
                             List<Pessoa> participantes = null;
                             try {
-                                participantes = getParticipantesDoEventoNoFace(response);
+                                participantes = buscarParticipantesDoEvento(response);
 
-                                participantesAdapter = new FriendAdapter<Pessoa>(FriendActivity.this, R.layout.rowfriend, participantes);
-                                friendsListView.setAdapter(participantesAdapter);
-                                friendsListView.setOnItemClickListener(new AdapterView.OnItemClickListener()
-                                {
-                                    public void onItemClick(AdapterView<?> arg0, View v, int position, long id)
-                                    {
-                                        Pessoa amigo = (Pessoa) friendsListView.getItemAtPosition(position);
+                                buscarAmigosEmComum(participantes);
 
-                                        postarNoMuralDoEvento(amigo.getUid());
-                                    }
-                                });
-
-                                spinner.dismiss();
 
                             } catch (JSONException e) {
                                 e.printStackTrace();
@@ -134,7 +123,11 @@ public class FriendActivity extends LevarmeActivity {
 
     }
 
-    private void postarNoMuralDoEvento(final String idAmigo) {
+    private String idsUsersLevarMe(List<String> pessoasCadastradasNoLevarMe) {
+        return pessoasCadastradasNoLevarMe.toString().replace("[", "").replace("]", "");
+    }
+
+    private void postarNoMuralDoEvento(final Pessoa amigo) {
 
         final Session session = Session.getActiveSession();
 
@@ -147,12 +140,12 @@ public class FriendActivity extends LevarmeActivity {
         }
 
         //Postando no mural do evento
-        Request request = Request.newPostRequest(session, getIdEvento()+"/feed", GraphObject.Factory.create(json), new Request.Callback() {
+        Request request = Request.newPostRequest(session, getIdEvento() + "/feed", GraphObject.Factory.create(json), new Request.Callback() {
             @Override
             public void onCompleted(Response response) {
 
-                adicionarParticipantesNoChat(session, idAmigo);
-                enviarNotificacao(idAmigo);
+                adicionarParticipantesNoChat(session, amigo.getUid());
+                enviarNotificacao(amigo);
 
             }
         });
@@ -189,16 +182,17 @@ public class FriendActivity extends LevarmeActivity {
 
     }
 
-    private void enviarNotificacao(final String idAmigo) {
+    private void enviarNotificacao(final Pessoa amigo) {
 
         Bundle params = new Bundle();
-        params.putString("message", "Venha para o evento comigo !!!");
+        String message = amigo.getNome() + ", também to indo para " + getNomeEvento() + ", entre no Levar.me para coordenarmos um taxi ou uma carona.";
+        params.putString("message", message);
 
         WebDialog requestsDialog = (
                 new WebDialog.RequestsDialogBuilder(this,
                         Session.getActiveSession(),
                         params))
-                .setTo(idAmigo)
+                .setTo(amigo.getUid())
                 .setTitle("Convide seus amigos")
                 .setOnCompleteListener(new WebDialog.OnCompleteListener() {
 
@@ -218,7 +212,7 @@ public class FriendActivity extends LevarmeActivity {
                             final String requestId = values.getString("request");
                             if (requestId != null) {
 
-                                buscarParticipantesDoChat(idAmigo);
+                                buscarParticipantesDoChat(amigo.getUid());
 
                             } else {
                                 Toast.makeText(FriendActivity.this.getApplicationContext(), "Request cancelled", Toast.LENGTH_SHORT).show();
@@ -308,28 +302,98 @@ public class FriendActivity extends LevarmeActivity {
         return ids;
     }
 
-    private List<Pessoa> getParticipantesDoEventoNoFace(Response response) throws JSONException {
+    private List<Pessoa> buscarParticipantesDoEvento(Response response) throws JSONException {
 
         GraphObject graphObject  = response.getGraphObject();
         JSONObject jsonObject = graphObject.getInnerJSONObject();
         JSONArray data = jsonObject.getJSONArray("data");
-        JSONArray participantesDoEvento = data.getJSONObject(1).getJSONArray("fql_result_set");
+        JSONArray amigosJson = data.getJSONObject(1).getJSONArray("fql_result_set");
 
         List<Pessoa> amigos = new ArrayList<Pessoa>();
-        for (int i = 0; i < (participantesDoEvento.length()); i++) {
-            JSONObject obj = participantesDoEvento.getJSONObject(i);
 
-            String id = obj.getString("uid");
-            String nome = obj.getString("name");
-            String foto = obj.getString("pic_square");
-            String qtdAmigosEmComum = obj.getString("mutual_friend_count");
+        for (int i = 0; i < (amigosJson.length()); i++) {
 
-            Pessoa amigo = new Pessoa(id, nome, foto, qtdAmigosEmComum);
+            JSONObject amigoJson = amigosJson.getJSONObject(i);
+
+            String id = amigoJson.getString("uid");
+            String nome = amigoJson.getString("name");
+            String foto = amigoJson.getString("pic_square");
+
+            Pessoa amigo = new Pessoa(id, nome, foto);
 
             amigos.add(amigo);
         }
 
+        Collections.sort(amigos);
+
         return amigos;
+    }
+
+    private void buscarAmigosEmComum(final List<Pessoa> participantes) {
+
+        final List<Pessoa> participantesInner = new ArrayList<Pessoa>();
+
+        Session session = Session.getActiveSession();
+
+        for (final Pessoa participante : participantes) {
+
+            Bundle params = new Bundle();
+            params.putString("fields", "id,name,picture");
+            final Request req = new Request(session, "me/mutualfriends/"+participante.getUid(), params, HttpMethod.GET, new Request.Callback(){
+                @Override
+                public void onCompleted(Response response) {
+
+                    spinner.show();
+
+                    List<Pessoa> amigosEmComum = new ArrayList<Pessoa>();
+
+                    Pessoa participanteInner = new Pessoa(participante.getUid(), participante.getNome(), participante.getPic_square());
+
+                    GraphObject graphObject  = response.getGraphObject();
+                    JSONObject jsonObject = graphObject.getInnerJSONObject();
+                    try {
+                        JSONArray commonUsers = jsonObject.getJSONArray("data");
+
+                        for (int i = 0; i < (commonUsers.length()); i++) {
+
+                            JSONObject commonUser = commonUsers.getJSONObject(i);
+
+                            String id = commonUser.getString("id");
+                            String name = commonUser.getString("name");
+                            String picture = commonUser.getJSONObject("picture").getJSONObject("data").getString("url");
+
+                            Pessoa amigoEmComum = new Pessoa(id, name, picture);
+
+                            amigosEmComum.add(amigoEmComum);
+                        }
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+
+                    participanteInner.setAmigosEmComum(amigosEmComum);
+                    participantesInner.add(participanteInner);
+
+                    participantesAdapter = new FriendAdapter<Pessoa>(FriendActivity.this, R.layout.rowfriend, participantesInner);
+                    friendsListView.setAdapter(participantesAdapter);
+                    friendsListView.setOnItemClickListener(new AdapterView.OnItemClickListener()
+                    {
+                        public void onItemClick(AdapterView<?> arg0, View v, int position, long id)
+                        {
+                            Pessoa amigo = (Pessoa) friendsListView.getItemAtPosition(position);
+
+                            postarNoMuralDoEvento(amigo);
+                        }
+                    });
+
+                    spinner.dismiss();
+                }
+
+            });
+
+            req.executeAsync();
+       }
+
     }
 
 }

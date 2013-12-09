@@ -5,5 +5,6 @@
     <string name="app_name">Levar.me</string>
     <string name="posso_buscar">Posso te buscar?</string>
     <string name="send">Send</string>
+    <string name="commonFriends">Friends in common</string>
 
 </resources>
