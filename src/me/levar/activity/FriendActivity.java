@@ -3,6 +3,7 @@ package me.levar.activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.Window;
 import android.widget.AdapterView;
@@ -248,7 +249,7 @@ public class FriendActivity extends LevarmeActivity {
                                 ArrayList<String> participantesId = new ArrayList<String>();
 
                                 String chats = new RequestPessoaTask().execute("http://www.levar.me/pessoa/list_chat?idsParticipantes=" + params + "&idEvento=" + getIdEvento()).get();
-                                JSONArray jsonArray = new JSONArray(chats);
+                                 JSONArray jsonArray = new JSONArray(chats);
                                 for (int i = 0; i < (jsonArray.length()); i++) {
                                     JSONObject obj = jsonArray.getJSONObject(i);
                                     String chatId = obj.getString("chat_id");
@@ -394,6 +395,20 @@ public class FriendActivity extends LevarmeActivity {
             req.executeAsync();
        }
 
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+
+            Intent intent = new Intent(this, EventActivity.class);
+            startActivity(intent);
+
+            return true;
+        }
+
+        return super.onKeyDown(keyCode, event);
     }
 
 }

@@ -30,21 +30,13 @@ public class FaceFragment extends Fragment {
         View view = inflater.inflate(R.layout.main, container, false);
 
         loginButton = (LoginButton) view.findViewById(R.id.loginButton);
-        loginButton.setLoginBehavior(SessionLoginBehavior.SUPPRESS_SSO);
         loginButton.setFragment(this);
         loginButton.setReadPermissions(asList("user_events", "friends_events"));
 
         Session session = Session.getActiveSession();
 
-        if (session != null && session.isOpened()) {
-            loginButton.setVisibility(View.GONE);
-
-            confirmPublishPermission(session);
-
-            salvarUsuario(session);
+        if (session.isOpened()) {
             exibirEventos();
-        } else {
-            loginButton.setVisibility(View.VISIBLE);
         }
 
         return view;
@@ -53,8 +45,7 @@ public class FaceFragment extends Fragment {
     private void confirmPublishPermission(Session session) {
         if (!session.getPermissions().contains("publish_stream")) {
             session.requestNewPublishPermissions(new Session.NewPermissionsRequest(this, asList("publish_stream"))
-                    .setCallback(callback)
-                    .setLoginBehavior(SessionLoginBehavior.SUPPRESS_SSO));
+                    .setCallback(callback));
         }
     }
 
