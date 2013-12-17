@@ -26,19 +26,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="88e535d7-1118-48fd-9090-b3a623c09624" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/drawable/icon.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/drawable/stub.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/me/levar/lazylist/FileCache.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/me/levar/lazylist/ImageLoader.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/me/levar/lazylist/MemoryCache.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/me/levar/lazylist/Utils.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AndroidManifest.xml" afterPath="$PROJECT_DIR$/AndroidManifest.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/me/levar/adapter/FriendAdapter.java" afterPath="$PROJECT_DIR$/src/me/levar/adapter/FriendAdapter.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="levarme_app.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="88e535d7-1118-48fd-9090-b3a623c09624" time="1387283074994" ignored="false" />
+    <file path="/Dummy.txt" changelist="88e535d7-1118-48fd-9090-b3a623c09624" time="1387285022887" ignored="false" />
     <file path="/fragment.java" changelist="88e535d7-1118-48fd-9090-b3a623c09624" time="1387284142482" ignored="false" />
     <file path="/styles.xml" changelist="88e535d7-1118-48fd-9090-b3a623c09624" time="1385748967023" ignored="false" />
     <file path="/LevarmeActivity.java" changelist="88e535d7-1118-48fd-9090-b3a623c09624" time="1385811414613" ignored="false" />
@@ -276,10 +269,10 @@
         <option value="$PROJECT_DIR$/src/me/levar/lazylist/ImageLoader.java" />
         <option value="$PROJECT_DIR$/src/me/levar/lazylist/MainActivity.java" />
         <option value="$PROJECT_DIR$/src/me/levar/lazylist/LazyAdapter.java" />
-        <option value="$PROJECT_DIR$/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/src/me/levar/adapter/FriendAdapter.java" />
         <option value="$PROJECT_DIR$/src/me/levar/activity/EventActivity.java" />
         <option value="$PROJECT_DIR$/src/me/levar/lazylist/FileCache.java" />
+        <option value="$PROJECT_DIR$/AndroidManifest.xml" />
       </list>
     </option>
   </component>
@@ -658,7 +651,11 @@
       <created>1386608647997</created>
       <updated>1386608647997</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Otimizando a busca de imagens do facebook (Cache)">
+      <created>1387285030103</created>
+      <updated>1387285030103</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TodoView" selected-index="4">
@@ -758,7 +755,7 @@
     <option name="WRAP_WHEN_TYPING_REACHES_RIGHT_MARGIN" value="false" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Versão 2.2" />
+    <option name="LAST_COMMIT_MESSAGE" value="Otimizando a busca de imagens do facebook (Cache)" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -777,6 +774,7 @@
     <MESSAGE value="Alinhando as imagens de chat de acordo com o usuário" />
     <MESSAGE value="Adicionando os amigos em comum" />
     <MESSAGE value="Versão 2.2" />
+    <MESSAGE value="Otimizando a busca de imagens do facebook (Cache)" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -893,13 +891,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="49" selection-start="407" selection-end="407" vertical-scroll-proportion="0.17566016">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/me/levar/lazylist/ImageLoader.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="69" column="0" selection-start="2112" selection-end="2112" vertical-scroll-proportion="0.19862227">
@@ -917,6 +908,13 @@
     <entry file="file://$PROJECT_DIR$/src/me/levar/lazylist/FileCache.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="13" column="93" selection-start="429" selection-end="429" vertical-scroll-proportion="0.21469575">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="34" selection-start="206" selection-end="206" vertical-scroll-proportion="0.078071184">
           <folding />
         </state>
       </provider>
