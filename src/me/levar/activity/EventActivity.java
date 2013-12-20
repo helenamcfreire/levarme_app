@@ -122,19 +122,23 @@ public class EventActivity extends LevarmeActivity {
 
     private Map<String, String> getEventosLevarMe(Response response) throws JSONException {
 
-        GraphObject graphObject  = response.getGraphObject();
-        JSONObject jsonObject = graphObject.getInnerJSONObject();
-        JSONArray eventsByFacebook = jsonObject.getJSONArray("data");
+        Map<String, String> retorno = null;
 
-        Map<String, String> retorno = new LinkedHashMap<String, String>();
+        if (response != null) {
+            GraphObject graphObject = response.getGraphObject();
+            JSONObject jsonObject = graphObject.getInnerJSONObject();
+            JSONArray eventsByFacebook = jsonObject.getJSONArray("data");
 
-        for (int i = 0; i < (eventsByFacebook.length()); i++) {
-            JSONObject obj = eventsByFacebook.getJSONObject(i);
+            retorno = new LinkedHashMap<String, String>();
 
-            String name = obj.getString("name");
-            String id = obj.getString("eid");
+            for (int i = 0; i < (eventsByFacebook.length()); i++) {
+                JSONObject obj = eventsByFacebook.getJSONObject(i);
 
-            retorno.put(name, id);
+                String name = obj.getString("name");
+                String id = obj.getString("eid");
+
+                retorno.put(name, id);
+            }
         }
 
         return retorno;

@@ -187,15 +187,17 @@ public class ChatActivity extends LevarmeActivity {
                         public void onCompleted(Response response) {
 
                             try {
-                                GraphObject graphObject  = response.getGraphObject();
-                                JSONObject jsonObject = graphObject.getInnerJSONObject();
-                                JSONArray usersByFacebook = jsonObject.getJSONArray("data");
+                                if (response != null) {
+                                    GraphObject graphObject  = response.getGraphObject();
+                                    JSONObject jsonObject = graphObject.getInnerJSONObject();
+                                    JSONArray usersByFacebook = jsonObject.getJSONArray("data");
 
-                                for (int i = 0; i < (usersByFacebook.length()); i++) {
-                                    JSONObject obj = usersByFacebook.getJSONObject(i);
+                                    for (int i = 0; i < (usersByFacebook.length()); i++) {
+                                        JSONObject obj = usersByFacebook.getJSONObject(i);
 
-                                    String name = obj.getString("name");
-                                    setTitle("   Chat With " + name);
+                                        String name = obj.getString("name");
+                                        setTitle("   Chat With " + name);
+                                    }
                                 }
 
                             } catch (JSONException e) {

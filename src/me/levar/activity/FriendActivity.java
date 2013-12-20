@@ -249,7 +249,8 @@ public class FriendActivity extends LevarmeActivity {
                                 ArrayList<String> participantesId = new ArrayList<String>();
 
                                 String chats = new RequestPessoaTask().execute("http://www.levar.me/pessoa/list_chat?idsParticipantes=" + params + "&idEvento=" + getIdEvento()).get();
-                                 JSONArray jsonArray = new JSONArray(chats);
+
+                                JSONArray jsonArray = new JSONArray(chats);
                                 for (int i = 0; i < (jsonArray.length()); i++) {
                                     JSONObject obj = jsonArray.getJSONObject(i);
                                     String chatId = obj.getString("chat_id");
@@ -305,24 +306,28 @@ public class FriendActivity extends LevarmeActivity {
 
     private List<Pessoa> buscarParticipantesDoEvento(Response response) throws JSONException {
 
-        GraphObject graphObject  = response.getGraphObject();
-        JSONObject jsonObject = graphObject.getInnerJSONObject();
-        JSONArray data = jsonObject.getJSONArray("data");
-        JSONArray amigosJson = data.getJSONObject(1).getJSONArray("fql_result_set");
+        List<Pessoa> amigos = null;
 
-        List<Pessoa> amigos = new ArrayList<Pessoa>();
+        if (response != null) {
+            GraphObject graphObject = response.getGraphObject();
+            JSONObject jsonObject = graphObject.getInnerJSONObject();
+            JSONArray data = jsonObject.getJSONArray("data");
+            JSONArray amigosJson = data.getJSONObject(1).getJSONArray("fql_result_set");
 
-        for (int i = 0; i < (amigosJson.length()); i++) {
+            amigos = new ArrayList<Pessoa>();
 
-            JSONObject amigoJson = amigosJson.getJSONObject(i);
+            for (int i = 0; i < (amigosJson.length()); i++) {
 
-            String id = amigoJson.getString("uid");
-            String nome = amigoJson.getString("name");
-            String foto = amigoJson.getString("pic_square");
+                JSONObject amigoJson = amigosJson.getJSONObject(i);
 
-            Pessoa amigo = new Pessoa(id, nome, foto);
+                String id = amigoJson.getString("uid");
+                String nome = amigoJson.getString("name");
+                String foto = amigoJson.getString("pic_square");
 
-            amigos.add(amigo);
+                Pessoa amigo = new Pessoa(id, nome, foto);
+
+                amigos.add(amigo);
+            }
         }
 
         Collections.sort(amigos);
@@ -350,26 +355,28 @@ public class FriendActivity extends LevarmeActivity {
 
                     Pessoa participanteInner = new Pessoa(participante.getUid(), participante.getNome(), participante.getPic_square());
 
-                    GraphObject graphObject  = response.getGraphObject();
-                    JSONObject jsonObject = graphObject.getInnerJSONObject();
-                    try {
-                        JSONArray commonUsers = jsonObject.getJSONArray("data");
+                    if (response != null) {
+                        GraphObject graphObject  = response.getGraphObject();
+                        JSONObject jsonObject = graphObject.getInnerJSONObject();
+                        try {
+                            JSONArray commonUsers = jsonObject.getJSONArray("data");
 
-                        for (int i = 0; i < (commonUsers.length()); i++) {
+                            for (int i = 0; i < (commonUsers.length()); i++) {
 
-                            JSONObject commonUser = commonUsers.getJSONObject(i);
+                                JSONObject commonUser = commonUsers.getJSONObject(i);
 
-                            String id = commonUser.getString("id");
-                            String name = commonUser.getString("name");
-                            String picture = commonUser.getJSONObject("picture").getJSONObject("data").getString("url");
+                                String id = commonUser.getString("id");
+                                String name = commonUser.getString("name");
+                                String picture = commonUser.getJSONObject("picture").getJSONObject("data").getString("url");
 
-                            Pessoa amigoEmComum = new Pessoa(id, name, picture);
+                                Pessoa amigoEmComum = new Pessoa(id, name, picture);
 
-                            amigosEmComum.add(amigoEmComum);
+                                amigosEmComum.add(amigoEmComum);
+                            }
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
                         }
-
-                    } catch (JSONException e) {
-                        e.printStackTrace();
                     }
 
                     participanteInner.setAmigosEmComum(amigosEmComum);
@@ -394,6 +401,8 @@ public class FriendActivity extends LevarmeActivity {
 
             req.executeAsync();
        }
+
+       spinner.dismiss();
 
     }
 
