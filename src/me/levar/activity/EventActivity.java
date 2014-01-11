@@ -1,27 +1,33 @@
 package me.levar.activity;
 
+import android.app.ListActivity;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 import com.facebook.HttpMethod;
 import com.facebook.Request;
 import com.facebook.Response;
 import com.facebook.Session;
 import com.facebook.model.GraphObject;
 import me.levar.R;
+import me.levar.adapter.EventAdapter;
+import me.levar.fragment.EventAdapterHelper;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.Map;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 /**
  * Created with IntelliJ IDEA.
@@ -30,7 +36,7 @@ import java.util.Map;
  * Time: 00:22
  * To change this template use File | Settings | File Templates.
  */
-public class EventActivity extends LevarmeActivity {
+public class EventActivity extends ListActivity {
 
     private ListView eventsListView;
     private ProgressDialog spinner;
@@ -43,7 +49,7 @@ public class EventActivity extends LevarmeActivity {
 
         setTitle("   Which party?");
 
-        eventsListView = (ListView) findViewById(R.id.eventsList);
+        eventsListView = (ListView) findViewById(android.R.id.list);
 
         spinner = new ProgressDialog(this);
         spinner.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -81,16 +87,39 @@ public class EventActivity extends LevarmeActivity {
                         public void onCompleted(Response response) {
 
                             try {
-                                final Map<String, String> eventosLevarMe = getEventosLevarMe(response);
+                                final EventAdapterHelper helper = getEventosLevarMe(response);
 
-                                ArrayAdapter<String> eventsAdapter = new ArrayAdapter<String>(EventActivity.this, R.layout.rowevent, new ArrayList<String>(eventosLevarMe.keySet()));
-                                eventsListView.setAdapter(eventsAdapter);
+                                EventAdapter adapter = new EventAdapter() {
+                                    protected View getHeaderView(String caption, int index, View convertView, ViewGroup parent) {
+                                        TextView result = (TextView) convertView;
+
+                                        if (convertView == null) {
+                                            result = (TextView) getLayoutInflater().inflate(R.layout.headerevent, null);
+                                        }
+
+                                        result.setText(caption);
+
+                                        return (result);
+                                    }
+                                };
+
+                                Map<String, List<String>> eventsGroupByDate = helper.getMapaDataENomesEventos();
+
+                                for (String date : eventsGroupByDate.keySet()) {
+                                    List<String> eventosNaData = eventsGroupByDate.get(date);
+                                    adapter.addSection(date, new ArrayAdapter<String>(EventActivity.this, R.layout.rowevent, eventosNaData));
+                                }
+
+                                setListAdapter(adapter);
+
+                                eventsListView.setAdapter(adapter);
                                 eventsListView.setOnItemClickListener(new AdapterView.OnItemClickListener()
                                 {
                                     public void onItemClick(AdapterView<?> arg0, View v, int position, long id)
                                     {
+                                        Map<String, String> eventsGroupById = helper.getMapaNomeEIdEvento();
                                         String nomeEvento = (String) eventsListView.getItemAtPosition(position);
-                                        String idEvento = eventosLevarMe.get(nomeEvento);
+                                        String idEvento = eventsGroupById.get(nomeEvento);
 
                                         irParaTelaDeParticipantesDoEvento(idEvento, nomeEvento);
                                     }
@@ -120,28 +149,73 @@ public class EventActivity extends LevarmeActivity {
 
     }
 
-    private Map<String, String> getEventosLevarMe(Response response) throws JSONException {
+    private EventAdapterHelper getEventosLevarMe(Response response) throws JSONException {
 
-        Map<String, String> retorno = null;
+        EventAdapterHelper helper = new EventAdapterHelper();
+
+        Map<String, List<String>> eventsGroupByDate = null;
+        Map<String, String> eventsGroupById = null;
 
         if (response != null) {
             GraphObject graphObject = response.getGraphObject();
             JSONObject jsonObject = graphObject.getInnerJSONObject();
             JSONArray eventsByFacebook = jsonObject.getJSONArray("data");
 
-            retorno = new LinkedHashMap<String, String>();
+            eventsGroupByDate = new LinkedHashMap<String, List<String>>();
+            eventsGroupById = new LinkedHashMap<String, String>();
 
             for (int i = 0; i < (eventsByFacebook.length()); i++) {
                 JSONObject obj = eventsByFacebook.getJSONObject(i);
 
                 String name = obj.getString("name");
+                String start_time = obj.getString("start_time");
                 String id = obj.getString("eid");
 
-                retorno.put(name, id);
+                String date = format_date(start_time);
+
+                eventsGroupById.put(name, id);
+
+                boolean dataJaExiste = eventsGroupByDate.containsKey(date);
+                if (dataJaExiste) {
+                    List<String> eventos = eventsGroupByDate.get(date);
+                    eventos.add(name);
+                    eventsGroupByDate.put(date, eventos);
+                } else {
+                    List<String> eventos = new ArrayList<String>();
+                    eventos.add(name);
+                    eventsGroupByDate.put(date, eventos);
+                }
             }
         }
 
-        return retorno;
+        helper.setMapaDataENomesEventos(eventsGroupByDate);
+        helper.setMapaNomeEIdEvento(eventsGroupById);
+
+        return helper;
+    }
+
+    private String format_date(String start_time) {
+
+        SimpleDateFormat faceFormat;
+        boolean dateAndTime = start_time.length() > 10;
+
+        if (dateAndTime) {
+            faceFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssZ");
+            faceFormat.setTimeZone(TimeZone.getTimeZone("UTC"));
+        } else {
+            faceFormat = new SimpleDateFormat("yyyy-MM-dd");
+        }
+
+        Date date = null;
+        try {
+            date = faceFormat.parse(start_time);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        SimpleDateFormat levarmeFormat = new SimpleDateFormat("EEEE - dd/MM", Locale.ENGLISH);
+
+        return levarmeFormat.format(date);
     }
 
     @Override
