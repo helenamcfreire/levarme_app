@@ -2,6 +2,9 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <option name="DEFAULT_COMPILER" value="Javac" />
+    <excludeFromCompile>
+      <file url="file://$USER_HOME$/.IntelliJIdea12/system/compile-server/levarme_app_67024032/targets/java-production/levarme_app/android/copied_sources/me/levar/SASLXFacebookPlatformMechanism.java" />
+    </excludeFromCompile>
     <resourceExtensions />
     <wildcardResourcePatterns>
       <entry name="!?*.java" />

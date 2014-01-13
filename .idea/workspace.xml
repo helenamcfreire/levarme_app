@@ -25,27 +25,33 @@
     </option>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="88e535d7-1118-48fd-9090-b3a623c09624" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/drawable-hdpi/app_icon.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/drawable-ldpi/app_icon.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/drawable-mdpi/app_icon.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/drawable-xhdpi/app_icon.png" />
+    <list default="true" id="88e535d7-1118-48fd-9090-b3a623c09624" name="Default" comment="Versão 2.7 - Atualizando ícone do app">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/me/levar/fragment/JsonHelper.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/levarme_app.apk" afterPath="$PROJECT_DIR$/levarme_app.apk" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AndroidManifest.xml" afterPath="$PROJECT_DIR$/AndroidManifest.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/me/levar/activity/ChatActivity.java" afterPath="$PROJECT_DIR$/src/me/levar/activity/ChatActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/me/levar/activity/EventActivity.java" afterPath="$PROJECT_DIR$/src/me/levar/activity/EventActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/me/levar/activity/FriendActivity.java" afterPath="$PROJECT_DIR$/src/me/levar/activity/FriendActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/me/levar/adapter/FriendAdapter.java" afterPath="$PROJECT_DIR$/src/me/levar/adapter/FriendAdapter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/me/levar/entity/Pessoa.java" afterPath="$PROJECT_DIR$/src/me/levar/entity/Pessoa.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/android_support_v4.xml" afterPath="$PROJECT_DIR$/.idea/libraries/android_support_v4.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/compiler.xml" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/levarme_app.iml" afterPath="$PROJECT_DIR$/levarme_app.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/rowfriend.xml" afterPath="$PROJECT_DIR$/res/layout/rowfriend.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="levarme_app.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="88e535d7-1118-48fd-9090-b3a623c09624" time="1389472238744" ignored="false" />
+    <file path="/Dummy.txt" changelist="88e535d7-1118-48fd-9090-b3a623c09624" time="1389577183761" ignored="false" />
     <file path="/fragment.java" changelist="88e535d7-1118-48fd-9090-b3a623c09624" time="1389441815157" ignored="false" />
     <file path="/styles.xml" changelist="88e535d7-1118-48fd-9090-b3a623c09624" time="1389459121748" ignored="false" />
     <file path="/LevarmeActivity.java" changelist="88e535d7-1118-48fd-9090-b3a623c09624" time="1385811414613" ignored="false" />
-    <file path="/a.dummy" changelist="88e535d7-1118-48fd-9090-b3a623c09624" time="1389491188818" ignored="false" />
+    <file path="/a.dummy" changelist="88e535d7-1118-48fd-9090-b3a623c09624" time="1389568906905" ignored="false" />
     <file path="/main.xml" changelist="88e535d7-1118-48fd-9090-b3a623c09624" time="1389470025524" ignored="false" />
     <file path="/AndroidManifest.xml" changelist="88e535d7-1118-48fd-9090-b3a623c09624" time="1385748560130" ignored="false" />
-    <file path="/EventActivity.java" changelist="88e535d7-1118-48fd-9090-b3a623c09624" time="1389471956403" ignored="false" />
+    <file path="/EventActivity.java" changelist="88e535d7-1118-48fd-9090-b3a623c09624" time="1389565791101" ignored="false" />
     <file path="C:/Java/facebook-android-sdk-3.0.1/facebook-android-sdk-3.0.1/facebook/project.properties" changelist="88e535d7-1118-48fd-9090-b3a623c09624" time="1385744076680" ignored="false" />
-    <file path="/FriendActivity.java" changelist="88e535d7-1118-48fd-9090-b3a623c09624" time="1387501661343" ignored="false" />
+    <file path="/FriendActivity.java" changelist="88e535d7-1118-48fd-9090-b3a623c09624" time="1389567995753" ignored="false" />
     <file path="C:/Java/adt-bundle-windows-x86_64-20130219/adt-bundle-windows-x86_64-20130219/sdk/platforms/android-18/data/res/values-et/strings.xml" changelist="88e535d7-1118-48fd-9090-b3a623c09624" time="1385746928487" ignored="false" />
     <file path="C:/Java/adt-bundle-windows-x86_64-20130219/adt-bundle-windows-x86_64-20130219/sdk/platforms/android-18/data/res/values-nl/strings.xml" changelist="88e535d7-1118-48fd-9090-b3a623c09624" time="1385746928487" ignored="false" />
     <file path="C:/Java/adt-bundle-windows-x86_64-20130219/adt-bundle-windows-x86_64-20130219/sdk/platforms/android-18/data/res/values-fi/strings.xml" changelist="88e535d7-1118-48fd-9090-b3a623c09624" time="1385746928487" ignored="false" />
@@ -53,17 +59,17 @@
     <file path="C:/Java/adt-bundle-windows-x86_64-20130219/adt-bundle-windows-x86_64-20130219/sdk/platforms/android-18/data/res/values-iw/strings.xml" changelist="88e535d7-1118-48fd-9090-b3a623c09624" time="1385746928488" ignored="false" />
     <file path="C:/Java/adt-bundle-windows-x86_64-20130219/adt-bundle-windows-x86_64-20130219/sdk/platforms/android-18/data/res/values-ru/strings.xml" changelist="88e535d7-1118-48fd-9090-b3a623c09624" time="1385746928488" ignored="false" />
     <file path="/NotificationActivity.java" changelist="88e535d7-1118-48fd-9090-b3a623c09624" time="1385747967034" ignored="false" />
-    <file path="/ChatActivity.java" changelist="88e535d7-1118-48fd-9090-b3a623c09624" time="1387501285934" ignored="false" />
+    <file path="/ChatActivity.java" changelist="88e535d7-1118-48fd-9090-b3a623c09624" time="1389568314025" ignored="false" />
     <file path="/FaceFragment.java" changelist="88e535d7-1118-48fd-9090-b3a623c09624" time="1386781181774" ignored="false" />
     <file path="/ChatListAdapter.java" changelist="88e535d7-1118-48fd-9090-b3a623c09624" time="1385833061359" ignored="false" />
     <file path="/rowchat.xml" changelist="88e535d7-1118-48fd-9090-b3a623c09624" time="1385832678811" ignored="false" />
     <file path="/chat.xml" changelist="88e535d7-1118-48fd-9090-b3a623c09624" time="1385775969212" ignored="false" />
     <file path="/send_button.xml" changelist="88e535d7-1118-48fd-9090-b3a623c09624" time="1385775635970" ignored="false" />
     <file path="/colors.xml" changelist="88e535d7-1118-48fd-9090-b3a623c09624" time="1389458595263" ignored="false" />
-    <file path="/rowfriend.xml" changelist="88e535d7-1118-48fd-9090-b3a623c09624" time="1386454454188" ignored="false" />
-    <file path="/Pessoa.java" changelist="88e535d7-1118-48fd-9090-b3a623c09624" time="1386446399521" ignored="false" />
+    <file path="/rowfriend.xml" changelist="88e535d7-1118-48fd-9090-b3a623c09624" time="1389574206060" ignored="false" />
+    <file path="/Pessoa.java" changelist="88e535d7-1118-48fd-9090-b3a623c09624" time="1389571979955" ignored="false" />
     <file path="/DrawableFromUrlTask.java" changelist="88e535d7-1118-48fd-9090-b3a623c09624" time="1386444115953" ignored="false" />
-    <file path="/FriendAdapter.java" changelist="88e535d7-1118-48fd-9090-b3a623c09624" time="1387283659034" ignored="false" />
+    <file path="/FriendAdapter.java" changelist="88e535d7-1118-48fd-9090-b3a623c09624" time="1389572066217" ignored="false" />
     <file path="/CommonFriendAdapter.java" changelist="88e535d7-1118-48fd-9090-b3a623c09624" time="1386448678018" ignored="false" />
     <file path="/HorizontalListView.java" changelist="88e535d7-1118-48fd-9090-b3a623c09624" time="1386449177328" ignored="false" />
     <file path="/friends.xml" changelist="88e535d7-1118-48fd-9090-b3a623c09624" time="1386450897414" ignored="false" />
@@ -80,6 +86,7 @@
     <file path="/LoginButton.java" changelist="88e535d7-1118-48fd-9090-b3a623c09624" time="1389467846700" ignored="false" />
     <file path="/MainActivity.java" changelist="88e535d7-1118-48fd-9090-b3a623c09624" time="1389468153445" ignored="false" />
     <file path="/EventAdapterHelper.java" changelist="88e535d7-1118-48fd-9090-b3a623c09624" time="1389471708148" ignored="false" />
+    <file path="/JsonHelper.java" changelist="88e535d7-1118-48fd-9090-b3a623c09624" time="1389567392921" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -94,24 +101,6 @@
     <disable_hints />
   </component>
   <component name="DebuggerManager">
-    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
-    <line_breakpoints default_suspend_policy="SuspendAll" default_condition_enabled="true">
-      <breakpoint url="file://$PROJECT_DIR$/src/me/levar/activity/EventActivity.java" line="178" class="me.levar.activity.EventActivity" package="me.levar.activity">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="REMOVE_AFTER_HIT" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-    </line_breakpoints>
     <breakpoint_any default_suspend_policy="SuspendAll" default_condition_enabled="true">
       <breakpoint>
         <option name="NOTIFY_CAUGHT" value="true" />
@@ -148,6 +137,8 @@
         <option name="LOG_MESSAGE" value="&#13;&#13;JAVA" />
       </breakpoint>
     </breakpoint_any>
+    <line_breakpoints default_suspend_policy="SuspendAll" default_condition_enabled="true" />
+    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_rules />
     <ui_properties />
   </component>
@@ -179,12 +170,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/me/levar/lazylist/FileCache.java" />
-        <option value="$PROJECT_DIR$/src/me/levar/fragment/FaceFragment.java" />
-        <option value="$PROJECT_DIR$/src/me/levar/activity/ChatActivity.java" />
-        <option value="$PROJECT_DIR$/src/me/levar/activity/FriendActivity.java" />
-        <option value="$PROJECT_DIR$/res/values/colors.xml" />
-        <option value="$PROJECT_DIR$/res/values/styles.xml" />
         <option value="$PROJECT_DIR$/res/layout/events.xml" />
         <option value="$PROJECT_DIR$/res/layout/rowevent.xml" />
         <option value="C:/Java/facebook-android-sdk-3.0.1/facebook-android-sdk-3.0.1/facebook/src/com/facebook/widget/LoginButton.java" />
@@ -193,7 +178,13 @@
         <option value="$PROJECT_DIR$/res/layout/headerevent.xml" />
         <option value="$PROJECT_DIR$/src/me/levar/adapter/EventAdapter.java" />
         <option value="$PROJECT_DIR$/src/me/levar/fragment/EventAdapterHelper.java" />
+        <option value="$PROJECT_DIR$/src/me/levar/fragment/JsonHelper.java" />
+        <option value="$PROJECT_DIR$/src/me/levar/activity/FriendActivity.java" />
+        <option value="$PROJECT_DIR$/src/me/levar/activity/ChatActivity.java" />
         <option value="$PROJECT_DIR$/src/me/levar/activity/EventActivity.java" />
+        <option value="$PROJECT_DIR$/src/me/levar/entity/Pessoa.java" />
+        <option value="$PROJECT_DIR$/src/me/levar/adapter/FriendAdapter.java" />
+        <option value="$PROJECT_DIR$/res/layout/rowfriend.xml" />
         <option value="$PROJECT_DIR$/AndroidManifest.xml" />
       </list>
     </option>
@@ -241,6 +232,11 @@
   <component name="ProjectReloadState">
     <option name="STATE" value="0" />
   </component>
+  <component name="ProjectStructureProblems">
+    <ignored-problems>
+      <problem id="unused-library(library:project:android-support-v4)" />
+    </ignored-problems>
+  </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1" splitterProportion="0.5">
       <flattenPackages />
@@ -254,6 +250,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -308,43 +305,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="fragment" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="levarme_app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="levarme_app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="res" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="values" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="levarme_app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="levarme_app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="res" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="layout" />
+              <option name="myItemId" value="adapter" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -364,26 +325,25 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="project.structure.last.edited" value="Project" />
     <property name="SHOW_ALL_PROCESSES" value="false" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth0" value="267" />
-    <property name="project.structure.proportion" value="0.15" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth1" value="296" />
     <property name="OverrideImplement.combined" value="true" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth1" value="296" />
+    <property name="project.structure.proportion" value="0.15" />
     <property name="options.splitter.main.proportions" value="0.3" />
-    <property name="ExportedApkPath" value="C:\Users\Helena\Projetos\Android\levarme_app\levarme_app.apk" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth0" value="289" />
-    <property name="recentsLimit" value="5" />
-    <property name="MemberChooser.sorted" value="false" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder1" value="1" />
+    <property name="MemberChooser.sorted" value="false" />
+    <property name="recentsLimit" value="5" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth0" value="289" />
+    <property name="ExportedApkPath" value="C:\Users\Helena\Projetos\Android\levarme_app\levarme_app.apk" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder0" value="0" />
     <property name="ExportedModule" value="levarme_app" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../CloneProjects/LazyList" />
+    <property name="last_opened_file_path" value="C:/Java/adt-bundle-windows-x86_64-20130219/adt-bundle-windows-x86_64-20130219/sdk/extras/android/support/v4/android-support-v4.jar!/" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth2" value="297" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="964" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth3" value="971" />
@@ -393,15 +353,15 @@
     <property name="GoToClass.includeJavaFiles" value="false" />
     <property name="DEBUGGABLE_PROCESS" value="me.levar" />
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder2" value="2" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder3" value="3" />
-    <property name="MemberChooser.showClasses" value="true" />
     <property name="FullScreen" value="false" />
+    <property name="MemberChooser.showClasses" value="true" />
     <property name="GoToClass.includeLibraries" value="false" />
     <property name="options.splitter.details.proportions" value="0.2" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder0" value="0" />
     <property name="GoToFile.includeJavaFiles" value="false" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder0" value="0" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder3" value="3" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder1" value="1" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder2" value="2" />
@@ -458,6 +418,19 @@
       <option name="PORT" value="5005" />
       <method />
     </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <method />
+    </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <module name="" />
@@ -484,19 +457,6 @@
       <envs />
       <properties />
       <listeners />
-      <method />
-    </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
       <method />
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -649,7 +609,11 @@
       <created>1389472241507</created>
       <updated>1389472241507</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Versão 2.7 - Atualizando ícone do app">
+      <created>1389492599698</created>
+      <updated>1389492599698</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TodoView" selected-index="4">
@@ -678,7 +642,7 @@
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3244397" sideWeight="0.67335564" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3239061" sideWeight="0.67335564" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.75696766" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.703456" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.35378867" sideWeight="0.46265328" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -699,7 +663,7 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24866596" sideWeight="0.24303234" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24866596" sideWeight="0.6098105" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32664436" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -749,7 +713,7 @@
     <option name="WRAP_WHEN_TYPING_REACHES_RIGHT_MARGIN" value="false" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Versão 2.6" />
+    <option name="LAST_COMMIT_MESSAGE" value="Versão 2.7 - Atualizando ícone do app" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -776,6 +740,7 @@
     <MESSAGE value="Versão 2.5" />
     <MESSAGE value="Primeiro commit para mudança do layout" />
     <MESSAGE value="Versão 2.6" />
+    <MESSAGE value="Versão 2.7 - Atualizando ícone do app" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -789,124 +754,138 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://C:/Java/facebook-android-sdk-3.0.1/facebook-android-sdk-3.0.1/facebook/src/com/facebook/widget/LoginButton.java">
+    <entry file="jar://$USER_HOME$/Downloads/commons-lang3-3.2.1-bin/commons-lang3-3.2.1/commons-lang3-3.2.1.jar!/org/apache/commons/lang3/StringUtils.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="637" column="0" selection-start="26375" selection-end="26375" vertical-scroll-proportion="0.0">
+        <state line="27" column="26" selection-start="1083" selection-end="1083" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/res/values/styles.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="0" selection-start="455" selection-end="455" vertical-scroll-proportion="-8.16">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/layout/main.xml">
+    <entry file="file://$PROJECT_DIR$/src/me/levar/activity/ChatActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/me/levar/activity/MainActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="8" selection-start="508" selection-end="508" vertical-scroll-proportion="0.29276693">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/layout/events.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="0" selection-start="517" selection-end="517" vertical-scroll-proportion="-4.08">
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/layout/headerevent.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="0" selection-start="405" selection-end="405" vertical-scroll-proportion="-3.4">
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/me/levar/activity/FriendActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="389" column="24" selection-start="14695" selection-end="14695" vertical-scroll-proportion="0.45005742">
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#8659#8667#0" expanded="true" />
-            <element signature="e#9006#9014#0" expanded="true" />
-            <element signature="e#12314#12322#0" expanded="true" />
-            <element signature="e#14877#14878#0" expanded="true" />
+            <element signature="e#2094#2460#0" expanded="true" />
+            <element signature="e#2449#2450#0" expanded="true" />
+            <element signature="e#2521#2671#0" expanded="true" />
+            <element signature="e#2660#2661#0" expanded="true" />
+            <element signature="e#3649#5452#0" expanded="true" />
+            <element signature="e#5433#5434#0" expanded="true" />
+            <element signature="e#6534#7240#0" expanded="true" />
+            <element signature="e#7217#7218#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/me/levar/adapter/FriendAdapter.java">
+    <entry file="file://$PROJECT_DIR$/src/me/levar/fragment/JsonHelper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="57" selection-start="445" selection-end="451" vertical-scroll-proportion="0.08037825">
+        <state line="77" column="35" selection-start="2098" selection-end="2098" vertical-scroll-proportion="0.8828932">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/drawable/speech_bubble_green.9.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/me/levar/chat/ChatListAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="39" column="57" selection-start="1473" selection-end="1473" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/me/levar/adapter/EventAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="56" selection-start="991" selection-end="991" vertical-scroll-proportion="0.019517796">
-          <folding>
-            <element signature="e#0#4101#0" expanded="true" />
-          </folding>
+        <state line="153" column="1" selection-start="4101" selection-end="4101" vertical-scroll-proportion="0.8828932">
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/me/levar/activity/EventActivity.java">
+    <entry file="file://$PROJECT_DIR$/res/values/strings.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="103" column="35" selection-start="3461" selection-end="3461" vertical-scroll-proportion="0.7418352">
-          <folding>
-            <element signature="e#4125#4829#0" expanded="true" />
-            <element signature="e#4794#4795#0" expanded="true" />
-            <element signature="e#6896#6904#0" expanded="true" />
-          </folding>
+        <state line="7" column="18" selection-start="287" selection-end="287" vertical-scroll-proportion="0.14066194">
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/me/levar/fragment/EventAdapterHelper.java">
+    <entry file="file://C:/Java/facebook-android-sdk-3.0.1/facebook-android-sdk-3.0.1/facebook/src/com/facebook/Session.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="65" selection-start="440" selection-end="440" vertical-scroll-proportion="0.44945568">
+        <state line="22" column="29" selection-start="769" selection-end="769" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/me/levar/activity/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="29" selection-start="83" selection-end="83" vertical-scroll-proportion="0.09788868">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/Downloads/commons-lang3-3.2.1-bin/commons-lang3-3.2.1/commons-lang3-3.2.1-sources.jar!/org/apache/commons/lang3/StringUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2590" column="37" selection-start="104822" selection-end="104822" vertical-scroll-proportion="1.0477877">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/me/levar/entity/Pessoa.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="46" column="34" selection-start="956" selection-end="956" vertical-scroll-proportion="0.5311419">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/res/drawable-hdpi/app_icon.png">
-      <provider selected="true" editor-type-id="images">
+    <entry file="file://$PROJECT_DIR$/res/layout/rowfriend.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="101" column="43" selection-start="4054" selection-end="4054" vertical-scroll-proportion="0.6686967">
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer">
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/res/drawable-hdpi/levar.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
+    <entry file="file://$PROJECT_DIR$/src/me/levar/adapter/FriendAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="82" column="72" selection-start="3269" selection-end="3269" vertical-scroll-proportion="0.72675085">
+          <folding />
+        </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/res/drawable/stub.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
+    <entry file="file://$PROJECT_DIR$/src/me/levar/activity/FriendActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="387" column="53" selection-start="14327" selection-end="14327" vertical-scroll-proportion="0.3903559">
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#5658#5666#0" expanded="true" />
+            <element signature="e#8615#8623#0" expanded="true" />
+            <element signature="e#8923#8931#0" expanded="true" />
+            <element signature="e#10569#10577#0" expanded="true" />
+            <element signature="e#12251#12259#0" expanded="true" />
+            <element signature="e#12810#12818#0" expanded="true" />
+          </folding>
+        </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/res/drawable/icon.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
+    <entry file="file://$PROJECT_DIR$/src/me/levar/activity/EventActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="179" column="19" selection-start="6086" selection-end="6086" vertical-scroll-proportion="0.6831229">
+          <folding>
+            <element signature="e#2200#3933#0" expanded="true" />
+            <element signature="e#3910#3911#0" expanded="true" />
+            <element signature="e#5526#5548#0" expanded="true" />
+            <element signature="e#5615#5631#0" expanded="true" />
+            <element signature="e#6742#6750#0" expanded="true" />
+          </folding>
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
@@ -973,7 +952,6 @@
             <option name="proportions">
               <list>
                 <option value="0.2" />
-                <option value="0.5" />
               </list>
             </option>
           </splitter-proportions>

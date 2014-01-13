@@ -14,7 +14,6 @@ import com.facebook.HttpMethod;
 import com.facebook.Request;
 import com.facebook.Response;
 import com.facebook.Session;
-import com.facebook.model.GraphObject;
 import com.facebook.model.GraphUser;
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
@@ -22,11 +21,13 @@ import com.firebase.client.ValueEventListener;
 import me.levar.R;
 import me.levar.chat.Chat;
 import me.levar.chat.ChatListAdapter;
+import me.levar.fragment.JsonHelper;
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+
+import static org.apache.commons.lang3.StringUtils.join;
 
 /**
  * Created with IntelliJ IDEA.
@@ -168,13 +169,7 @@ public class ChatActivity extends LevarmeActivity {
 
         if (session != null) {
 
-            StringBuilder builder = new StringBuilder();
-            builder.append(" SELECT name, pic_square, uid FROM user WHERE uid IN (  ");
-            builder.append(idsParticipantes.toString().replace("[", "").replace("]", ""));
-            builder.append(" ) ");
-            builder.append(" AND uid != me() ");
-
-            String fqlQuery = builder.toString();
+            String fqlQuery = getFQLQuery(idsParticipantes);
 
             final Bundle params = new Bundle();
             params.putString("q", fqlQuery);
@@ -186,22 +181,17 @@ public class ChatActivity extends LevarmeActivity {
                     new Request.Callback(){
                         public void onCompleted(Response response) {
 
-                            try {
-                                if (response != null) {
-                                    GraphObject graphObject  = response.getGraphObject();
-                                    JSONObject jsonObject = graphObject.getInnerJSONObject();
-                                    JSONArray usersByFacebook = jsonObject.getJSONArray("data");
+                            if (response != null) {
+                                JSONArray usersByFacebook = JsonHelper.getJsonArrayNodeData(response);
 
-                                    for (int i = 0; i < (usersByFacebook.length()); i++) {
-                                        JSONObject obj = usersByFacebook.getJSONObject(i);
+                                for (int i = 0; i < (usersByFacebook.length()); i++) {
 
-                                        String name = obj.getString("name");
-                                        setTitle("   Chat With " + name);
-                                    }
+                                    JSONObject obj = JsonHelper.getJsonObject(usersByFacebook, i);
+
+                                    String name = JsonHelper.getString(obj, "name");
+
+                                    setTitle("   Chat With " + name);
                                 }
-
-                            } catch (JSONException e) {
-                                e.printStackTrace();
                             }
 
                         }
@@ -212,6 +202,17 @@ public class ChatActivity extends LevarmeActivity {
         }
 
 
+    }
+
+    private String getFQLQuery(ArrayList<String> idsParticipantes) {
+
+        StringBuilder builder = new StringBuilder();
+        builder.append(" SELECT name, pic_square, uid FROM user WHERE uid IN (  ");
+        builder.append(join(idsParticipantes, ","));
+        builder.append(" ) ");
+        builder.append(" AND uid != me() ");
+
+        return builder.toString();
     }
 
     @Override

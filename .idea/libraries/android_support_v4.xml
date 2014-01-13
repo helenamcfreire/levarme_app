@@ -1,7 +1,7 @@
 <component name="libraryTable">
   <library name="android-support-v4">
     <CLASSES>
-      <root url="jar://C:/Java/facebook-android-sdk-3.0.1/facebook-android-sdk-3.0.1/facebook/libs/android-support-v4.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/commons-lang3-3.2.1-bin/commons-lang3-3.2.1/commons-lang3-3.2.1.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

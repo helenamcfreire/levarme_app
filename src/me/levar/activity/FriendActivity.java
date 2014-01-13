@@ -16,7 +16,9 @@ import com.facebook.widget.WebDialog;
 import me.levar.R;
 import me.levar.adapter.FriendAdapter;
 import me.levar.entity.Pessoa;
+import me.levar.fragment.JsonHelper;
 import me.levar.task.RequestPessoaTask;
+import org.apache.commons.lang3.StringUtils;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -25,6 +27,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
+
+import static me.levar.fragment.JsonHelper.*;
 
 /**
  * Created with IntelliJ IDEA.
@@ -78,22 +82,7 @@ public class FriendActivity extends LevarmeActivity {
 
             List<String> usersLevarMe = getPessoasCadastradasNoLevarMe();
 
-            StringBuilder builder = new StringBuilder();
-            builder.append(" {'participantes': 'select uid from event_member where ");
-            builder.append(" ( ");
-            builder.append(" uid in (select uid1 from friend where uid2 = me()) ");
-            builder.append(" OR uid IN ( ");
-            builder.append(idsUsersLevarMe(usersLevarMe));
-            builder.append(" )) ");
-            builder.append(" and eid =  ");
-            builder.append(idEvento);
-            builder.append(" and rsvp_status= \"attending\" ");
-            builder.append(" ', ");
-            builder.append(" 'dados_participante':  'SELECT name, pic_square, uid FROM user WHERE (uid IN (SELECT uid FROM #participantes)) ");
-            builder.append(" AND uid != me()' ");
-            builder.append(" ,} ");
-
-            String fqlQuery = builder.toString();
+            String fqlQuery = getFQLQuery(idEvento, usersLevarMe);
 
             final Bundle params = new Bundle();
             params.putString("q", fqlQuery);
@@ -105,16 +94,9 @@ public class FriendActivity extends LevarmeActivity {
                     new Request.Callback(){
                         public void onCompleted(Response response) {
 
-                            List<Pessoa> participantes = null;
-                            try {
-                                participantes = buscarParticipantesDoEvento(response);
+                            List<Pessoa> participantes = buscarParticipantesDoEvento(response);
+                            buscarAmigosEmComum(participantes);
 
-                                buscarAmigosEmComum(participantes);
-
-
-                            } catch (JSONException e) {
-                                e.printStackTrace();
-                            }
                         }
                     });
 
@@ -124,8 +106,29 @@ public class FriendActivity extends LevarmeActivity {
 
     }
 
+    private String getFQLQuery(String idEvento, List<String> usersLevarMe) {
+
+        StringBuilder builder = new StringBuilder();
+
+        builder.append(" {'participantes': 'select uid from event_member where ");
+        builder.append(" ( ");
+        builder.append(" uid in (select uid1 from friend where uid2 = me()) ");
+        builder.append(" OR uid IN ( ");
+        builder.append(idsUsersLevarMe(usersLevarMe));
+        builder.append(" )) ");
+        builder.append(" and eid =  ");
+        builder.append(idEvento);
+        builder.append(" and rsvp_status= \"attending\" ");
+        builder.append(" ', ");
+        builder.append(" 'dados_participante':  'SELECT name, pic_square, uid FROM user WHERE (uid IN (SELECT uid FROM #participantes)) ");
+        builder.append(" AND uid != me()' ");
+        builder.append(" ,} ");
+
+        return builder.toString();
+    }
+
     private String idsUsersLevarMe(List<String> pessoasCadastradasNoLevarMe) {
-        return pessoasCadastradasNoLevarMe.toString().replace("[", "").replace("]", "");
+        return StringUtils.join(pessoasCadastradasNoLevarMe, ",");
     }
 
     private void postarNoMuralDoEvento(final Pessoa amigo) {
@@ -244,24 +247,27 @@ public class FriendActivity extends LevarmeActivity {
 
                             String params = idsParticipantes.toString().replace(" ", "%20");
 
+                            ArrayList<String> participantesId = new ArrayList<String>();
+
+                            String chats = null;
                             try {
-
-                                ArrayList<String> participantesId = new ArrayList<String>();
-
-                                String chats = new RequestPessoaTask().execute("http://www.levar.me/pessoa/list_chat?idsParticipantes=" + params + "&idEvento=" + getIdEvento()).get();
-
-                                JSONArray jsonArray = new JSONArray(chats);
-                                for (int i = 0; i < (jsonArray.length()); i++) {
-                                    JSONObject obj = jsonArray.getJSONObject(i);
-                                    String chatId = obj.getString("chat_id");
-                                    String pessoaId = obj.getString("pessoa_id");
-
-                                    participantesId.add(pessoaId);
-
-                                    irParaTelaDeChat(chatId, participantesId);
-                                }
-                            } catch (Exception e) {
+                                chats = new RequestPessoaTask().execute("http://www.levar.me/pessoa/list_chat?idsParticipantes=" + params + "&idEvento=" + getIdEvento()).get();
+                            } catch (InterruptedException e) {
                                 e.printStackTrace();
+                            } catch (ExecutionException e) {
+                                e.printStackTrace();
+                            }
+
+                            JSONArray jsonArray = JsonHelper.newJsonArray(chats);
+                            for (int i = 0; i < (jsonArray.length()); i++) {
+
+                                JSONObject obj = JsonHelper.getJsonObject(jsonArray, i);
+                                String chatId = JsonHelper.getString(obj, "chat_id");
+                                String pessoaId = JsonHelper.getString(obj, "pessoa_id");
+
+                                participantesId.add(pessoaId);
+
+                                irParaTelaDeChat(chatId, participantesId);
                             }
 
                         }
@@ -282,47 +288,45 @@ public class FriendActivity extends LevarmeActivity {
     private List<String> getPessoasCadastradasNoLevarMe() {
 
         List<String> ids = new ArrayList<String>();
-        try {
-            String pessoasCadastradas = new RequestPessoaTask().execute("http://www.levar.me/pessoa/list").get();
-            try {
-                JSONArray jsonArray = new JSONArray(pessoasCadastradas);
-                for (int i = 0; i < (jsonArray.length()); i++) {
-                    JSONObject obj = jsonArray.getJSONObject(i);
-                    String id = obj.getString("uid");
-                    ids.add(id);
-                }
 
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
+        String pessoasCadastradas = null;
+        try {
+            pessoasCadastradas = new RequestPessoaTask().execute("http://www.levar.me/pessoa/list").get();
         } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (ExecutionException e) {
             e.printStackTrace();
         }
 
+        JSONArray jsonArray = newJsonArray(pessoasCadastradas);
+
+        for (int i = 0; i < (jsonArray.length()); i++) {
+            JSONObject obj = getJsonObject(jsonArray, i);
+            String id = JsonHelper.getString(obj, "uid");
+            ids.add(id);
+        }
+
         return ids;
     }
 
-    private List<Pessoa> buscarParticipantesDoEvento(Response response) throws JSONException {
+    private List<Pessoa> buscarParticipantesDoEvento(Response response) {
 
         List<Pessoa> amigos = null;
 
         if (response != null) {
-            GraphObject graphObject = response.getGraphObject();
-            JSONObject jsonObject = graphObject.getInnerJSONObject();
-            JSONArray data = jsonObject.getJSONArray("data");
-            JSONArray amigosJson = data.getJSONObject(1).getJSONArray("fql_result_set");
+            JSONArray data = getJsonArrayNodeData(response);
+            JSONObject obj = getJsonObject(data, 1);
+            JSONArray amigosJson = getFqlResultSet(obj);
 
             amigos = new ArrayList<Pessoa>();
 
             for (int i = 0; i < (amigosJson.length()); i++) {
 
-                JSONObject amigoJson = amigosJson.getJSONObject(i);
+                JSONObject amigoJson = JsonHelper.getJsonObject(amigosJson, i);
 
-                String id = amigoJson.getString("uid");
-                String nome = amigoJson.getString("name");
-                String foto = amigoJson.getString("pic_square");
+                String id = JsonHelper.getString(amigoJson, "uid");
+                String nome = JsonHelper.getString(amigoJson, "name");
+                String foto = JsonHelper.getString(amigoJson, "pic_square");
 
                 Pessoa amigo = new Pessoa(id, nome, foto);
 
@@ -356,26 +360,19 @@ public class FriendActivity extends LevarmeActivity {
                     Pessoa participanteInner = new Pessoa(participante.getUid(), participante.getNome(), participante.getPic_square());
 
                     if (response != null) {
-                        GraphObject graphObject  = response.getGraphObject();
-                        JSONObject jsonObject = graphObject.getInnerJSONObject();
-                        try {
-                            JSONArray commonUsers = jsonObject.getJSONArray("data");
+                        JSONArray commonUsers = JsonHelper.getJsonArrayNodeData(response);
 
-                            for (int i = 0; i < (commonUsers.length()); i++) {
+                        for (int i = 0; i < (commonUsers.length()); i++) {
 
-                                JSONObject commonUser = commonUsers.getJSONObject(i);
+                            JSONObject commonUser = JsonHelper.getJsonObject(commonUsers, i);
 
-                                String id = commonUser.getString("id");
-                                String name = commonUser.getString("name");
-                                String picture = commonUser.getJSONObject("picture").getJSONObject("data").getString("url");
+                            String id = JsonHelper.getString(commonUser, "id");
+                            String name = JsonHelper.getString(commonUser, "name");
+                            String url_pic = getPicture(commonUser);
 
-                                Pessoa amigoEmComum = new Pessoa(id, name, picture);
+                            Pessoa amigoEmComum = new Pessoa(id, name, url_pic);
 
-                                amigosEmComum.add(amigoEmComum);
-                            }
-
-                        } catch (JSONException e) {
-                            e.printStackTrace();
+                            amigosEmComum.add(amigoEmComum);
                         }
                     }
 
@@ -400,9 +397,17 @@ public class FriendActivity extends LevarmeActivity {
             });
 
             req.executeAsync();
-       }
+        }
 
-       spinner.dismiss();
+        spinner.dismiss();
+
+    }
+
+    private String getPicture(JSONObject commonUser) {
+
+        JSONObject picture = JsonHelper.getJsonObject(commonUser, "picture");
+        JSONObject data = JsonHelper.getJsonObject(picture, "data");
+        return JsonHelper.getString(data, "url");
 
     }
 

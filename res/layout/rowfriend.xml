@@ -54,9 +54,21 @@
             android:layout_height="40dip"
             android:layout_below="@+id/commonFriends"
             android:layout_alignLeft="@+id/commonFriends"
+            android:layout_centerInParent="true"
             android:layout_marginRight="30dp"
             android:layout_marginTop="10dp"
             />
+    <TextView
+            android:id="@+id/nameMutualFriends1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/imageMutualFriends1"
+            android:layout_alignLeft="@id/imageMutualFriends1"
+            android:textColor="#70838C"
+            android:typeface="sans"
+            android:textSize="8dip"
+            android:textStyle="bold"
+            android:layout_marginTop="3dp"/>
 
     <me.levar.fragment.RoundedImageView
             android:id="@+id/imageMutualFriends2"
@@ -66,6 +78,17 @@
             android:layout_alignTop="@+id/imageMutualFriends1"
             android:layout_marginRight="30dp"
             />
+    <TextView
+            android:id="@+id/nameMutualFriends2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/imageMutualFriends2"
+            android:layout_alignLeft="@id/imageMutualFriends2"
+            android:textColor="#70838C"
+            android:typeface="sans"
+            android:textSize="8dip"
+            android:textStyle="bold"
+            android:layout_marginTop="3dp"/>
 
     <me.levar.fragment.RoundedImageView
             android:id="@+id/imageMutualFriends3"
@@ -74,5 +97,16 @@
             android:layout_toRightOf="@+id/imageMutualFriends2"
             android:layout_alignTop="@+id/imageMutualFriends2"
             />
+    <TextView
+            android:id="@+id/nameMutualFriends3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/imageMutualFriends3"
+            android:layout_alignLeft="@id/imageMutualFriends3"
+            android:textColor="#70838C"
+            android:typeface="sans"
+            android:textSize="8dip"
+            android:textStyle="bold"
+            android:layout_marginTop="3dp"/>
 
 </RelativeLayout>

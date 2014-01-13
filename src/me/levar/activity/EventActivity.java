@@ -3,7 +3,6 @@ package me.levar.activity;
 import android.app.ListActivity;
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
@@ -17,10 +16,11 @@ import com.facebook.HttpMethod;
 import com.facebook.Request;
 import com.facebook.Response;
 import com.facebook.Session;
-import com.facebook.model.GraphObject;
 import me.levar.R;
 import me.levar.adapter.EventAdapter;
 import me.levar.fragment.EventAdapterHelper;
+import me.levar.fragment.JsonHelper;
+import org.apache.commons.lang3.StringUtils;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -28,6 +28,8 @@ import org.json.JSONObject;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
+
+import static org.apache.commons.lang3.StringUtils.isNotBlank;
 
 /**
  * Created with IntelliJ IDEA.
@@ -67,69 +69,48 @@ public class EventActivity extends ListActivity {
 
         if (session != null) {
 
-            StringBuilder builder = new StringBuilder();
-            builder.append(" SELECT name, start_time, eid FROM event WHERE eid IN ");
-            builder.append(" (SELECT eid FROM event_member WHERE uid = me()) ");
-            builder.append(" AND start_time >= now() ");
-            builder.append(" ORDER BY start_time ");
-
-            String fqlQuery = builder.toString();
-
             Bundle params = new Bundle();
-            params.putString("q", fqlQuery);
+            params.putString("q", getFQLQuery());
             params.putString("access_token", session.getAccessToken());
 
             Request request = new Request(session,
                     "/fql",
                     params,
                     HttpMethod.GET,
-                    new Request.Callback(){
+                    new Request.Callback() {
                         public void onCompleted(Response response) {
 
-                            try {
-                                final EventAdapterHelper helper = getEventosLevarMe(response);
+                            final EventAdapterHelper helper = getEventosLevarMe(response);
 
-                                EventAdapter adapter = new EventAdapter() {
-                                    protected View getHeaderView(String caption, int index, View convertView, ViewGroup parent) {
-                                        TextView result = (TextView) convertView;
+                            EventAdapter adapter = createEventAdapter();
 
-                                        if (convertView == null) {
-                                            result = (TextView) getLayoutInflater().inflate(R.layout.headerevent, null);
-                                        }
+                            Map<String, List<String>> eventsGroupByDate = helper.getMapaDataENomesEventos();
 
-                                        result.setText(caption);
+                            for (String date : eventsGroupByDate.keySet()) {
+                                List<String> eventosNaData = eventsGroupByDate.get(date);
+                                adapter.addSection(date, new ArrayAdapter<String>(EventActivity.this, R.layout.rowevent, eventosNaData));
+                            }
 
-                                        return (result);
-                                    }
-                                };
+                            setListAdapter(adapter);
 
-                                Map<String, List<String>> eventsGroupByDate = helper.getMapaDataENomesEventos();
+                            eventsListView.setAdapter(adapter);
+                            eventsListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
-                                for (String date : eventsGroupByDate.keySet()) {
-                                    List<String> eventosNaData = eventsGroupByDate.get(date);
-                                    adapter.addSection(date, new ArrayAdapter<String>(EventActivity.this, R.layout.rowevent, eventosNaData));
-                                }
+                                public void onItemClick(AdapterView<?> arg0, View v, int position, long id) {
 
-                                setListAdapter(adapter);
+                                    Map<String, String> eventsGroupById = helper.getMapaNomeEIdEvento();
 
-                                eventsListView.setAdapter(adapter);
-                                eventsListView.setOnItemClickListener(new AdapterView.OnItemClickListener()
-                                {
-                                    public void onItemClick(AdapterView<?> arg0, View v, int position, long id)
-                                    {
-                                        Map<String, String> eventsGroupById = helper.getMapaNomeEIdEvento();
-                                        String nomeEvento = (String) eventsListView.getItemAtPosition(position);
-                                        String idEvento = eventsGroupById.get(nomeEvento);
+                                    String nomeEvento = (String) eventsListView.getItemAtPosition(position);
+                                    String idEvento = eventsGroupById.get(nomeEvento);
 
+                                    if (isNotBlank(nomeEvento) && isNotBlank(idEvento)) {
                                         irParaTelaDeParticipantesDoEvento(idEvento, nomeEvento);
                                     }
-                                });
+                                }
+                            });
 
-                                spinner.dismiss();
+                            spinner.dismiss();
 
-                            } catch (JSONException t) {
-                                t.printStackTrace();
-                            }
                         }
                     });
 
@@ -137,6 +118,32 @@ public class EventActivity extends ListActivity {
 
         }
 
+    }
+
+    private EventAdapter createEventAdapter() {
+        return new EventAdapter() {
+            protected View getHeaderView(String caption, int index, View convertView, ViewGroup parent) {
+                TextView result = (TextView) convertView;
+
+                if (convertView == null) {
+                    result = (TextView) getLayoutInflater().inflate(R.layout.headerevent, null);
+                }
+
+                result.setText(caption);
+
+                return (result);
+            }
+        };
+    }
+
+    private String getFQLQuery() {
+        StringBuilder builder = new StringBuilder();
+        builder.append(" SELECT name, start_time, eid FROM event WHERE eid IN ");
+        builder.append(" (SELECT eid FROM event_member WHERE uid = me()) ");
+        builder.append(" AND start_time >= now() ");
+        builder.append(" ORDER BY start_time ");
+
+        return builder.toString();
     }
 
     private void irParaTelaDeParticipantesDoEvento(String idEvento, String nomeEvento) {
@@ -149,49 +156,51 @@ public class EventActivity extends ListActivity {
 
     }
 
-    private EventAdapterHelper getEventosLevarMe(Response response) throws JSONException {
+    private EventAdapterHelper getEventosLevarMe(Response response) {
 
         EventAdapterHelper helper = new EventAdapterHelper();
 
-        Map<String, List<String>> eventsGroupByDate = null;
-        Map<String, String> eventsGroupById = null;
+        JSONArray eventsByFacebook = JsonHelper.getJsonArrayNodeData(response);
 
-        if (response != null) {
-            GraphObject graphObject = response.getGraphObject();
-            JSONObject jsonObject = graphObject.getInnerJSONObject();
-            JSONArray eventsByFacebook = jsonObject.getJSONArray("data");
+        Map<String, List<String>> eventsGroupByDate = new LinkedHashMap<String, List<String>>();
+        Map<String, String> eventsGroupById = new LinkedHashMap<String, String>();
 
-            eventsGroupByDate = new LinkedHashMap<String, List<String>>();
-            eventsGroupById = new LinkedHashMap<String, String>();
+        for (int i = 0; i < (eventsByFacebook.length()); i++) {
 
-            for (int i = 0; i < (eventsByFacebook.length()); i++) {
-                JSONObject obj = eventsByFacebook.getJSONObject(i);
+            JSONObject obj = JsonHelper.getJsonObject(eventsByFacebook, i);
 
-                String name = obj.getString("name");
-                String start_time = obj.getString("start_time");
-                String id = obj.getString("eid");
+            String name = JsonHelper.getString(obj, "name");
+            String start_time = JsonHelper.getString(obj, "start_time");
+            String id = JsonHelper.getString(obj, "eid");
 
-                String date = format_date(start_time);
+            String date = format_date(start_time);
 
-                eventsGroupById.put(name, id);
+            eventsGroupById.put(name, id);
 
-                boolean dataJaExiste = eventsGroupByDate.containsKey(date);
-                if (dataJaExiste) {
-                    List<String> eventos = eventsGroupByDate.get(date);
-                    eventos.add(name);
-                    eventsGroupByDate.put(date, eventos);
-                } else {
-                    List<String> eventos = new ArrayList<String>();
-                    eventos.add(name);
-                    eventsGroupByDate.put(date, eventos);
-                }
-            }
+            eventsGroupByDate = groupEventsByDate(eventsGroupByDate, name, date);
         }
 
         helper.setMapaDataENomesEventos(eventsGroupByDate);
         helper.setMapaNomeEIdEvento(eventsGroupById);
 
         return helper;
+    }
+
+
+    private Map<String, List<String>> groupEventsByDate(Map<String, List<String>> eventsGroupByDate, String name, String date) {
+
+        boolean dataJaExiste = eventsGroupByDate.containsKey(date);
+        if (dataJaExiste) {
+            List<String> eventos = eventsGroupByDate.get(date);
+            eventos.add(name);
+            eventsGroupByDate.put(date, eventos);
+        } else {
+            List<String> eventos = new ArrayList<String>();
+            eventos.add(name);
+            eventsGroupByDate.put(date, eventos);
+        }
+
+        return eventsGroupByDate;
     }
 
     private String format_date(String start_time) {

@@ -53,14 +53,35 @@ public class FriendAdapter<P> extends ArrayAdapter<Pessoa> {
 
         if (!amigo.getAmigosEmComum().isEmpty()) {
 
-            ImageView fotoAmigoEmComum1 = (ImageView) convertView.findViewById(R.id.imageMutualFriends1);
-            imageLoader.DisplayImage(amigo.getAmigosEmComum().get(0).getPic_square(), fotoAmigoEmComum1);
+            if (amigo.getAmigosEmComum().size() >= 1) {
+                Pessoa amigoEmComum = amigo.getAmigosEmComum().get(0);
 
-            ImageView fotoAmigoEmComum2 = (ImageView) convertView.findViewById(R.id.imageMutualFriends2);
-            imageLoader.DisplayImage(amigo.getAmigosEmComum().get(1).getPic_square(), fotoAmigoEmComum2);
+                ImageView fotoAmigoEmComum1 = (ImageView) convertView.findViewById(R.id.imageMutualFriends1);
+                imageLoader.DisplayImage(amigoEmComum.getPic_square(), fotoAmigoEmComum1);
 
-            ImageView fotoAmigoEmComum3 = (ImageView) convertView.findViewById(R.id.imageMutualFriends3);
-            imageLoader.DisplayImage(amigo.getAmigosEmComum().get(2).getPic_square(), fotoAmigoEmComum3);
+                TextView nomeAmigoEmComum1 = (TextView) convertView.findViewById(R.id.nameMutualFriends1);
+                nomeAmigoEmComum1.setText(amigoEmComum.getPrimeiroNome());
+            }
+
+            if (amigo.getAmigosEmComum().size() >= 2) {
+                Pessoa amigoEmComum = amigo.getAmigosEmComum().get(1);
+
+                ImageView fotoAmigoEmComum2 = (ImageView) convertView.findViewById(R.id.imageMutualFriends2);
+                imageLoader.DisplayImage(amigoEmComum.getPic_square(), fotoAmigoEmComum2);
+
+                TextView nomeAmigoEmComum2 = (TextView) convertView.findViewById(R.id.nameMutualFriends2);
+                nomeAmigoEmComum2.setText(amigoEmComum.getPrimeiroNome());
+            }
+
+            if (amigo.getAmigosEmComum().size() >= 3) {
+                Pessoa amigoEmComum = amigo.getAmigosEmComum().get(2);
+
+                ImageView fotoAmigoEmComum3 = (ImageView) convertView.findViewById(R.id.imageMutualFriends3);
+                imageLoader.DisplayImage(amigoEmComum.getPic_square(), fotoAmigoEmComum3);
+
+                TextView nomeAmigoEmComum3 = (TextView) convertView.findViewById(R.id.nameMutualFriends3);
+                nomeAmigoEmComum3.setText(amigoEmComum.getPrimeiroNome());
+            }
 
         }
 

@@ -1,5 +1,7 @@
 package me.levar.entity;
 
+import org.apache.commons.lang3.StringUtils;
+
 import java.util.List;
 
 public class Pessoa implements Comparable<Pessoa> {
@@ -39,6 +41,10 @@ public class Pessoa implements Comparable<Pessoa> {
 
     public void setNome(String nome) {
         this.nome = nome;
+    }
+
+    public String getPrimeiroNome() {
+        return StringUtils.split(nome, " ")[0];
     }
 
     public String getPic_square() {
