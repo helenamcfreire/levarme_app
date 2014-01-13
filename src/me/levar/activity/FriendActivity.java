@@ -120,7 +120,7 @@ public class FriendActivity extends LevarmeActivity {
         builder.append(idEvento);
         builder.append(" and rsvp_status= \"attending\" ");
         builder.append(" ', ");
-        builder.append(" 'dados_participante':  'SELECT name, pic_square, uid FROM user WHERE (uid IN (SELECT uid FROM #participantes)) ");
+        builder.append(" 'dados_participante':  'SELECT name, pic_square, uid, is_app_user FROM user WHERE (uid IN (SELECT uid FROM #participantes)) ");
         builder.append(" AND uid != me()' ");
         builder.append(" ,} ");
 
@@ -149,7 +149,12 @@ public class FriendActivity extends LevarmeActivity {
             public void onCompleted(Response response) {
 
                 adicionarParticipantesNoChat(session, amigo.getUid());
-                enviarNotificacao(amigo);
+
+                if (!amigo.isApp_user()) {
+                    enviarNotificacao(amigo);
+                } else {
+                    buscarParticipantesDoChat(amigo.getUid());
+                }
 
             }
         });
@@ -327,8 +332,9 @@ public class FriendActivity extends LevarmeActivity {
                 String id = JsonHelper.getString(amigoJson, "uid");
                 String nome = JsonHelper.getString(amigoJson, "name");
                 String foto = JsonHelper.getString(amigoJson, "pic_square");
+                boolean is_app_user = JsonHelper.getBoolean(amigoJson, "is_app_user");
 
-                Pessoa amigo = new Pessoa(id, nome, foto);
+                Pessoa amigo = new Pessoa(id, nome, foto, is_app_user);
 
                 amigos.add(amigo);
             }
@@ -357,7 +363,7 @@ public class FriendActivity extends LevarmeActivity {
 
                     List<Pessoa> amigosEmComum = new ArrayList<Pessoa>();
 
-                    Pessoa participanteInner = new Pessoa(participante.getUid(), participante.getNome(), participante.getPic_square());
+                    Pessoa participanteInner = new Pessoa(participante.getUid(), participante.getNome(), participante.getPic_square(), participante.isApp_user());
 
                     if (response != null) {
                         JSONArray commonUsers = JsonHelper.getJsonArrayNodeData(response);
@@ -370,7 +376,7 @@ public class FriendActivity extends LevarmeActivity {
                             String name = JsonHelper.getString(commonUser, "name");
                             String url_pic = getPicture(commonUser);
 
-                            Pessoa amigoEmComum = new Pessoa(id, name, url_pic);
+                            Pessoa amigoEmComum = new Pessoa(id, name, url_pic, false);
 
                             amigosEmComum.add(amigoEmComum);
                         }

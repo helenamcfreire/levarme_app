@@ -26,17 +26,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="88e535d7-1118-48fd-9090-b3a623c09624" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/drawable/left.9.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/drawable/right.9.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/levarme_app.apk" afterPath="$PROJECT_DIR$/levarme_app.apk" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AndroidManifest.xml" afterPath="$PROJECT_DIR$/AndroidManifest.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/me/levar/chat/ChatListAdapter.java" afterPath="$PROJECT_DIR$/src/me/levar/chat/ChatListAdapter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/rowchat.xml" afterPath="$PROJECT_DIR$/res/layout/rowchat.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/me/levar/activity/FriendActivity.java" afterPath="$PROJECT_DIR$/src/me/levar/activity/FriendActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/me/levar/fragment/JsonHelper.java" afterPath="$PROJECT_DIR$/src/me/levar/fragment/JsonHelper.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/me/levar/entity/Pessoa.java" afterPath="$PROJECT_DIR$/src/me/levar/entity/Pessoa.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="levarme_app.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="88e535d7-1118-48fd-9090-b3a623c09624" time="1389620983521" ignored="false" />
+    <file path="/Dummy.txt" changelist="88e535d7-1118-48fd-9090-b3a623c09624" time="1389624002421" ignored="false" />
     <file path="/fragment.java" changelist="88e535d7-1118-48fd-9090-b3a623c09624" time="1389441815157" ignored="false" />
     <file path="/styles.xml" changelist="88e535d7-1118-48fd-9090-b3a623c09624" time="1389459121748" ignored="false" />
     <file path="/LevarmeActivity.java" changelist="88e535d7-1118-48fd-9090-b3a623c09624" time="1385811414613" ignored="false" />
@@ -45,7 +42,7 @@
     <file path="/AndroidManifest.xml" changelist="88e535d7-1118-48fd-9090-b3a623c09624" time="1385748560130" ignored="false" />
     <file path="/EventActivity.java" changelist="88e535d7-1118-48fd-9090-b3a623c09624" time="1389565791101" ignored="false" />
     <file path="C:/Java/facebook-android-sdk-3.0.1/facebook-android-sdk-3.0.1/facebook/project.properties" changelist="88e535d7-1118-48fd-9090-b3a623c09624" time="1385744076680" ignored="false" />
-    <file path="/FriendActivity.java" changelist="88e535d7-1118-48fd-9090-b3a623c09624" time="1389567995753" ignored="false" />
+    <file path="/FriendActivity.java" changelist="88e535d7-1118-48fd-9090-b3a623c09624" time="1389629627399" ignored="false" />
     <file path="C:/Java/adt-bundle-windows-x86_64-20130219/adt-bundle-windows-x86_64-20130219/sdk/platforms/android-18/data/res/values-et/strings.xml" changelist="88e535d7-1118-48fd-9090-b3a623c09624" time="1385746928487" ignored="false" />
     <file path="C:/Java/adt-bundle-windows-x86_64-20130219/adt-bundle-windows-x86_64-20130219/sdk/platforms/android-18/data/res/values-nl/strings.xml" changelist="88e535d7-1118-48fd-9090-b3a623c09624" time="1385746928487" ignored="false" />
     <file path="C:/Java/adt-bundle-windows-x86_64-20130219/adt-bundle-windows-x86_64-20130219/sdk/platforms/android-18/data/res/values-fi/strings.xml" changelist="88e535d7-1118-48fd-9090-b3a623c09624" time="1385746928487" ignored="false" />
@@ -61,7 +58,7 @@
     <file path="/send_button.xml" changelist="88e535d7-1118-48fd-9090-b3a623c09624" time="1385775635970" ignored="false" />
     <file path="/colors.xml" changelist="88e535d7-1118-48fd-9090-b3a623c09624" time="1389458595263" ignored="false" />
     <file path="/rowfriend.xml" changelist="88e535d7-1118-48fd-9090-b3a623c09624" time="1389574206060" ignored="false" />
-    <file path="/Pessoa.java" changelist="88e535d7-1118-48fd-9090-b3a623c09624" time="1389571979955" ignored="false" />
+    <file path="/Pessoa.java" changelist="88e535d7-1118-48fd-9090-b3a623c09624" time="1389628998417" ignored="false" />
     <file path="/DrawableFromUrlTask.java" changelist="88e535d7-1118-48fd-9090-b3a623c09624" time="1386444115953" ignored="false" />
     <file path="/FriendAdapter.java" changelist="88e535d7-1118-48fd-9090-b3a623c09624" time="1389572066217" ignored="false" />
     <file path="/CommonFriendAdapter.java" changelist="88e535d7-1118-48fd-9090-b3a623c09624" time="1386448678018" ignored="false" />
@@ -80,7 +77,7 @@
     <file path="/LoginButton.java" changelist="88e535d7-1118-48fd-9090-b3a623c09624" time="1389467846700" ignored="false" />
     <file path="/MainActivity.java" changelist="88e535d7-1118-48fd-9090-b3a623c09624" time="1389468153445" ignored="false" />
     <file path="/EventAdapterHelper.java" changelist="88e535d7-1118-48fd-9090-b3a623c09624" time="1389471708148" ignored="false" />
-    <file path="/JsonHelper.java" changelist="88e535d7-1118-48fd-9090-b3a623c09624" time="1389567392921" ignored="false" />
+    <file path="/JsonHelper.java" changelist="88e535d7-1118-48fd-9090-b3a623c09624" time="1389629074916" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -132,7 +129,23 @@
       </breakpoint>
     </breakpoint_any>
     <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
-    <line_breakpoints default_suspend_policy="SuspendAll" default_condition_enabled="true" />
+    <line_breakpoints default_suspend_policy="SuspendAll" default_condition_enabled="true">
+      <breakpoint url="file://$PROJECT_DIR$/src/me/levar/activity/FriendActivity.java" line="365" class="me.levar.activity.FriendActivity$6" package="me.levar.activity">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="REMOVE_AFTER_HIT" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+    </line_breakpoints>
     <breakpoint_rules />
     <ui_properties />
   </component>
@@ -141,7 +154,53 @@
     <favorites_list name="levarme_app" />
   </component>
   <component name="FileEditorManager">
-    <leaf />
+    <leaf>
+      <file leaf-file-name="FriendActivity.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/me/levar/activity/FriendActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="155" column="28" selection-start="5036" selection-end="5036" vertical-scroll-proportion="0.81360203">
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#2753#3055#0" expanded="true" />
+                <element signature="e#3032#3033#0" expanded="true" />
+                <element signature="e#4717#5113#0" expanded="true" />
+                <element signature="e#5102#5103#0" expanded="true" />
+                <element signature="e#5825#5833#0" expanded="true" />
+                <element signature="e#8782#8790#0" expanded="true" />
+                <element signature="e#9090#9098#0" expanded="true" />
+                <element signature="e#10736#10744#0" expanded="true" />
+                <element signature="e#12518#12526#0" expanded="true" />
+                <element signature="e#12866#14853#0" expanded="true" />
+                <element signature="e#13077#13085#0" expanded="true" />
+                <element signature="e#14389#14778#0" expanded="true" />
+                <element signature="e#14755#14756#0" expanded="true" />
+                <element signature="e#14837#14838#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Request.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://C:/Java/facebook-android-sdk-3.0.1/facebook-android-sdk-3.0.1/facebook/src/com/facebook/Request.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="1239" column="0" selection-start="53744" selection-end="53744" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Pessoa.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/me/levar/entity/Pessoa.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="27" column="33" selection-start="671" selection-end="671" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FindManager">
     <FindUsagesManager>
@@ -170,16 +229,16 @@
         <option value="$PROJECT_DIR$/res/layout/headerevent.xml" />
         <option value="$PROJECT_DIR$/src/me/levar/adapter/EventAdapter.java" />
         <option value="$PROJECT_DIR$/src/me/levar/fragment/EventAdapterHelper.java" />
-        <option value="$PROJECT_DIR$/src/me/levar/fragment/JsonHelper.java" />
-        <option value="$PROJECT_DIR$/src/me/levar/activity/FriendActivity.java" />
         <option value="$PROJECT_DIR$/src/me/levar/activity/ChatActivity.java" />
         <option value="$PROJECT_DIR$/src/me/levar/activity/EventActivity.java" />
-        <option value="$PROJECT_DIR$/src/me/levar/entity/Pessoa.java" />
         <option value="$PROJECT_DIR$/src/me/levar/adapter/FriendAdapter.java" />
         <option value="$PROJECT_DIR$/res/layout/rowfriend.xml" />
         <option value="$PROJECT_DIR$/src/me/levar/chat/ChatListAdapter.java" />
         <option value="$PROJECT_DIR$/res/layout/rowchat.xml" />
         <option value="$PROJECT_DIR$/AndroidManifest.xml" />
+        <option value="$PROJECT_DIR$/src/me/levar/entity/Pessoa.java" />
+        <option value="$PROJECT_DIR$/src/me/levar/fragment/JsonHelper.java" />
+        <option value="$PROJECT_DIR$/src/me/levar/activity/FriendActivity.java" />
       </list>
     </option>
   </component>
@@ -250,88 +309,6 @@
             <PATH_ELEMENT>
               <option name="myItemId" value="levarme_app" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="levarme_app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="levarme_app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="levarme_app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="levarme_app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="levar" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="levarme_app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="levarme_app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="levar" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="adapter" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="levarme_app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="levarme_app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="res" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="levarme_app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="levarme_app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="res" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="drawable" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
@@ -629,7 +606,11 @@
       <created>1389577243180</created>
       <updated>1389577243180</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Versão 2.9 - Alterando os speech bubbles no chat !">
+      <created>1389624014173</created>
+      <updated>1389624014173</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -656,7 +637,7 @@
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="false" />
     <layout>
-      <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.548495" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.5284281" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.35378867" sideWeight="0.46265328" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -676,7 +657,7 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24866596" sideWeight="0.451505" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24866596" sideWeight="0.5451505" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32552955" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3244397" sideWeight="0.67335564" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
@@ -729,7 +710,7 @@
     <option name="WRAP_WHEN_TYPING_REACHES_RIGHT_MARGIN" value="false" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Versão 2.8 - Correção de 2 bugs" />
+    <option name="LAST_COMMIT_MESSAGE" value="Versão 2.9 - Alterando os speech bubbles no chat !" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -758,6 +739,7 @@
     <MESSAGE value="Versão 2.6" />
     <MESSAGE value="Versão 2.7 - Atualizando ícone do app" />
     <MESSAGE value="Versão 2.8 - Correção de 2 bugs" />
+    <MESSAGE value="Versão 2.9 - Alterando os speech bubbles no chat !" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -771,11 +753,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://C:/Java/facebook-android-sdk-3.0.1/facebook-android-sdk-3.0.1/facebook/src/com/facebook/Session.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="29" selection-start="769" selection-end="769" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/me/levar/activity/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="3" column="29" selection-start="83" selection-end="83" vertical-scroll-proportion="0.09788868" />
@@ -783,12 +760,9 @@
     </entry>
     <entry file="jar://$USER_HOME$/Downloads/commons-lang3-3.2.1-bin/commons-lang3-3.2.1/commons-lang3-3.2.1-sources.jar!/org/apache/commons/lang3/StringUtils.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2590" column="37" selection-start="104822" selection-end="104822" vertical-scroll-proportion="1.0477877" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/me/levar/entity/Pessoa.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="46" column="34" selection-start="956" selection-end="956" vertical-scroll-proportion="0.5311419" />
+        <state line="2590" column="37" selection-start="104822" selection-end="104822" vertical-scroll-proportion="1.0477877">
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/res/layout/rowfriend.xml">
@@ -806,24 +780,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/me/levar/activity/FriendActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="387" column="53" selection-start="14327" selection-end="14327" vertical-scroll-proportion="0.3903559">
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#5658#5666#0" expanded="true" />
-            <element signature="e#8615#8623#0" expanded="true" />
-            <element signature="e#8923#8931#0" expanded="true" />
-            <element signature="e#10569#10577#0" expanded="true" />
-            <element signature="e#12251#12259#0" expanded="true" />
-            <element signature="e#12810#12818#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/me/levar/activity/EventActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="179" column="19" selection-start="6086" selection-end="6086" vertical-scroll-proportion="0.6831229" />
+        <state line="179" column="19" selection-start="6086" selection-end="6086" vertical-scroll-proportion="0.6831229">
+          <folding>
+            <element signature="e#2200#3933#0" expanded="true" />
+            <element signature="e#3910#3911#0" expanded="true" />
+            <element signature="e#5526#5548#0" expanded="true" />
+            <element signature="e#5615#5631#0" expanded="true" />
+            <element signature="e#6742#6750#0" expanded="true" />
+          </folding>
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/res/drawable/speech_bubble_orange.9.png">
@@ -867,6 +834,52 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="4" column="34" selection-start="206" selection-end="206" vertical-scroll-proportion="0.089709766">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/me/levar/fragment/JsonHelper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="91" column="67" selection-start="2451" selection-end="2451" vertical-scroll-proportion="0.6877153">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/me/levar/entity/Pessoa.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="27" column="33" selection-start="671" selection-end="671" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Java/facebook-android-sdk-3.0.1/facebook-android-sdk-3.0.1/facebook/src/com/facebook/Request.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1239" column="0" selection-start="53744" selection-end="53744" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/me/levar/activity/FriendActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="155" column="28" selection-start="5036" selection-end="5036" vertical-scroll-proportion="0.81360203">
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2753#3055#0" expanded="true" />
+            <element signature="e#3032#3033#0" expanded="true" />
+            <element signature="e#4717#5113#0" expanded="true" />
+            <element signature="e#5102#5103#0" expanded="true" />
+            <element signature="e#5825#5833#0" expanded="true" />
+            <element signature="e#8782#8790#0" expanded="true" />
+            <element signature="e#9090#9098#0" expanded="true" />
+            <element signature="e#10736#10744#0" expanded="true" />
+            <element signature="e#12518#12526#0" expanded="true" />
+            <element signature="e#12866#14853#0" expanded="true" />
+            <element signature="e#13077#13085#0" expanded="true" />
+            <element signature="e#14389#14778#0" expanded="true" />
+            <element signature="e#14755#14756#0" expanded="true" />
+            <element signature="e#14837#14838#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

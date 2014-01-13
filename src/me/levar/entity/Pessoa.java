@@ -10,7 +10,7 @@ public class Pessoa implements Comparable<Pessoa> {
     private String nome;
     private String username;
     private String pic_square;
-    private boolean selecionado = false;
+    private boolean app_user = false;
     private List<Pessoa> amigosEmComum;
 
     public Pessoa() {
@@ -21,10 +21,11 @@ public class Pessoa implements Comparable<Pessoa> {
         this.nome = nome;
     }
 
-    public Pessoa(String uid, String nome, String pic_square) {
+    public Pessoa(String uid, String nome, String pic_square, boolean app_user) {
         this.uid = uid;
         this.nome = nome;
         this.pic_square = pic_square;
+        this.app_user = app_user;
     }
 
     public String getUid() {
@@ -55,12 +56,12 @@ public class Pessoa implements Comparable<Pessoa> {
         this.pic_square = pic_square;
     }
 
-    public boolean isSelecionado() {
-        return selecionado;
+    public boolean isApp_user() {
+        return app_user;
     }
 
-    public void setSelecionado(boolean selecionado) {
-        this.selecionado = selecionado;
+    public void setApp_user(boolean app_user) {
+        this.app_user = app_user;
     }
 
     public String getUsername() {

@@ -89,4 +89,14 @@ public class JsonHelper {
         return value;
     }
 
+    public static boolean getBoolean(JSONObject obj, String attr) {
+        boolean value = false;
+        try {
+            value = obj.getBoolean(attr);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return value;
+    }
+
 }
