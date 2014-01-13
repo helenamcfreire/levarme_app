@@ -51,10 +51,10 @@ public class ChatListAdapter extends FirebaseListAdapter<Chat> {
 
         // If the message was sent by this user, color it differently
         if (author.equals(username)) {
-            messageText.setBackgroundResource(R.drawable.speech_bubble_green);
+            messageText.setBackgroundResource(R.drawable.right);
             layoutParams.gravity = Gravity.RIGHT;
         } else {
-            messageText.setBackgroundResource(R.drawable.speech_bubble_orange);
+            messageText.setBackgroundResource(R.drawable.left);
             layoutParams.gravity = Gravity.LEFT;
         }
         messageText.setLayoutParams(layoutParams);
