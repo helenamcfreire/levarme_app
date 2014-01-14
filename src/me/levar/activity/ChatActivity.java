@@ -107,7 +107,9 @@ public class ChatActivity extends LevarmeActivity {
     public void onStop() {
         super.onStop();
         ref.getRoot().child(".info/connected").removeEventListener(connectedListener);
-        chatListAdapter.cleanup();
+        if (chatListAdapter != null) {
+            chatListAdapter.cleanup();
+        }
     }
 
     private void setupCurrentUser() {

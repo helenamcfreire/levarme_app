@@ -268,9 +268,11 @@ public class FriendActivity extends LevarmeActivity {
 
                                 JSONObject obj = JsonHelper.getJsonObject(jsonArray, i);
                                 String chatId = JsonHelper.getString(obj, "chat_id");
-                                String pessoaId = JsonHelper.getString(obj, "pessoa_id");
+                                String participante_1 = JsonHelper.getString(obj, "participante_1_id");
+                                String participante_2 = JsonHelper.getString(obj, "participante_2_id");
 
-                                participantesId.add(pessoaId);
+                                participantesId.add(participante_1);
+                                participantesId.add(participante_2);
 
                                 irParaTelaDeChat(chatId, participantesId);
                             }
