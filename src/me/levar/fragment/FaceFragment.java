@@ -1,12 +1,16 @@
 package me.levar.fragment;
 
 
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 import com.facebook.*;
 import com.facebook.model.GraphUser;
 import com.facebook.widget.LoginButton;
@@ -80,6 +84,10 @@ public class FaceFragment extends Fragment {
     public void onResume() {
         super.onResume();
         uiHelper.onResume();
+
+        if (!isOnline()) {
+            Toast.makeText(getActivity(), "No internet detected :(", Toast.LENGTH_SHORT).show();
+        }
     }
 
     @Override
@@ -132,6 +140,12 @@ public class FaceFragment extends Fragment {
                     }
                 });
         request.executeAsync();
+    }
+
+    public boolean isOnline() {
+        ConnectivityManager cm = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo netInfo = cm.getActiveNetworkInfo();
+        return netInfo != null && netInfo.isConnectedOrConnecting();
     }
 
 }

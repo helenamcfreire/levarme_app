@@ -2,16 +2,16 @@ package me.levar.activity;
 
 import android.app.ListActivity;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
-import android.widget.TextView;
+import android.widget.*;
 import com.facebook.HttpMethod;
 import com.facebook.Request;
 import com.facebook.Response;
@@ -20,9 +20,7 @@ import me.levar.R;
 import me.levar.adapter.EventAdapter;
 import me.levar.fragment.EventAdapterHelper;
 import me.levar.fragment.JsonHelper;
-import org.apache.commons.lang3.StringUtils;
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.text.ParseException;
@@ -46,6 +44,11 @@ public class EventActivity extends ListActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        if (!isOnline()) {
+            Toast.makeText(this, "No internet detected :(", Toast.LENGTH_SHORT).show();
+            moveTaskToBack(true);
+        }
 
         setContentView(R.layout.events);
 
@@ -237,6 +240,12 @@ public class EventActivity extends ListActivity {
         }
 
         return super.onKeyDown(keyCode, event);
+    }
+
+    public boolean isOnline() {
+        ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo netInfo = cm.getActiveNetworkInfo();
+        return netInfo != null && netInfo.isConnectedOrConnecting();
     }
 
 }

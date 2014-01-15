@@ -1,9 +1,13 @@
 package me.levar.activity;
 
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Toast;
 import me.levar.fragment.FaceFragment;
 
 public class MainActivity extends FragmentActivity {
