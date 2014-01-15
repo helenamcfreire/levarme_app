@@ -118,7 +118,6 @@ public class FriendActivity extends LevarmeActivity {
         builder.append(" )) ");
         builder.append(" and eid =  ");
         builder.append(idEvento);
-        builder.append(" and rsvp_status= \"attending\" ");
         builder.append(" ', ");
         builder.append(" 'dados_participante':  'SELECT name, pic_square, uid, is_app_user FROM user WHERE (uid IN (SELECT uid FROM #participantes)) ");
         builder.append(" AND uid != me()' ");
@@ -148,13 +147,7 @@ public class FriendActivity extends LevarmeActivity {
             @Override
             public void onCompleted(Response response) {
 
-                adicionarParticipantesNoChat(session, amigo.getUid());
-
-                if (!amigo.isApp_user()) {
-                    enviarNotificacao(amigo);
-                } else {
-                    buscarParticipantesDoChat(amigo.getUid());
-                }
+                adicionarParticipantesNoChat(session, amigo);
 
             }
         });
@@ -162,7 +155,7 @@ public class FriendActivity extends LevarmeActivity {
 
     }
 
-    private void adicionarParticipantesNoChat(final Session session, final String idAmigo) {
+    private void adicionarParticipantesNoChat(final Session session, final Pessoa amigo) {
 
         // Make an API call to get user data and define a
         // new callback to handle the response.
@@ -177,11 +170,31 @@ public class FriendActivity extends LevarmeActivity {
                                 List<String> idsParticipantes = new ArrayList<String>();
 
                                 idsParticipantes.add(user.getId());
-                                idsParticipantes.add(idAmigo);
+                                idsParticipantes.add(amigo.getUid());
 
                                 String params = idsParticipantes.toString().replace(" ", "%20");
 
-                                new RequestPessoaTask().execute("http://www.levar.me/pessoa/add_pessoa_chat?idsParticipantes=" + params + "&idEvento=" + getIdEvento());
+                                String json = null;
+                                try {
+                                    json = new RequestPessoaTask().execute("http://www.levar.me/pessoa/add_pessoa_chat?idsParticipantes=" + params + "&idEvento=" + getIdEvento()).get();
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+                                }
+
+                                JSONObject jsonObject = null;
+                                boolean naoFoiCadastrado = false;
+                                try {
+                                    jsonObject = new JSONObject(json);
+                                    naoFoiCadastrado = jsonObject.getBoolean("naoFoiCadastrado");
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
+
+                                if (!naoFoiCadastrado) {
+                                    enviarNotificacao(amigo);
+                                } else {
+                                    buscarParticipantesDoChat(amigo.getUid());
+                                }
 
                             }
                         }
