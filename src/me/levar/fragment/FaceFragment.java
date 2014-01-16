@@ -23,6 +23,7 @@ import static java.util.Arrays.asList;
 
 public class FaceFragment extends Fragment {
 
+    private static final String MSG_ERROR_NO_INTERNET = "No internet detected :(";
     private UiLifecycleHelper uiHelper;
     private LoginButton loginButton;
 
@@ -86,7 +87,7 @@ public class FaceFragment extends Fragment {
         uiHelper.onResume();
 
         if (!isOnline()) {
-            Toast.makeText(getActivity(), "No internet detected :(", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(), MSG_ERROR_NO_INTERNET, Toast.LENGTH_SHORT).show();
         }
     }
 

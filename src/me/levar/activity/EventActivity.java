@@ -40,15 +40,12 @@ public class EventActivity extends ListActivity {
 
     private ListView eventsListView;
     private ProgressDialog spinner;
+    private static final String MSG_ERROR_USER_WITHOUT_EVENTS = "You don't seem to have any parties lined up.";
+    private static final String MSG_ERROR_NO_INTERNET = "No internet detected :(";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        if (!isOnline()) {
-            Toast.makeText(this, "No internet detected :(", Toast.LENGTH_SHORT).show();
-            moveTaskToBack(true);
-        }
 
         setContentView(R.layout.events);
 
@@ -61,6 +58,10 @@ public class EventActivity extends ListActivity {
         spinner.setMessage(getString(com.facebook.android.R.string.com_facebook_loading));
 
         carregarEventos();
+
+        if (!isOnline()) {
+            Toast.makeText(this, MSG_ERROR_NO_INTERNET, Toast.LENGTH_LONG).show();
+        }
 
     }
 
@@ -168,19 +169,28 @@ public class EventActivity extends ListActivity {
         Map<String, List<String>> eventsGroupByDate = new LinkedHashMap<String, List<String>>();
         Map<String, String> eventsGroupById = new LinkedHashMap<String, String>();
 
-        for (int i = 0; i < (eventsByFacebook.length()); i++) {
 
-            JSONObject obj = JsonHelper.getJsonObject(eventsByFacebook, i);
+        if (eventsByFacebook != null) {
+            if (eventsByFacebook.length() == 0) {
+                Toast.makeText(this, MSG_ERROR_USER_WITHOUT_EVENTS, Toast.LENGTH_LONG).show();
+            }
 
-            String name = JsonHelper.getString(obj, "name");
-            String start_time = JsonHelper.getString(obj, "start_time");
-            String id = JsonHelper.getString(obj, "eid");
+            for (int i = 0; i < (eventsByFacebook.length()); i++) {
 
-            String date = format_date(start_time);
+                JSONObject obj = JsonHelper.getJsonObject(eventsByFacebook, i);
 
-            eventsGroupById.put(name, id);
+                String name = JsonHelper.getString(obj, "name");
+                String start_time = JsonHelper.getString(obj, "start_time");
+                String id = JsonHelper.getString(obj, "eid");
 
-            eventsGroupByDate = groupEventsByDate(eventsGroupByDate, name, date);
+                String date = format_date(start_time);
+
+                eventsGroupById.put(name, id);
+
+                eventsGroupByDate = groupEventsByDate(eventsGroupByDate, name, date);
+            }
+        } else {
+            Toast.makeText(this, MSG_ERROR_USER_WITHOUT_EVENTS, Toast.LENGTH_LONG).show();
         }
 
         helper.setMapaDataENomesEventos(eventsGroupByDate);
