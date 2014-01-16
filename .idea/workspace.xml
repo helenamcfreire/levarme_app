@@ -26,13 +26,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="88e535d7-1118-48fd-9090-b3a623c09624" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/me/levar/activity/EventActivity.java" afterPath="$PROJECT_DIR$/src/me/levar/activity/EventActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/me/levar/fragment/FaceFragment.java" afterPath="$PROJECT_DIR$/src/me/levar/fragment/FaceFragment.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/levarme_app.apk" afterPath="$PROJECT_DIR$/levarme_app.apk" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AndroidManifest.xml" afterPath="$PROJECT_DIR$/AndroidManifest.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="levarme_app.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="88e535d7-1118-48fd-9090-b3a623c09624" time="1389894108738" ignored="false" />
+    <file path="/Dummy.txt" changelist="88e535d7-1118-48fd-9090-b3a623c09624" time="1389905499346" ignored="false" />
     <file path="/fragment.java" changelist="88e535d7-1118-48fd-9090-b3a623c09624" time="1389441815157" ignored="false" />
     <file path="/styles.xml" changelist="88e535d7-1118-48fd-9090-b3a623c09624" time="1389459121748" ignored="false" />
     <file path="/LevarmeActivity.java" changelist="88e535d7-1118-48fd-9090-b3a623c09624" time="1389758954607" ignored="false" />
@@ -79,6 +79,7 @@
     <file path="/JsonHelper.java" changelist="88e535d7-1118-48fd-9090-b3a623c09624" time="1389629074916" ignored="false" />
     <file path="/button.xml" changelist="88e535d7-1118-48fd-9090-b3a623c09624" time="1389637024973" ignored="false" />
     <file path="$PROJECT_DIR$/levarme_app.apk!/AndroidManifest.xml" changelist="88e535d7-1118-48fd-9090-b3a623c09624" time="1389718378322" ignored="false" />
+    <file path="$PROJECT_DIR$/gen/me/levar/BuildConfig.java" changelist="88e535d7-1118-48fd-9090-b3a623c09624" time="1389905583338" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -293,13 +294,13 @@
         <option value="$PROJECT_DIR$/res/drawable/button.xml" />
         <option value="$PROJECT_DIR$/src/me/levar/activity/ChatActivity.java" />
         <option value="$PROJECT_DIR$/src/me/levar/activity/FriendActivity.java" />
-        <option value="$PROJECT_DIR$/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/src/me/levar/fragment/LevarmeHelper.java" />
         <option value="$PROJECT_DIR$/src/me/levar/activity/LevarmeActivity.java" />
         <option value="$PROJECT_DIR$/src/me/levar/activity/MainActivity.java" />
         <option value="$PROJECT_DIR$/src/me/levar/activity/EventActivity.java" />
         <option value="C:/Java/facebook-android-sdk-3.0.1/facebook-android-sdk-3.0.1/facebook/src/com/facebook/widget/LoginButton.java" />
         <option value="$PROJECT_DIR$/src/me/levar/fragment/FaceFragment.java" />
+        <option value="$PROJECT_DIR$/AndroidManifest.xml" />
       </list>
     </option>
   </component>
@@ -674,7 +675,11 @@
       <created>1389791187493</created>
       <updated>1389791187493</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="Fazendo verificações: Internet ta ligada? Usuário possui o app do face?">
+      <created>1389905516911</created>
+      <updated>1389905516911</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -774,7 +779,7 @@
     <option name="WRAP_WHEN_TYPING_REACHES_RIGHT_MARGIN" value="false" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Verificando se a internet está ligada, antes de entrar no app" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fazendo verificações: Internet ta ligada? Usuário possui o app do face?" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -808,6 +813,7 @@
     <MESSAGE value="Mudando novamente o layout do chat do Levar.me" />
     <MESSAGE value="Correção de bugs - notificação pro face estava sendo exibida sempre." />
     <MESSAGE value="Verificando se a internet está ligada, antes de entrar no app" />
+    <MESSAGE value="Fazendo verificações: Internet ta ligada? Usuário possui o app do face?" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -850,13 +856,6 @@
     <entry file="file://C:/Java/adt-bundle-windows-x86_64-20130219/adt-bundle-windows-x86_64-20130219/sdk/sources/android-19/java/text/SimpleDateFormat.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="513" column="41" selection-start="23288" selection-end="23288" vertical-scroll-proportion="0.019473081">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="78" selection-start="435" selection-end="435" vertical-scroll-proportion="0.2937365">
           <folding />
         </state>
       </provider>
@@ -939,6 +938,13 @@
             <element signature="e#5849#5865#0" expanded="true" />
             <element signature="e#7331#7339#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="34" selection-start="206" selection-end="206" vertical-scroll-proportion="0.16585366">
+          <folding />
         </state>
       </provider>
     </entry>
