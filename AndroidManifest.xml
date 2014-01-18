@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="me.levar"
-          android:versionCode="23"
-          android:versionName="3.2">
+          android:versionCode="24"
+          android:versionName="3.3">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_LOGS" />
 
-    <uses-sdk android:minSdkVersion="7" android:targetSdkVersion="17" />
+    <uses-sdk android:minSdkVersion="10" android:targetSdkVersion="17" />
 
     <uses-feature android:name="android.hardware.touchscreen" android:required="false"/>
 

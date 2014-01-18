@@ -11,9 +11,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
+import com.bugsense.trace.BugSenseHandler;
 import com.facebook.*;
 import com.facebook.model.GraphUser;
 import com.facebook.widget.LoginButton;
+import com.testflightapp.lib.TestFlight;
 import me.levar.R;
 import me.levar.activity.EventActivity;
 import me.levar.entity.Pessoa;
@@ -38,10 +40,17 @@ public class FaceFragment extends Fragment {
         loginButton.setFragment(this);
         loginButton.setReadPermissions(asList("user_events", "friends_events"));
 
+        TestFlight.passCheckpoint("Criou o botão de login com suas respectivas permissões...");
+        BugSenseHandler.sendEvent("Criou o botão de login com suas respectivas permissões...");
+
         Session session = Session.getActiveSession();
 
         if (session.isOpened()) {
+            TestFlight.passCheckpoint("Sessão aberta..entrou para exibir os eventos...");
+            BugSenseHandler.sendEvent("Sessão aberta..entrou para exibir os eventos...");
             exibirEventos();
+            TestFlight.passCheckpoint("Exibiu os eventos...");
+            BugSenseHandler.sendEvent("Exibiu os eventos...");
         }
 
         return view;
@@ -49,6 +58,8 @@ public class FaceFragment extends Fragment {
 
     private void confirmPublishPermission(Session session) {
         if (!session.getPermissions().contains("publish_stream")) {
+            TestFlight.passCheckpoint("Entrou para confirmar as permissões de publicação...");
+            BugSenseHandler.sendEvent("Entrou para confirmar as permissões de publicação...");
             session.requestNewPublishPermissions(new Session.NewPermissionsRequest(this, asList("publish_stream"))
                     .setCallback(callback));
         }
@@ -64,6 +75,8 @@ public class FaceFragment extends Fragment {
     private void onSessionStateChange(final Session session, SessionState state, Exception exception) {
 
         if (state.isOpened()) {
+            TestFlight.passCheckpoint("Esconde o botão de login, confirma as permissões de publicação, salva o usuário e exibe os eventos do mesmo...");
+            BugSenseHandler.sendEvent("Esconde o botão de login, confirma as permissões de publicação, salva o usuário e exibe os eventos do mesmo...");
             loginButton.setVisibility(View.GONE);
             confirmPublishPermission(session);
             salvarUsuario(session);
@@ -87,6 +100,8 @@ public class FaceFragment extends Fragment {
         uiHelper.onResume();
 
         if (!isOnline()) {
+            TestFlight.passCheckpoint("Parece que a internet do usuário não está ligada...");
+            BugSenseHandler.sendEvent("Parece que a internet do usuário não está ligada...");
             Toast.makeText(getActivity(), MSG_ERROR_NO_INTERNET, Toast.LENGTH_SHORT).show();
         }
     }
@@ -134,6 +149,8 @@ public class FaceFragment extends Fragment {
                         // If the response is successful
                         if (session == Session.getActiveSession()) {
                             if (user != null) {
+                                TestFlight.passCheckpoint("Salvando usuário...");
+                                BugSenseHandler.sendEvent("Salvando usuário...");
                                 Pessoa usuarioLogado = new Pessoa(user.getId(), user.getName());
                                 new RequestPessoaTask(usuarioLogado).execute("http://www.levar.me/pessoa/create");
                             }
