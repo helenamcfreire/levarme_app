@@ -26,10 +26,9 @@
             android:textSize="35dp"
             android:textColor="@color/light_blue"
             android:paddingTop="24dp"
-            android:layout_alignParentRight="true"
-            android:layout_marginTop="15dp"
             android:textIsSelectable="false"
-            />
+            android:layout_alignParentLeft="true" android:layout_marginLeft="112dp"
+            android:layout_alignTop="@+id/levarmetitle"/>
 
     <TextView
             android:layout_width="190dp"
@@ -93,9 +92,8 @@
             android:id="@+id/loginButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
             android:background="@drawable/signup"
-            android:layout_marginTop="450dp"
-            />
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/textView3"/>
 
 </RelativeLayout>
