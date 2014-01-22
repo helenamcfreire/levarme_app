@@ -216,17 +216,9 @@ public class EventActivity extends ListActivity {
         return eventsGroupByDate;
     }
 
-    private String format_date(String start_time) {
+    public String format_date(String start_time) {
 
-        SimpleDateFormat faceFormat;
-        boolean dateAndTime = start_time.length() > 10;
-
-        if (dateAndTime) {
-            faceFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssZ");
-            faceFormat.setTimeZone(TimeZone.getTimeZone("UTC"));
-        } else {
-            faceFormat = new SimpleDateFormat("yyyy-MM-dd");
-        }
+        SimpleDateFormat faceFormat = new SimpleDateFormat("yyyy-MM-dd");
 
         Date date = null;
         try {
