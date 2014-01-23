@@ -18,7 +18,7 @@ public class JsonHelper {
 
     public static JSONArray newJsonArray(String json) {
 
-        JSONArray jsonArray = null;
+        JSONArray jsonArray = new JSONArray();
         try {
             jsonArray = new JSONArray(json);
         } catch (JSONException e) {
@@ -30,7 +30,7 @@ public class JsonHelper {
 
     public static JSONArray getJsonArrayNodeData(Response response) {
 
-        JSONArray jsonArray = null;
+        JSONArray jsonArray = new JSONArray();
         if (response != null) {
             GraphObject graphObject = response.getGraphObject();
             if (graphObject != null) {
@@ -49,7 +49,7 @@ public class JsonHelper {
     }
 
     public static JSONArray getFqlResultSet(JSONObject jsonObject) {
-        JSONArray jsonArray = null;
+        JSONArray jsonArray = new JSONArray();
         try {
             jsonArray = jsonObject.getJSONArray("fql_result_set");
         } catch (JSONException e) {
@@ -60,7 +60,7 @@ public class JsonHelper {
     }
 
     public static JSONObject getJsonObject(JSONArray jsonArray, int i) {
-        JSONObject obj = null;
+        JSONObject obj = new JSONObject();
         try {
             obj = jsonArray.getJSONObject(i);
         } catch (JSONException e) {
@@ -70,7 +70,7 @@ public class JsonHelper {
     }
 
     public static JSONObject getJsonObject(JSONObject jsonObject, String attr) {
-        JSONObject obj = null;
+        JSONObject obj = new JSONObject();
         try {
             obj = jsonObject.getJSONObject(attr);
         } catch (JSONException e) {
@@ -80,7 +80,7 @@ public class JsonHelper {
     }
 
     public static String getString(JSONObject obj, String attr) {
-        String value = null;
+        String value = "";
         try {
             value = obj.getString(attr);
         } catch (JSONException e) {
