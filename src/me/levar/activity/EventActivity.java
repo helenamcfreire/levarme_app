@@ -113,7 +113,11 @@ public class EventActivity extends ListActivity {
                                 }
                             });
 
-                            spinner.dismiss();
+                            try {
+                                spinner.dismiss();
+                            } catch (Exception e) {
+                                // nothing
+                            }
 
                         }
                     });

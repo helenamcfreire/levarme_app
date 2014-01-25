@@ -412,7 +412,11 @@ public class FriendActivity extends LevarmeActivity {
                         }
                     });
 
-                    spinner.dismiss();
+                    try {
+                        spinner.dismiss();
+                    } catch (Exception e) {
+                        // nothing
+                    }
                 }
 
             });
@@ -420,7 +424,11 @@ public class FriendActivity extends LevarmeActivity {
             req.executeAsync();
         }
 
-        spinner.dismiss();
+        try {
+            spinner.dismiss();
+        } catch (Exception e) {
+            // nothing
+        }
 
     }
 
