@@ -3,7 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://C:/Java/facebook-android-sdk-3.0.1/facebook-android-sdk-3.0.1/facebook/facebook.iml" filepath="C:/Java/facebook-android-sdk-3.0.1/facebook-android-sdk-3.0.1/facebook/facebook.iml" />
+      <module fileurl="file://$USER_HOME$/Downloads/mixpanel-android-latest/mixpanel-android-latest/src/instrumentTest/instrumentTest.iml" filepath="$USER_HOME$/Downloads/mixpanel-android-latest/mixpanel-android-latest/src/instrumentTest/instrumentTest.iml" />
       <module fileurl="file://$PROJECT_DIR$/levarme_app.iml" filepath="$PROJECT_DIR$/levarme_app.iml" />
+      <module fileurl="file://$USER_HOME$/Downloads/mixpanel-android-latest/mixpanel-android-latest/src/main/main.iml" filepath="$USER_HOME$/Downloads/mixpanel-android-latest/mixpanel-android-latest/src/main/main.iml" />
     </modules>
   </component>
 </project>

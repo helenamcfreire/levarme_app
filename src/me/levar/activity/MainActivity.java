@@ -5,9 +5,12 @@ import android.support.v4.app.FragmentActivity;
 import android.view.Window;
 import android.view.WindowManager;
 import com.bugsense.trace.BugSenseHandler;
+import com.mixpanel.android.mpmetrics.MixpanelAPI;
 import me.levar.fragment.FaceFragment;
 
 public class MainActivity extends FragmentActivity {
+
+    public static final String MIXPANEL_TOKEN = "571ec076911ca93d1c6c1a2e429049d1";
 
     private FaceFragment faceFragment;
 
@@ -17,6 +20,7 @@ public class MainActivity extends FragmentActivity {
 
         BugSenseHandler.initAndStartSession(this, "d0435732");
         BugSenseHandler.setLogging(5000);
+        MixpanelAPI mixpanel = MixpanelAPI.getInstance(this, MIXPANEL_TOKEN);
 
         //Remove title bar
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
