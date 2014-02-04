@@ -26,21 +26,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="88e535d7-1118-48fd-9090-b3a623c09624" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/me/levar/fragment/MixPanelHelper.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/levarme_app.apk" afterPath="$PROJECT_DIR$/levarme_app.apk" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AndroidManifest.xml" afterPath="$PROJECT_DIR$/AndroidManifest.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/me/levar/activity/ChatActivity.java" afterPath="$PROJECT_DIR$/src/me/levar/activity/ChatActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/me/levar/activity/EventActivity.java" afterPath="$PROJECT_DIR$/src/me/levar/activity/EventActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/me/levar/fragment/FaceFragment.java" afterPath="$PROJECT_DIR$/src/me/levar/fragment/FaceFragment.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/me/levar/activity/FriendActivity.java" afterPath="$PROJECT_DIR$/src/me/levar/activity/FriendActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/me/levar/activity/MainActivity.java" afterPath="$PROJECT_DIR$/src/me/levar/activity/MainActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/levarme_app.iml" afterPath="$PROJECT_DIR$/levarme_app.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="levarme_app.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="88e535d7-1118-48fd-9090-b3a623c09624" time="1391449358649" ignored="false" />
+    <file path="/Dummy.txt" changelist="88e535d7-1118-48fd-9090-b3a623c09624" time="1391474359661" ignored="false" />
     <file path="/fragment.java" changelist="88e535d7-1118-48fd-9090-b3a623c09624" time="1391044559840" ignored="false" />
     <file path="/styles.xml" changelist="88e535d7-1118-48fd-9090-b3a623c09624" time="1389459121748" ignored="false" />
     <file path="/LevarmeActivity.java" changelist="88e535d7-1118-48fd-9090-b3a623c09624" time="1389758954607" ignored="false" />
@@ -722,7 +715,11 @@
       <created>1391041088379</created>
       <updated>1391041088379</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="Adicionando o MixPanel">
+      <created>1391474390420</created>
+      <updated>1391474390420</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -950,16 +947,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/me/levar/activity/FriendActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="441" column="28" selection-start="17045" selection-end="17045" vertical-scroll-proportion="0.5694604">
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#14282#14290#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/me/levar/activity/EventActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="107" column="81" selection-start="3725" selection-end="3725" vertical-scroll-proportion="0.22043628">
@@ -983,8 +970,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="34" selection-start="171" selection-end="171" vertical-scroll-proportion="0.05510907">
+        <state line="4" column="34" selection-start="206" selection-end="206" vertical-scroll-proportion="0.09251101">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/me/levar/activity/FriendActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="140" column="9" selection-start="4387" selection-end="4387" vertical-scroll-proportion="0.5814978">
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#14317#14325#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
