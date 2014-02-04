@@ -39,14 +39,10 @@ public class FaceFragment extends Fragment {
         loginButton.setFragment(this);
         loginButton.setReadPermissions(asList("user_events", "friends_events"));
 
-        BugSenseHandler.sendEvent("Criou o botão de login com suas respectivas permissões...");
-
         Session session = Session.getActiveSession();
 
         if (session.isOpened()) {
-            BugSenseHandler.sendEvent("Sessão aberta..entrou para exibir os eventos...");
             exibirEventos();
-            BugSenseHandler.sendEvent("Exibiu os eventos...");
         }
 
         return view;
@@ -54,7 +50,6 @@ public class FaceFragment extends Fragment {
 
     private void confirmPublishPermission(Session session) {
         if (!alreadyConfirmedPublishPermission(session)) {
-            BugSenseHandler.sendEvent("Entrou para confirmar as permissões de publicação...");
             session.requestNewPublishPermissions(new Session.NewPermissionsRequest(this, asList("publish_stream"))
                     .setCallback(callback));
         }
@@ -74,7 +69,6 @@ public class FaceFragment extends Fragment {
     private void onSessionStateChange(final Session session, SessionState state, Exception exception) {
 
         if (state.isOpened()) {
-            BugSenseHandler.sendEvent("Esconde o botão de login, confirma as permissões de publicação, salva o usuário e exibe os eventos do mesmo...");
             confirmPublishPermission(session);
             if (alreadyConfirmedPublishPermission(session)) {
                 salvarUsuario(session);
@@ -96,7 +90,6 @@ public class FaceFragment extends Fragment {
         uiHelper.onResume();
 
         if (!isOnline()) {
-            BugSenseHandler.sendEvent("Parece que a internet do usuário não está ligada...");
             Toast.makeText(getActivity(), MSG_ERROR_NO_INTERNET, Toast.LENGTH_SHORT).show();
         }
     }
@@ -144,7 +137,6 @@ public class FaceFragment extends Fragment {
                         // If the response is successful
                         if (session == Session.getActiveSession()) {
                             if (user != null) {
-                                BugSenseHandler.sendEvent("Salvando usuário...");
                                 Pessoa usuarioLogado = new Pessoa(user.getId(), user.getName());
                                 new RequestPessoaTask(usuarioLogado).execute("http://www.levar.me/pessoa/create");
                             }

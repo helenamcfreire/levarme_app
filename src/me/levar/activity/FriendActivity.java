@@ -9,6 +9,7 @@ import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
+import com.bugsense.trace.BugSenseHandler;
 import com.facebook.*;
 import com.facebook.model.GraphObject;
 import com.facebook.model.GraphUser;
@@ -17,6 +18,7 @@ import me.levar.R;
 import me.levar.adapter.FriendAdapter;
 import me.levar.entity.Pessoa;
 import me.levar.fragment.JsonHelper;
+import me.levar.fragment.MixPanelHelper;
 import me.levar.task.RequestPessoaTask;
 import org.apache.commons.lang3.StringUtils;
 import org.json.JSONArray;
@@ -223,10 +225,14 @@ public class FriendActivity extends LevarmeActivity {
                         if (error != null) {
                             if (error instanceof FacebookOperationCanceledException) {
 
+                                BugSenseHandler.sendEvent("Convites Cancelados");
+                                MixPanelHelper.sendEvent(FriendActivity.this, "Convites Cancelados");
                                 Toast.makeText(FriendActivity.this.getApplicationContext(), "Request cancelled", Toast.LENGTH_SHORT).show();
 
                             } else {
 
+                                BugSenseHandler.sendEvent("Convites Cancelados");
+                                MixPanelHelper.sendEvent(FriendActivity.this, "Convites Cancelados");
                                 Toast.makeText(FriendActivity.this.getApplicationContext(), "Network Error", Toast.LENGTH_SHORT).show();
 
                             }
@@ -234,9 +240,13 @@ public class FriendActivity extends LevarmeActivity {
                             final String requestId = values.getString("request");
                             if (requestId != null) {
 
+                                BugSenseHandler.sendEvent("Convites Enviados");
+                                MixPanelHelper.sendEvent(FriendActivity.this, "Convites Enviados");
                                 buscarParticipantesDoChat(amigo.getUid());
 
                             } else {
+                                BugSenseHandler.sendEvent("Convites Cancelados");
+                                MixPanelHelper.sendEvent(FriendActivity.this, "Convites Cancelados");
                                 Toast.makeText(FriendActivity.this.getApplicationContext(), "Request cancelled", Toast.LENGTH_SHORT).show();
                             }
                         }
@@ -406,6 +416,9 @@ public class FriendActivity extends LevarmeActivity {
                     {
                         public void onItemClick(AdapterView<?> arg0, View v, int position, long id)
                         {
+                            BugSenseHandler.sendEvent("Escolheu uma pessoa");
+                            MixPanelHelper.sendEvent(FriendActivity.this, "Escolheu uma pessoa");
+
                             Pessoa amigo = (Pessoa) friendsListView.getItemAtPosition(position);
 
                             postarNoMuralDoEvento(amigo);

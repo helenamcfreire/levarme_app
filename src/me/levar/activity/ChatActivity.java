@@ -10,6 +10,7 @@ import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
+import com.bugsense.trace.BugSenseHandler;
 import com.facebook.HttpMethod;
 import com.facebook.Request;
 import com.facebook.Response;
@@ -22,6 +23,7 @@ import me.levar.R;
 import me.levar.chat.Chat;
 import me.levar.chat.ChatListAdapter;
 import me.levar.fragment.JsonHelper;
+import me.levar.fragment.MixPanelHelper;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -80,6 +82,9 @@ public class ChatActivity extends LevarmeActivity {
                 sendMessage();
             }
         });
+
+        BugSenseHandler.sendEvent("Inicializou o chat");
+        MixPanelHelper.sendEvent(this, "Inicializou o chat");
 
     }
 

@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.*;
+import com.bugsense.trace.BugSenseHandler;
 import com.facebook.HttpMethod;
 import com.facebook.Request;
 import com.facebook.Response;
@@ -20,6 +21,7 @@ import me.levar.R;
 import me.levar.adapter.EventAdapter;
 import me.levar.fragment.EventAdapterHelper;
 import me.levar.fragment.JsonHelper;
+import me.levar.fragment.MixPanelHelper;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -101,6 +103,9 @@ public class EventActivity extends ListActivity {
                             eventsListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
                                 public void onItemClick(AdapterView<?> arg0, View v, int position, long id) {
+
+                                    BugSenseHandler.sendEvent("Clicou no evento");
+                                    MixPanelHelper.sendEvent(EventActivity.this, "Clicou no evento");
 
                                     Map<String, String> eventsGroupById = helper.getMapaNomeEIdEvento();
 
