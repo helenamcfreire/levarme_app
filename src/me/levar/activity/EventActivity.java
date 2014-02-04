@@ -7,18 +7,14 @@ import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
-import android.view.KeyEvent;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.Window;
+import android.view.*;
 import android.widget.*;
 import com.bugsense.trace.BugSenseHandler;
-import com.facebook.HttpMethod;
-import com.facebook.Request;
-import com.facebook.Response;
-import com.facebook.Session;
+import com.facebook.*;
+import com.facebook.widget.WebDialog;
 import me.levar.R;
 import me.levar.adapter.EventAdapter;
+import me.levar.entity.Pessoa;
 import me.levar.fragment.EventAdapterHelper;
 import me.levar.fragment.JsonHelper;
 import me.levar.fragment.MixPanelHelper;
@@ -44,6 +40,25 @@ public class EventActivity extends ListActivity {
     private ProgressDialog spinner;
     private static final String MSG_ERROR_USER_WITHOUT_EVENTS = "You don't seem to have any parties lined up.";
     private static final String MSG_ERROR_NO_INTERNET = "No internet detected :(";
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.main_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle item selection
+        switch (item.getItemId()) {
+            case R.id.share:
+                enviarNotificacao();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -257,6 +272,42 @@ public class EventActivity extends ListActivity {
         ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo netInfo = cm.getActiveNetworkInfo();
         return netInfo != null && netInfo.isConnectedOrConnecting();
+    }
+
+    private void enviarNotificacao() {
+
+        Bundle params = new Bundle();
+        String message = "Venha participar do Levar.me";
+        params.putString("message", message);
+
+        WebDialog requestsDialog = (
+                new WebDialog.RequestsDialogBuilder(this,
+                        Session.getActiveSession(),
+                        params))
+                .setTitle("Chame seus amigos")
+                .setOnCompleteListener(new WebDialog.OnCompleteListener() {
+
+                    @Override
+                    public void onComplete(Bundle values, FacebookException error) {
+                        if (error != null) {
+                                BugSenseHandler.sendEvent("Share Cancelado");
+                                MixPanelHelper.sendEvent(EventActivity.this, "Share Cancelado");
+                        } else {
+                            final String requestId = values.getString("request");
+                            if (requestId != null) {
+                                BugSenseHandler.sendEvent("Share Enviado");
+                                MixPanelHelper.sendEvent(EventActivity.this, "Share Enviado");
+                                Toast.makeText(EventActivity.this.getApplicationContext(), "Seus amigos foram convidados com sucesso", Toast.LENGTH_SHORT).show();
+                            } else {
+                                BugSenseHandler.sendEvent("Share Cancelado");
+                                MixPanelHelper.sendEvent(EventActivity.this, "Share Cancelado");
+                            }
+                        }
+                    }
+
+                })
+                .build();
+        requestsDialog.show();
     }
 
 }
