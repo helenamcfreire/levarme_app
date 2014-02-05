@@ -8,14 +8,15 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.view.*;
-import android.widget.*;
+import android.widget.AdapterView;
+import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
 import com.bugsense.trace.BugSenseHandler;
 import com.facebook.*;
 import com.facebook.widget.WebDialog;
 import me.levar.R;
 import me.levar.adapter.EventAdapter;
-import me.levar.entity.Pessoa;
-import me.levar.fragment.EventAdapterHelper;
 import me.levar.fragment.JsonHelper;
 import me.levar.fragment.MixPanelHelper;
 import org.json.JSONArray;
@@ -23,9 +24,10 @@ import org.json.JSONObject;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.*;
-
-import static org.apache.commons.lang3.StringUtils.isNotBlank;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.Locale;
 
 /**
  * Created with IntelliJ IDEA.
@@ -34,8 +36,9 @@ import static org.apache.commons.lang3.StringUtils.isNotBlank;
  * Time: 00:22
  * To change this template use File | Settings | File Templates.
  */
-public class EventActivity extends ListActivity {
+public class EventActivity extends LevarmeActivity {
 
+    private EventAdapter<Evento> eventosAdapter;
     private ListView eventsListView;
     private ProgressDialog spinner;
     private static final String MSG_ERROR_USER_WITHOUT_EVENTS = "You don't seem to have any parties lined up.";
@@ -68,7 +71,7 @@ public class EventActivity extends ListActivity {
 
         setTitle("   Which party?");
 
-        eventsListView = (ListView) findViewById(android.R.id.list);
+        eventsListView = (ListView) findViewById(R.id.eventList);
 
         spinner = new ProgressDialog(this);
         spinner.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -101,20 +104,10 @@ public class EventActivity extends ListActivity {
                     new Request.Callback() {
                         public void onCompleted(Response response) {
 
-                            final EventAdapterHelper helper = getEventosLevarMe(response);
+                            final List<Evento> eventos = getEventosLevarMe(response);
 
-                            EventAdapter adapter = createEventAdapter();
-
-                            Map<String, List<String>> eventsGroupByDate = helper.getMapaDataENomesEventos();
-
-                            for (String date : eventsGroupByDate.keySet()) {
-                                List<String> eventosNaData = eventsGroupByDate.get(date);
-                                adapter.addSection(date, new ArrayAdapter<String>(EventActivity.this, R.layout.rowevent, eventosNaData));
-                            }
-
-                            setListAdapter(adapter);
-
-                            eventsListView.setAdapter(adapter);
+                            eventosAdapter = new EventAdapter<Evento>(EventActivity.this, R.layout.rowevent, eventos);
+                            eventsListView.setAdapter(eventosAdapter);
                             eventsListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
                                 public void onItemClick(AdapterView<?> arg0, View v, int position, long id) {
@@ -122,13 +115,10 @@ public class EventActivity extends ListActivity {
                                     BugSenseHandler.sendEvent("Clicou no evento");
                                     MixPanelHelper.sendEvent(EventActivity.this, "Clicou no evento");
 
-                                    Map<String, String> eventsGroupById = helper.getMapaNomeEIdEvento();
+                                    Evento evento = (Evento) eventsListView.getItemAtPosition(position);
 
-                                    String nomeEvento = (String) eventsListView.getItemAtPosition(position);
-                                    String idEvento = eventsGroupById.get(nomeEvento);
-
-                                    if (isNotBlank(nomeEvento) && isNotBlank(idEvento)) {
-                                        irParaTelaDeParticipantesDoEvento(idEvento, nomeEvento);
+                                    if (evento != null) {
+                                        irParaTelaDeParticipantesDoEvento(evento.getEid(), evento.getNome());
                                     }
                                 }
                             });
@@ -146,22 +136,6 @@ public class EventActivity extends ListActivity {
 
         }
 
-    }
-
-    private EventAdapter createEventAdapter() {
-        return new EventAdapter() {
-            protected View getHeaderView(String caption, int index, View convertView, ViewGroup parent) {
-                TextView result = (TextView) convertView;
-
-                if (convertView == null) {
-                    result = (TextView) getLayoutInflater().inflate(R.layout.headerevent, null);
-                }
-
-                result.setText(caption);
-
-                return (result);
-            }
-        };
     }
 
     private String getFQLQuery() {
@@ -184,15 +158,11 @@ public class EventActivity extends ListActivity {
 
     }
 
-    private EventAdapterHelper getEventosLevarMe(Response response) {
-
-        EventAdapterHelper helper = new EventAdapterHelper();
+    private List<Evento> getEventosLevarMe(Response response) {
 
         JSONArray eventsByFacebook = JsonHelper.getJsonArrayNodeData(response);
 
-        Map<String, List<String>> eventsGroupByDate = new LinkedHashMap<String, List<String>>();
-        Map<String, String> eventsGroupById = new LinkedHashMap<String, String>();
-
+        List<Evento> eventosLevarMe = new ArrayList<Evento>();
 
         if (eventsByFacebook != null) {
             if (eventsByFacebook.length() == 0) {
@@ -203,41 +173,21 @@ public class EventActivity extends ListActivity {
 
                 JSONObject obj = JsonHelper.getJsonObject(eventsByFacebook, i);
 
+                String id = JsonHelper.getString(obj, "eid");
                 String name = JsonHelper.getString(obj, "name");
                 String start_time = JsonHelper.getString(obj, "start_time");
-                String id = JsonHelper.getString(obj, "eid");
 
                 String date = format_date(start_time);
 
-                eventsGroupById.put(name, id);
+                Evento evento = new Evento(id, name, date);
 
-                eventsGroupByDate = groupEventsByDate(eventsGroupByDate, name, date);
+                eventosLevarMe.add(evento);
             }
         } else {
             Toast.makeText(this, MSG_ERROR_USER_WITHOUT_EVENTS, Toast.LENGTH_LONG).show();
         }
 
-        helper.setMapaDataENomesEventos(eventsGroupByDate);
-        helper.setMapaNomeEIdEvento(eventsGroupById);
-
-        return helper;
-    }
-
-
-    private Map<String, List<String>> groupEventsByDate(Map<String, List<String>> eventsGroupByDate, String name, String date) {
-
-        boolean dataJaExiste = eventsGroupByDate.containsKey(date);
-        if (dataJaExiste) {
-            List<String> eventos = eventsGroupByDate.get(date);
-            eventos.add(name);
-            eventsGroupByDate.put(date, eventos);
-        } else {
-            List<String> eventos = new ArrayList<String>();
-            eventos.add(name);
-            eventsGroupByDate.put(date, eventos);
-        }
-
-        return eventsGroupByDate;
+        return eventosLevarMe;
     }
 
     public String format_date(String start_time) {
@@ -251,7 +201,7 @@ public class EventActivity extends ListActivity {
             e.printStackTrace();
         }
 
-        SimpleDateFormat levarmeFormat = new SimpleDateFormat("EEEE - dd/MM", Locale.ENGLISH);
+        SimpleDateFormat levarmeFormat = new SimpleDateFormat("dd/MM", Locale.ENGLISH);
 
         return levarmeFormat.format(date);
     }

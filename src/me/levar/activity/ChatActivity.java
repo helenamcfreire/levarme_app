@@ -1,11 +1,13 @@
 package me.levar.activity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.DataSetObserver;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
+import android.view.Window;
 import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -47,6 +49,7 @@ public class ChatActivity extends LevarmeActivity {
     private Firebase ref;
     private ValueEventListener connectedListener;
     private ChatListAdapter chatListAdapter;
+    private ProgressDialog spinner;
 
 
     @Override
@@ -60,6 +63,12 @@ public class ChatActivity extends LevarmeActivity {
         ArrayList<String> idsParticipantes = intent.getStringArrayListExtra("idsParticipantes");
 
         setTitleChat(idsParticipantes);
+
+        spinner = new ProgressDialog(this);
+        spinner.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        spinner.setMessage(getString(com.facebook.android.R.string.com_facebook_loading));
+
+        spinner.show();
 
         // Setup our Firebase ref
         ref = new Firebase(FIREBASE_URL).child(idChat); //mudar de chat para o id do user que esta começando o chat
@@ -86,6 +95,7 @@ public class ChatActivity extends LevarmeActivity {
         BugSenseHandler.sendEvent("Inicializou o chat");
         MixPanelHelper.sendEvent(this, "Inicializou o chat");
 
+        spinner.dismiss();
     }
 
     @Override

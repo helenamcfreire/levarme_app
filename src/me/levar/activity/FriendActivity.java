@@ -97,8 +97,23 @@ public class FriendActivity extends LevarmeActivity {
                         public void onCompleted(Response response) {
 
                             List<Pessoa> participantes = buscarParticipantesDoEvento(response);
-                            buscarAmigosEmComum(participantes);
+                            participantesAdapter = new FriendAdapter<Pessoa>(FriendActivity.this, R.layout.rowfriend, participantes);
+                            friendsListView.setAdapter(participantesAdapter);
+                            friendsListView.setOnItemClickListener(new AdapterView.OnItemClickListener()
+                            {
+                                public void onItemClick(AdapterView<?> arg0, View v, int position, long id)
+                                {
+                                    spinner.show();
+                                    BugSenseHandler.sendEvent("Escolheu uma pessoa");
+                                    MixPanelHelper.sendEvent(FriendActivity.this, "Escolheu uma pessoa");
 
+                                    Pessoa amigo = (Pessoa) friendsListView.getItemAtPosition(position);
+
+                                    postarNoMuralDoEvento(amigo);
+                                    spinner.dismiss();
+                                }
+                            });
+                            spinner.dismiss();
                         }
                     });
 
@@ -121,7 +136,7 @@ public class FriendActivity extends LevarmeActivity {
         builder.append(" and eid =  ");
         builder.append(idEvento);
         builder.append(" ', ");
-        builder.append(" 'dados_participante':  'SELECT name, pic_square, uid, is_app_user FROM user WHERE (uid IN (SELECT uid FROM #participantes)) ");
+        builder.append(" 'dados_participante':  'SELECT name, pic_square, uid, is_app_user, mutual_friend_count FROM user WHERE (uid IN (SELECT uid FROM #participantes)) ");
         builder.append(" AND uid != me()' ");
         builder.append(" ,} ");
 
@@ -358,8 +373,9 @@ public class FriendActivity extends LevarmeActivity {
                 String nome = JsonHelper.getString(amigoJson, "name");
                 String foto = JsonHelper.getString(amigoJson, "pic_square");
                 boolean is_app_user = JsonHelper.getBoolean(amigoJson, "is_app_user");
+                String mutual_friend_count = JsonHelper.getString(amigoJson, "mutual_friend_count");
 
-                Pessoa amigo = new Pessoa(id, nome, foto, is_app_user);
+                Pessoa amigo = new Pessoa(id, nome, foto, is_app_user, mutual_friend_count);
 
                 amigos.add(amigo);
             }
@@ -370,88 +386,6 @@ public class FriendActivity extends LevarmeActivity {
         return amigos;
     }
 
-    private void buscarAmigosEmComum(final List<Pessoa> participantes) {
-
-        final List<Pessoa> participantesInner = new ArrayList<Pessoa>();
-
-        Session session = Session.getActiveSession();
-
-        for (final Pessoa participante : participantes) {
-
-            Bundle params = new Bundle();
-            params.putString("fields", "id,name,picture");
-            final Request req = new Request(session, "me/mutualfriends/"+participante.getUid(), params, HttpMethod.GET, new Request.Callback(){
-                @Override
-                public void onCompleted(Response response) {
-
-                    spinner.show();
-
-                    List<Pessoa> amigosEmComum = new ArrayList<Pessoa>();
-
-                    Pessoa participanteInner = new Pessoa(participante.getUid(), participante.getNome(), participante.getPic_square(), participante.isApp_user());
-
-                    if (response != null) {
-                        JSONArray commonUsers = JsonHelper.getJsonArrayNodeData(response);
-
-                        for (int i = 0; i < (commonUsers.length()); i++) {
-
-                            JSONObject commonUser = JsonHelper.getJsonObject(commonUsers, i);
-
-                            String id = JsonHelper.getString(commonUser, "id");
-                            String name = JsonHelper.getString(commonUser, "name");
-                            String url_pic = getPicture(commonUser);
-
-                            Pessoa amigoEmComum = new Pessoa(id, name, url_pic, false);
-
-                            amigosEmComum.add(amigoEmComum);
-                        }
-                    }
-
-                    participanteInner.setAmigosEmComum(amigosEmComum);
-                    participantesInner.add(participanteInner);
-
-                    participantesAdapter = new FriendAdapter<Pessoa>(FriendActivity.this, R.layout.rowfriend, participantesInner);
-                    friendsListView.setAdapter(participantesAdapter);
-                    friendsListView.setOnItemClickListener(new AdapterView.OnItemClickListener()
-                    {
-                        public void onItemClick(AdapterView<?> arg0, View v, int position, long id)
-                        {
-                            BugSenseHandler.sendEvent("Escolheu uma pessoa");
-                            MixPanelHelper.sendEvent(FriendActivity.this, "Escolheu uma pessoa");
-
-                            Pessoa amigo = (Pessoa) friendsListView.getItemAtPosition(position);
-
-                            postarNoMuralDoEvento(amigo);
-                        }
-                    });
-
-                    try {
-                        spinner.dismiss();
-                    } catch (Exception e) {
-                        // nothing
-                    }
-                }
-
-            });
-
-            req.executeAsync();
-        }
-
-        try {
-            spinner.dismiss();
-        } catch (Exception e) {
-            // nothing
-        }
-
-    }
-
-    private String getPicture(JSONObject commonUser) {
-
-        JSONObject picture = JsonHelper.getJsonObject(commonUser, "picture");
-        JSONObject data = JsonHelper.getJsonObject(picture, "data");
-        return JsonHelper.getString(data, "url");
-
-    }
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {

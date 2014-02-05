@@ -3,6 +3,7 @@ package me.levar.fragment;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
@@ -10,6 +11,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 import com.bugsense.trace.BugSenseHandler;
 import com.facebook.*;
@@ -27,6 +29,8 @@ public class FaceFragment extends Fragment {
     private static final String MSG_ERROR_NO_INTERNET = "No internet detected :(";
     private UiLifecycleHelper uiHelper;
     private LoginButton loginButton;
+    private TextView logo;
+    private TextView slogan;
 
     @Override
     public View onCreateView(LayoutInflater inflater,
@@ -34,6 +38,15 @@ public class FaceFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.main, container, false);
+
+        logo = (TextView) view.findViewById(R.id.logo);
+        slogan = (TextView) view.findViewById(R.id.slogan);
+
+        Typeface logoFont = Typeface.createFromAsset(getActivity().getAssets(), "fonts/GothamMedium.otf");
+        logo.setTypeface(logoFont);
+
+        Typeface sloganFont = Typeface.createFromAsset(getActivity().getAssets(), "fonts/GothamLight.otf");
+        slogan.setTypeface(sloganFont);
 
         loginButton = (LoginButton) view.findViewById(R.id.loginButton);
         loginButton.setFragment(this);

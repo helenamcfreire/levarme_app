@@ -1,154 +1,60 @@
-
-/***
- Copyright (c) 2008-2010 CommonsWare, LLC
- portions Copyright (c) 2008-10 Jeffrey Sharkey
-
- This program is free software: you can redistribute it and/or modify
- it under the terms of the GNU General Public License as published by
- the Free Software Foundation, either version 3 of the License, or
- (at your option) any later version.
-
- This program is distributed in the hope that it will be useful,
- but WITHOUT ANY WARRANTY; without even the implied warranty of
- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.    See the
- GNU General Public License for more details.
-
- You should have received a copy of the GNU General Public License
- along with this program.        If not, see <http://www.gnu.org/licenses/>.
- */
-
 package me.levar.adapter;
 
+import android.content.Context;
+import android.graphics.Typeface;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Adapter;
-import android.widget.BaseAdapter;
+import android.widget.ArrayAdapter;
+import android.widget.TextView;
+import me.levar.R;
+import me.levar.activity.Evento;
 
 import java.util.ArrayList;
 import java.util.List;
 
-abstract public class EventAdapter extends BaseAdapter {
+public class EventAdapter<P> extends ArrayAdapter<Evento> {
 
-    abstract protected View getHeaderView(String caption, int index,
-                                          View convertView, ViewGroup parent);
+    /*
+     * Used to instantiate layout XML file into its corresponding View objects
+     */
+    private final LayoutInflater inflater;
+    public List<Evento> eventos;
 
-    private List<Section> sections = new ArrayList<Section>();
-    private static int TYPE_SECTION_HEADER = 0;
+    /*
+     * each list item layout ID
+     */
+    private final int resourceId;
 
-    public EventAdapter() {
-        super();
+    public EventAdapter(Context context, int resource, List<Evento> eventos) {
+        super(context, resource, eventos);
+        this.inflater = LayoutInflater.from(context);
+        this.resourceId = resource;
+        this.eventos = new ArrayList<Evento>();
+        this.eventos.addAll(eventos);
     }
 
-    public void addSection(String caption, Adapter adapter) {
-        sections.add(new Section(caption, adapter));
-    }
-
-    public void clear() {
-        sections.clear();
-    }
-
-    public Object getItem(int position) {
-        for (Section section : this.sections) {
-            if (position == 0) {
-                return (section);
-            }
-
-            int size = section.adapter.getCount() + 1;
-
-            if (position < size) {
-                return (section.adapter.getItem(position - 1));
-            }
-
-            position -= size;
-        }
-
-        return (null);
-    }
-
-    public int getCount() {
-        int total = 0;
-
-        for (Section section : this.sections) {
-            total += section.adapter.getCount() + 1; // add one for header
-        }
-
-        return (total);
-    }
-
-    public int getViewTypeCount() {
-        int total = 1; // one for the header, plus those from sections
-
-        for (Section section : this.sections) {
-            total += section.adapter.getViewTypeCount();
-        }
-
-        return (total);
-    }
-
-    public int getItemViewType(int position) {
-        int typeOffset = TYPE_SECTION_HEADER + 1; // start counting from here
-
-        for (Section section : this.sections) {
-            if (position == 0) {
-                return (TYPE_SECTION_HEADER);
-            }
-
-            int size = section.adapter.getCount() + 1;
-
-            if (position < size) {
-                return (typeOffset + section.adapter
-                        .getItemViewType(position - 1));
-            }
-
-            position -= size;
-            typeOffset += section.adapter.getViewTypeCount();
-        }
-
-        return (-1);
-    }
-
-    public boolean areAllItemsSelectable() {
-        return (false);
-    }
-
-    public boolean isEnabled(int position) {
-        return (getItemViewType(position) != TYPE_SECTION_HEADER);
-    }
-
+    @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        int sectionIndex = 0;
 
-        for (Section section : this.sections) {
-            if (position == 0) {
-                return (getHeaderView(section.caption, sectionIndex,
-                        convertView, parent));
-            }
+        //get the person from position
+        final Evento evento = getItem(position);
 
-            int size = section.adapter.getCount() + 1;
+        convertView = inflater.inflate(resourceId, parent, false);
 
-            if (position < size) {
-                return (section.adapter.getView(position - 1, convertView,
-                        parent));
-            }
+        TextView eventName = (TextView) convertView.findViewById(R.id.rowEvent);
+        eventName.setText(evento.getNome());
 
-            position -= size;
-            sectionIndex++;
-        }
+        Typeface nameEventFont = Typeface.createFromAsset(getContext().getAssets(), "fonts/GothamLight.otf");
+        eventName.setTypeface(nameEventFont);
 
-        return (null);
+        TextView date = (TextView) convertView.findViewById(R.id.date);
+        date.setText(evento.getDate());
+
+        Typeface dateFont = Typeface.createFromAsset(getContext().getAssets(), "fonts/GothamMedium.otf");
+        date.setTypeface(dateFont);
+
+        return convertView;
     }
 
-    public long getItemId(int position) {
-        return (position);
-    }
-
-    class Section {
-        String caption;
-        Adapter adapter;
-
-        Section(String caption, Adapter adapter) {
-            this.caption = caption;
-            this.adapter = adapter;
-        }
-    }
 }

@@ -6,7 +6,7 @@
     </style>
 
     <style name="AppTheme" parent="android:Theme.Light">
-        <item name="android:windowBackground">@color/light_gray</item>
+        <item name="android:windowBackground">@color/white</item>
         <item name="android:windowTitleSize">50dip</item>
         <item name="android:windowTitleBackgroundStyle">@style/CustomWindowTitleBarBG</item>
     </style>

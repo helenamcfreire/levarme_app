@@ -12,9 +12,10 @@
                   android:layout_height="wrap_content"
                   android:padding="3dip"
                   android:layout_alignParentLeft="true"
+                  android:background="@drawable/image_bg"
                   android:layout_marginRight="5dip">
 
-        <me.levar.fragment.RoundedImageView
+        <ImageView
                 android:id="@+id/imageFriend"
                 android:layout_width="50dip"
                 android:layout_height="50dip"/>
@@ -28,85 +29,24 @@
             android:layout_height="wrap_content"
             android:layout_alignTop="@+id/thumbnail"
             android:layout_toRightOf="@+id/thumbnail"
-            android:textColor="#1f1d1d"
+            android:textColor="#41B6EB"
             android:typeface="sans"
             android:textSize="15dip"
-            android:textStyle="bold"/>
+            android:textStyle="bold"
+            android:layout_marginTop="9dp"/>
 
-    <!-- Titulo Friends in Common -->
+    <!-- Friends in Common -->
     <TextView
             android:id="@+id/commonFriends"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/nameFriend"
             android:layout_alignLeft="@id/nameFriend"
-            android:textColor="#70838C"
+            android:textColor="#6D6D6D"
             android:typeface="sans"
             android:textSize="10dip"
             android:text="@string/commonFriends"
             android:textStyle="bold"
-            android:layout_marginTop="5dp"/>
-
-    <!-- Fotos dos Amigos em Comum -->
-    <me.levar.fragment.RoundedImageView
-            android:id="@+id/imageMutualFriends1"
-            android:layout_width="40dip"
-            android:layout_height="40dip"
-            android:layout_below="@+id/commonFriends"
-            android:layout_alignLeft="@+id/commonFriends"
-            android:layout_centerInParent="true"
-            android:layout_marginRight="30dp"
-            android:layout_marginTop="10dp"
-            />
-    <TextView
-            android:id="@+id/nameMutualFriends1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/imageMutualFriends1"
-            android:layout_alignLeft="@id/imageMutualFriends1"
-            android:textColor="#70838C"
-            android:typeface="sans"
-            android:textSize="8dip"
-            android:textStyle="bold"
-            android:layout_marginTop="3dp"/>
-
-    <me.levar.fragment.RoundedImageView
-            android:id="@+id/imageMutualFriends2"
-            android:layout_width="40dip"
-            android:layout_height="40dip"
-            android:layout_toRightOf="@+id/imageMutualFriends1"
-            android:layout_alignTop="@+id/imageMutualFriends1"
-            android:layout_marginRight="30dp"
-            />
-    <TextView
-            android:id="@+id/nameMutualFriends2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/imageMutualFriends2"
-            android:layout_alignLeft="@id/imageMutualFriends2"
-            android:textColor="#70838C"
-            android:typeface="sans"
-            android:textSize="8dip"
-            android:textStyle="bold"
-            android:layout_marginTop="3dp"/>
-
-    <me.levar.fragment.RoundedImageView
-            android:id="@+id/imageMutualFriends3"
-            android:layout_width="40dip"
-            android:layout_height="40dip"
-            android:layout_toRightOf="@+id/imageMutualFriends2"
-            android:layout_alignTop="@+id/imageMutualFriends2"
-            />
-    <TextView
-            android:id="@+id/nameMutualFriends3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/imageMutualFriends3"
-            android:layout_alignLeft="@id/imageMutualFriends3"
-            android:textColor="#70838C"
-            android:typeface="sans"
-            android:textSize="8dip"
-            android:textStyle="bold"
-            android:layout_marginTop="3dp"/>
+            android:layout_marginTop="2dp"/>
 
 </RelativeLayout>

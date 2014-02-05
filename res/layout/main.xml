@@ -1,92 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
-                android:background="@drawable/main_bg"
+                android:background="@drawable/bg_rio"
                 xmlns:android="http://schemas.android.com/apk/res/android">
 
     <TextView
-            android:layout_width="190dp"
+            android:id="@+id/logo"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="Levar"
-            android:id="@+id/levarmetitle"
-            android:textSize="35dp"
+            android:text="Levar.me"
             android:textColor="@color/white"
-            android:layout_alignParentTop="true"
-            android:layout_marginTop="15dp" android:layout_alignParentRight="true"
+            android:textSize="45dp"
+            android:gravity="center"
             android:layout_alignParentLeft="true"
-            android:padding="24dp"
-            android:textIsSelectable="false"
-            />
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="212dp"/>
 
     <TextView
-            android:layout_width="210dp"
+            android:id="@+id/slogan"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text=".me"
-            android:id="@+id/levarmetitle2"
-            android:textSize="35dp"
-            android:textColor="@color/light_blue"
-            android:paddingTop="24dp"
-            android:textIsSelectable="false"
-            android:layout_alignParentLeft="true" android:layout_marginLeft="112dp"
-            android:layout_alignTop="@+id/levarmetitle"/>
-
-    <TextView
-            android:layout_width="190dp"
-            android:layout_height="wrap_content"
-            android:text="Ridesharing. Cabsharing to parties"
-            android:id="@+id/levarmesubtitle"
-            android:textSize="12dp"
+            android:text="Ridesharing, Cabsharing, to parties"
             android:textColor="@color/white"
-            android:layout_alignParentTop="true"
-            android:layout_marginTop="55dp" android:layout_alignParentRight="true"
-            android:layout_alignParentLeft="true"
-            android:padding="24dp"
-            android:textIsSelectable="false"
-            />
-
-    <TextView
-            android:layout_width="190dp"
-            android:layout_height="wrap_content"
-            android:text="Choose a party, we'll find your friends and their friends who are also going"
-            android:id="@+id/textView"
             android:textSize="15dp"
-            android:textColor="@color/white"
-            android:layout_alignParentTop="true"
-            android:layout_marginTop="132dp" android:layout_alignParentRight="true"
+            android:gravity="center"
             android:layout_alignParentLeft="true"
-            android:padding="24dp"
-            android:textIsSelectable="false"
-            />
-
-    <TextView
-            android:layout_width="190dp"
-            android:layout_height="wrap_content"
-            android:text="We'll make sure they're nearby and will set up so that you guys either split a cab, or share a ride."
-            android:id="@+id/textView2"
-            android:textSize="15dp"
-            android:textColor="@color/white"
             android:layout_alignParentTop="true"
-            android:layout_marginTop="200dp"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentLeft="true"
-            android:padding="24dp"
-            android:textIsSelectable="false"
-            />
-
-    <TextView
-            android:layout_width="190dp"
-            android:layout_height="wrap_content"
-            android:text="Ready to ride?"
-            android:id="@+id/textView3"
-            android:textSize="15dp"
-            android:textColor="@color/white"
-            android:layout_alignParentTop="true"
-            android:layout_marginTop="330dp"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentLeft="true"
-            android:padding="24dp"
-            android:textIsSelectable="false"
-            />
+            android:layout_marginTop="259dp"/>
 
     <com.facebook.widget.LoginButton
             android:id="@+id/loginButton"
@@ -94,6 +34,8 @@
             android:layout_height="wrap_content"
             android:background="@drawable/signup"
             android:layout_centerHorizontal="true"
-            android:layout_below="@+id/textView3"/>
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="410dp"
+            android:gravity="center"/>
 
 </RelativeLayout>

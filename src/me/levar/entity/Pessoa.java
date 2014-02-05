@@ -12,6 +12,7 @@ public class Pessoa implements Comparable<Pessoa> {
     private String pic_square;
     private boolean app_user = false;
     private List<Pessoa> amigosEmComum;
+    private String mutual_friend_count;
 
     public Pessoa() {
     }
@@ -21,11 +22,12 @@ public class Pessoa implements Comparable<Pessoa> {
         this.nome = nome;
     }
 
-    public Pessoa(String uid, String nome, String pic_square, boolean app_user) {
+    public Pessoa(String uid, String nome, String pic_square, boolean app_user, String mutual_friend_count) {
         this.uid = uid;
         this.nome = nome;
         this.pic_square = pic_square;
         this.app_user = app_user;
+        this.mutual_friend_count = mutual_friend_count;
     }
 
     public String getUid() {
@@ -78,6 +80,14 @@ public class Pessoa implements Comparable<Pessoa> {
 
     public void setAmigosEmComum(List<Pessoa> amigosEmComum) {
         this.amigosEmComum = amigosEmComum;
+    }
+
+    public String getMutual_friend_count() {
+        return mutual_friend_count;
+    }
+
+    public void setMutual_friend_count(String mutual_friend_count) {
+        this.mutual_friend_count = mutual_friend_count;
     }
 
     @Override
