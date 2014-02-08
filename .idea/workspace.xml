@@ -26,17 +26,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="88e535d7-1118-48fd-9090-b3a623c09624" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/drawable/ipanema.png" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/levarme_app.apk" afterPath="$PROJECT_DIR$/levarme_app.apk" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/me/levar/fragment/FaceFragment.java" afterPath="$PROJECT_DIR$/src/me/levar/fragment/FaceFragment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/me/levar/fragment/MixPanelHelper.java" afterPath="$PROJECT_DIR$/src/me/levar/fragment/MixPanelHelper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/me/levar/entity/Pessoa.java" afterPath="$PROJECT_DIR$/src/me/levar/entity/Pessoa.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/main.xml" afterPath="$PROJECT_DIR$/res/layout/main.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AndroidManifest.xml" afterPath="$PROJECT_DIR$/AndroidManifest.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="levarme_app.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="88e535d7-1118-48fd-9090-b3a623c09624" time="1391819038358" ignored="false" />
+    <file path="/Dummy.txt" changelist="88e535d7-1118-48fd-9090-b3a623c09624" time="1391826540222" ignored="false" />
     <file path="/fragment.java" changelist="88e535d7-1118-48fd-9090-b3a623c09624" time="1391615738374" ignored="false" />
     <file path="/styles.xml" changelist="88e535d7-1118-48fd-9090-b3a623c09624" time="1391574166503" ignored="false" />
     <file path="/LevarmeActivity.java" changelist="88e535d7-1118-48fd-9090-b3a623c09624" time="1389758954607" ignored="false" />
@@ -211,11 +207,11 @@
         <option value="$PROJECT_DIR$/res/layout/chat.xml" />
         <option value="$PROJECT_DIR$/res/layout/rowchat.xml" />
         <option value="$PROJECT_DIR$/src/me/levar/chat/ChatListAdapter.java" />
-        <option value="$PROJECT_DIR$/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/src/me/levar/fragment/MixPanelHelper.java" />
         <option value="$PROJECT_DIR$/src/me/levar/entity/Pessoa.java" />
         <option value="$PROJECT_DIR$/src/me/levar/fragment/FaceFragment.java" />
         <option value="$PROJECT_DIR$/res/layout/main.xml" />
+        <option value="$PROJECT_DIR$/AndroidManifest.xml" />
       </list>
     </option>
   </component>
@@ -295,38 +291,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="levarme_app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="levarme_app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="levarme_app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="res" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="levarme_app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="levarme_app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="res" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="drawable" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -762,7 +726,11 @@
       <created>1391625917512</created>
       <updated>1391625917512</updated>
     </task>
-    <option name="localTasksCounter" value="36" />
+    <task id="LOCAL-00036" summary="Mudando a imagem da tela de login. Adicionando o MixPanelPeople">
+      <created>1391826557418</created>
+      <updated>1391826557418</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -789,7 +757,7 @@
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="false" />
     <layout>
-      <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.70680046" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.33667782" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.35378867" sideWeight="0.46265328" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -809,7 +777,7 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24866596" sideWeight="0.29319954" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24866596" sideWeight="0.6633222" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32552955" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.1905016" sideWeight="0.6744705" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
@@ -862,7 +830,7 @@
     <option name="WRAP_WHEN_TYPING_REACHES_RIGHT_MARGIN" value="false" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Mudança total de layout do app" />
+    <option name="LAST_COMMIT_MESSAGE" value="Mudando a imagem da tela de login. Adicionando o MixPanelPeople" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -876,7 +844,6 @@
     <option name="UPDATE_FILTER_BY_SCOPE" value="false" />
     <option name="SHOW_FILE_HISTORY_AS_TREE" value="false" />
     <option name="FILE_HISTORY_SPLITTER_PROPORTION" value="0.6" />
-    <MESSAGE value="Ocultando spinner mesmo quando ele não encontra amigos no evento." />
     <MESSAGE value="Versão 2.5" />
     <MESSAGE value="Primeiro commit para mudança do layout" />
     <MESSAGE value="Versão 2.6" />
@@ -901,6 +868,7 @@
     <MESSAGE value="Alterando msg do post-to-wall" />
     <MESSAGE value="Share app com vários amigos" />
     <MESSAGE value="Mudança total de layout do app" />
+    <MESSAGE value="Mudando a imagem da tela de login. Adicionando o MixPanelPeople" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -987,13 +955,6 @@
         <state line="53" column="8" selection-start="1631" selection-end="1764" vertical-scroll-proportion="0.6683938" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="35" selection-start="209" selection-end="209" vertical-scroll-proportion="0.33755276">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/me/levar/task/RequestPessoaTask.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="21" column="0" selection-start="652" selection-end="652" vertical-scroll-proportion="0.17278618">
@@ -1042,6 +1003,13 @@
       </provider>
       <provider editor-type-id="android-designer">
         <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="34" selection-start="206" selection-end="206" vertical-scroll-proportion="0.07347876">
+          <folding />
+        </state>
       </provider>
     </entry>
   </component>
