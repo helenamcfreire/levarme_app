@@ -1,6 +1,9 @@
 package me.levar.fragment;
 
 import com.mixpanel.android.mpmetrics.MixpanelAPI;
+import me.levar.entity.Pessoa;
+
+import static org.apache.commons.lang3.StringUtils.isNotBlank;
 
 /**
  * Created with IntelliJ IDEA.
@@ -18,6 +21,20 @@ public class MixPanelHelper {
         MixpanelAPI mixpanel = MixpanelAPI.getInstance(context, MIXPANEL_TOKEN);
 
         mixpanel.track(eventTitle, null);
+    }
+
+    public static void createUser(android.content.Context context, Pessoa pessoa) {
+
+        MixpanelAPI mixpanel = MixpanelAPI.getInstance(context, MIXPANEL_TOKEN);
+
+        mixpanel.getPeople().identify(pessoa.getUid());
+
+        mixpanel.getPeople().set("Nome", pessoa.getNome());
+        mixpanel.getPeople().set("Cidade", pessoa.getCidade());
+        mixpanel.getPeople().set("Pais", pessoa.getPais());
+        mixpanel.getPeople().set("Sexo", pessoa.getSexo());
+        mixpanel.getPeople().set("Aniversario", pessoa.getAniversario());
+        mixpanel.getPeople().set("Status de relacionamento", pessoa.getRelationship_status());
     }
 
 }

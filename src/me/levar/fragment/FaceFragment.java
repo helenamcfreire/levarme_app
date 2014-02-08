@@ -15,6 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import com.bugsense.trace.BugSenseHandler;
 import com.facebook.*;
+import com.facebook.model.GraphLocation;
 import com.facebook.model.GraphUser;
 import com.facebook.widget.LoginButton;
 import me.levar.R;
@@ -50,7 +51,7 @@ public class FaceFragment extends Fragment {
 
         loginButton = (LoginButton) view.findViewById(R.id.loginButton);
         loginButton.setFragment(this);
-        loginButton.setReadPermissions(asList("user_events", "friends_events"));
+        loginButton.setReadPermissions(asList("user_events", "friends_events", "user_birthday", "user_location", "user_relationships"));
 
         Session session = Session.getActiveSession();
 
@@ -83,11 +84,25 @@ public class FaceFragment extends Fragment {
 
         if (state.isOpened()) {
             confirmPublishPermission(session);
+            confirmNewUserPermissions(session);
             if (alreadyConfirmedPublishPermission(session)) {
                 salvarUsuario(session);
                 exibirEventos();
             }
         }
+    }
+
+    private void confirmNewUserPermissions(Session session) {
+        if (!alreadyConfirmedNewUserPermissions(session)) {
+            session.requestNewReadPermissions(new Session.NewPermissionsRequest(this, asList("user_birthday", "user_location", "user_relationships"))
+                    .setCallback(callback));
+        }
+    }
+
+    private boolean alreadyConfirmedNewUserPermissions(Session session) {
+        return session.getPermissions().contains("user_birthday") &&
+               session.getPermissions().contains("user_location") &&
+               session.getPermissions().contains("user_relationships");
     }
 
     @Override
@@ -151,7 +166,13 @@ public class FaceFragment extends Fragment {
                         if (session == Session.getActiveSession()) {
                             if (user != null) {
                                 Pessoa usuarioLogado = new Pessoa(user.getId(), user.getName());
+                                GraphLocation location = user.getLocation();
                                 new RequestPessoaTask(usuarioLogado).execute("http://www.levar.me/pessoa/create");
+                                String sexo = (String) user.getProperty("gender");
+                                String relationship_status = (String) user.getProperty("relationship_status");
+
+                                Pessoa usuarioMixpanel = new Pessoa(user.getId(), user.getName(), location.getCity(), location.getCountry(), location.getState(), sexo, user.getBirthday(), relationship_status);
+                                MixPanelHelper.createUser(getActivity(), usuarioMixpanel);
                             }
                         }
                     }

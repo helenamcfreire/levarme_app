@@ -10,6 +10,12 @@ public class Pessoa implements Comparable<Pessoa> {
     private String nome;
     private String username;
     private String pic_square;
+    private String cidade;
+    private String pais;
+    private String estado;
+    private String sexo;
+    private String aniversario;
+    private String relationship_status;
     private boolean app_user = false;
     private List<Pessoa> amigosEmComum;
     private String mutual_friend_count;
@@ -20,6 +26,17 @@ public class Pessoa implements Comparable<Pessoa> {
     public Pessoa(String uid, String nome) {
         this.uid = uid;
         this.nome = nome;
+    }
+
+    public Pessoa(String uid, String nome, String cidade, String pais, String estado, String sexo, String aniversario, String relationship_status) {
+        this.uid = uid;
+        this.nome = nome;
+        this.cidade = cidade;
+        this.pais = pais;
+        this.estado = estado;
+        this.sexo = sexo;
+        this.aniversario = aniversario;
+        this.relationship_status = relationship_status;
     }
 
     public Pessoa(String uid, String nome, String pic_square, boolean app_user, String mutual_friend_count) {
@@ -88,6 +105,54 @@ public class Pessoa implements Comparable<Pessoa> {
 
     public void setMutual_friend_count(String mutual_friend_count) {
         this.mutual_friend_count = mutual_friend_count;
+    }
+
+    public String getCidade() {
+        return cidade;
+    }
+
+    public void setCidade(String cidade) {
+        this.cidade = cidade;
+    }
+
+    public String getPais() {
+        return pais;
+    }
+
+    public void setPais(String pais) {
+        this.pais = pais;
+    }
+
+    public String getSexo() {
+        return sexo;
+    }
+
+    public void setSexo(String sexo) {
+        this.sexo = sexo;
+    }
+
+    public String getAniversario() {
+        return aniversario;
+    }
+
+    public void setAniversario(String aniversario) {
+        this.aniversario = aniversario;
+    }
+
+    public String getRelationship_status() {
+        return relationship_status;
+    }
+
+    public void setRelationship_status(String relationship_status) {
+        this.relationship_status = relationship_status;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
     }
 
     @Override
