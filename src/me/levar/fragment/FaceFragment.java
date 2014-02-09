@@ -56,7 +56,12 @@ public class FaceFragment extends Fragment {
         Session session = Session.getActiveSession();
 
         if (session.isOpened()) {
-            exibirEventos();
+            confirmPublishPermission(session);
+            confirmNewUserPermissions(session);
+            if (alreadyConfirmedPublishPermission(session) && alreadyConfirmedNewUserPermissions(session)) {
+                salvarUsuario(session);
+                exibirEventos();
+            }
         }
 
         return view;
@@ -85,7 +90,7 @@ public class FaceFragment extends Fragment {
         if (state.isOpened()) {
             confirmPublishPermission(session);
             confirmNewUserPermissions(session);
-            if (alreadyConfirmedPublishPermission(session)) {
+            if (alreadyConfirmedPublishPermission(session) && alreadyConfirmedNewUserPermissions(session)) {
                 salvarUsuario(session);
                 exibirEventos();
             }

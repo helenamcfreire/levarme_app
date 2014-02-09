@@ -27,12 +27,12 @@
   <component name="ChangeListManager">
     <list default="true" id="88e535d7-1118-48fd-9090-b3a623c09624" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/levarme_app.apk" afterPath="$PROJECT_DIR$/levarme_app.apk" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AndroidManifest.xml" afterPath="$PROJECT_DIR$/AndroidManifest.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/me/levar/fragment/FaceFragment.java" afterPath="$PROJECT_DIR$/src/me/levar/fragment/FaceFragment.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="levarme_app.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="88e535d7-1118-48fd-9090-b3a623c09624" time="1391826540222" ignored="false" />
+    <file path="/Dummy.txt" changelist="88e535d7-1118-48fd-9090-b3a623c09624" time="1391826716189" ignored="false" />
     <file path="/fragment.java" changelist="88e535d7-1118-48fd-9090-b3a623c09624" time="1391615738374" ignored="false" />
     <file path="/styles.xml" changelist="88e535d7-1118-48fd-9090-b3a623c09624" time="1391574166503" ignored="false" />
     <file path="/LevarmeActivity.java" changelist="88e535d7-1118-48fd-9090-b3a623c09624" time="1389758954607" ignored="false" />
@@ -209,9 +209,9 @@
         <option value="$PROJECT_DIR$/src/me/levar/chat/ChatListAdapter.java" />
         <option value="$PROJECT_DIR$/src/me/levar/fragment/MixPanelHelper.java" />
         <option value="$PROJECT_DIR$/src/me/levar/entity/Pessoa.java" />
-        <option value="$PROJECT_DIR$/src/me/levar/fragment/FaceFragment.java" />
         <option value="$PROJECT_DIR$/res/layout/main.xml" />
         <option value="$PROJECT_DIR$/AndroidManifest.xml" />
+        <option value="$PROJECT_DIR$/src/me/levar/fragment/FaceFragment.java" />
       </list>
     </option>
   </component>
@@ -730,7 +730,11 @@
       <created>1391826557418</created>
       <updated>1391826557418</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="Versão 4.2">
+      <created>1391826723666</created>
+      <updated>1391826723666</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -830,7 +834,7 @@
     <option name="WRAP_WHEN_TYPING_REACHES_RIGHT_MARGIN" value="false" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Mudando a imagem da tela de login. Adicionando o MixPanelPeople" />
+    <option name="LAST_COMMIT_MESSAGE" value="Versão 4.2" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -844,7 +848,6 @@
     <option name="UPDATE_FILTER_BY_SCOPE" value="false" />
     <option name="SHOW_FILE_HISTORY_AS_TREE" value="false" />
     <option name="FILE_HISTORY_SPLITTER_PROPORTION" value="0.6" />
-    <MESSAGE value="Versão 2.5" />
     <MESSAGE value="Primeiro commit para mudança do layout" />
     <MESSAGE value="Versão 2.6" />
     <MESSAGE value="Versão 2.7 - Atualizando ícone do app" />
@@ -869,6 +872,7 @@
     <MESSAGE value="Share app com vários amigos" />
     <MESSAGE value="Mudança total de layout do app" />
     <MESSAGE value="Mudando a imagem da tela de login. Adicionando o MixPanelPeople" />
+    <MESSAGE value="Versão 4.2" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -969,16 +973,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/me/levar/fragment/FaceFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="100" column="45" selection-start="3537" selection-end="3537" vertical-scroll-proportion="0.44988346">
-          <folding>
-            <element signature="e#5329#6528#0" expanded="true" />
-            <element signature="e#6509#6510#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/me/levar/entity/Pessoa.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="35" column="28" selection-start="967" selection-end="967" vertical-scroll-proportion="0.47646382">
@@ -990,7 +984,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="25" column="23" selection-start="686" selection-end="686" vertical-scroll-proportion="0.45924225">
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1007,7 +1001,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="34" selection-start="206" selection-end="206" vertical-scroll-proportion="0.07347876">
+        <state line="4" column="34" selection-start="206" selection-end="206" vertical-scroll-proportion="0.07381371">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/me/levar/fragment/FaceFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="64" column="13" selection-start="2334" selection-end="2334" vertical-scroll-proportion="0.7122302">
           <folding />
         </state>
       </provider>
