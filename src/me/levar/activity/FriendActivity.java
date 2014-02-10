@@ -156,7 +156,7 @@ public class FriendActivity extends LevarmeActivity {
         JSONObject json = new JSONObject();
         try {
             json.put("message", "Alguém quer pegar uma carona/rachar um taxi comigo?");
-            json.put("link", "http://www.levar.me/?utm_content=postwall");
+            json.put("link", "http://www.levar.me/?utm_source=android&utm_medium=mobile&utm_campaign=postwall");
         } catch (JSONException e) {
             e.printStackTrace();
         }
