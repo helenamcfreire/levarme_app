@@ -14,17 +14,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
-import com.bugsense.trace.BugSenseHandler;
 import com.facebook.*;
 import com.facebook.model.GraphLocation;
 import com.facebook.model.GraphUser;
 import com.facebook.widget.LoginButton;
 import me.levar.R;
 import me.levar.activity.EventActivity;
-import me.levar.activity.LevarmeActivity;
-import me.levar.activity.MainActivity;
 import me.levar.entity.Pessoa;
 import me.levar.task.RequestPessoaTask;
+
+import java.util.List;
 
 import static java.util.Arrays.asList;
 import static me.levar.activity.LevarmeActivity.CURRENT_USER_FILE;
@@ -36,6 +35,8 @@ public class FaceFragment extends Fragment {
     private LoginButton loginButton;
     private TextView logo;
     private TextView slogan;
+    private static final List<String> READ_PERMISSIONS = asList("user_events", "friends_events", "user_birthday", "user_location", "user_relationships");
+    private static final List<String> PUBLISH_PERMISSIONS = asList("publish_stream");
 
     @Override
     public View onCreateView(LayoutInflater inflater,
@@ -55,31 +56,28 @@ public class FaceFragment extends Fragment {
 
         loginButton = (LoginButton) view.findViewById(R.id.loginButton);
         loginButton.setFragment(this);
-        loginButton.setReadPermissions(asList("user_events", "friends_events", "user_birthday", "user_location", "user_relationships"));
+        loginButton.setReadPermissions(READ_PERMISSIONS);
 
         Session session = Session.getActiveSession();
 
-        if (session.isOpened()) {
-            confirmPublishPermission(session);
-            confirmNewUserPermissions(session);
-            if (alreadyConfirmedPublishPermission(session) && alreadyConfirmedNewUserPermissions(session)) {
-                salvarUsuario(session);
-                exibirEventos();
-            }
+        boolean jaPodeListarOsEventos = session.isOpened() && confirmedPublishPermission(session) && confirmedAllReadPermissions(session);
+
+        if (jaPodeListarOsEventos) {
+            salvarUsuario(session);
+            exibirEventos();
         }
 
         return view;
     }
 
     private void confirmPublishPermission(Session session) {
-        if (!alreadyConfirmedPublishPermission(session)) {
-            session.requestNewPublishPermissions(new Session.NewPermissionsRequest(this, asList("publish_stream"))
-                    .setCallback(callback));
+        if (!confirmedPublishPermission(session)) {
+            session.requestNewPublishPermissions(new Session.NewPermissionsRequest(this, PUBLISH_PERMISSIONS).setCallback(callback));
         }
     }
 
-    private boolean alreadyConfirmedPublishPermission(Session session) {
-        return session.getPermissions().contains("publish_stream");
+    private boolean confirmedPublishPermission(Session session) {
+        return session.getPermissions().containsAll(PUBLISH_PERMISSIONS);
     }
 
     private Session.StatusCallback callback = new Session.StatusCallback() {
@@ -93,25 +91,22 @@ public class FaceFragment extends Fragment {
 
         if (state.isOpened()) {
             confirmPublishPermission(session);
-            confirmNewUserPermissions(session);
-            if (alreadyConfirmedPublishPermission(session) && alreadyConfirmedNewUserPermissions(session)) {
+            confirmReadPermissions(session);
+            if (confirmedPublishPermission(session) && confirmedAllReadPermissions(session)) {
                 salvarUsuario(session);
                 exibirEventos();
             }
         }
     }
 
-    private void confirmNewUserPermissions(Session session) {
-        if (!alreadyConfirmedNewUserPermissions(session)) {
-            session.requestNewReadPermissions(new Session.NewPermissionsRequest(this, asList("user_birthday", "user_location", "user_relationships"))
-                    .setCallback(callback));
+    private void confirmReadPermissions(Session session) {
+        if (!confirmedAllReadPermissions(session)) {
+            session.requestNewReadPermissions(new Session.NewPermissionsRequest(this, READ_PERMISSIONS).setCallback(callback));
         }
     }
 
-    private boolean alreadyConfirmedNewUserPermissions(Session session) {
-        return session.getPermissions().contains("user_birthday") &&
-               session.getPermissions().contains("user_location") &&
-               session.getPermissions().contains("user_relationships");
+    private boolean confirmedAllReadPermissions(Session session) {
+        return session.getPermissions().containsAll(READ_PERMISSIONS);
     }
 
     @Override
