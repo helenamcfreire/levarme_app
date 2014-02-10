@@ -15,6 +15,7 @@ import android.widget.Toast;
 import com.bugsense.trace.BugSenseHandler;
 import com.facebook.*;
 import com.facebook.widget.WebDialog;
+import com.mixpanel.android.mpmetrics.MixpanelAPI;
 import me.levar.R;
 import me.levar.adapter.EventAdapter;
 import me.levar.fragment.JsonHelper;
@@ -211,6 +212,9 @@ public class EventActivity extends LevarmeActivity {
 
         if (keyCode == KeyEvent.KEYCODE_BACK) {
 
+            MixpanelAPI mixpanel = MixpanelAPI.getInstance(this, MixPanelHelper.MIXPANEL_TOKEN);
+            mixpanel.flush();
+
             moveTaskToBack(true);
             return true;
         }
@@ -259,5 +263,6 @@ public class EventActivity extends LevarmeActivity {
                 .build();
         requestsDialog.show();
     }
+
 
 }

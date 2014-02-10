@@ -27,11 +27,16 @@
   <component name="ChangeListManager">
     <list default="true" id="88e535d7-1118-48fd-9090-b3a623c09624" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/levarme_app.apk" afterPath="$PROJECT_DIR$/levarme_app.apk" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AndroidManifest.xml" afterPath="$PROJECT_DIR$/AndroidManifest.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/me/levar/activity/ChatActivity.java" afterPath="$PROJECT_DIR$/src/me/levar/activity/ChatActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/me/levar/activity/EventActivity.java" afterPath="$PROJECT_DIR$/src/me/levar/activity/EventActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/me/levar/activity/FriendActivity.java" afterPath="$PROJECT_DIR$/src/me/levar/activity/FriendActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/me/levar/activity/LevarmeActivity.java" afterPath="$PROJECT_DIR$/src/me/levar/activity/LevarmeActivity.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="levarme_app.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="88e535d7-1118-48fd-9090-b3a623c09624" time="1391998106632" ignored="false" />
+    <file path="/Dummy.txt" changelist="88e535d7-1118-48fd-9090-b3a623c09624" time="1391998191506" ignored="false" />
     <file path="/fragment.java" changelist="88e535d7-1118-48fd-9090-b3a623c09624" time="1391957586695" ignored="false" />
     <file path="/styles.xml" changelist="88e535d7-1118-48fd-9090-b3a623c09624" time="1391574166503" ignored="false" />
     <file path="/LevarmeActivity.java" changelist="88e535d7-1118-48fd-9090-b3a623c09624" time="1391996501549" ignored="false" />
@@ -168,7 +173,52 @@
       </breakpoint>
     </breakpoint_any>
     <line_breakpoints default_suspend_policy="SuspendAll" default_condition_enabled="true">
-      <breakpoint url="file://$PROJECT_DIR$/src/me/levar/activity/FriendActivity.java" line="286" class="me.levar.activity.FriendActivity" package="me.levar.activity">
+      <breakpoint url="file://$PROJECT_DIR$/src/me/levar/activity/ChatActivity.java" line="252" class="me.levar.activity.ChatActivity" package="me.levar.activity">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="REMOVE_AFTER_HIT" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/src/me/levar/fragment/MixPanelHelper.java" line="31" class="me.levar.fragment.MixPanelHelper" package="me.levar.fragment">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="REMOVE_AFTER_HIT" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/src/me/levar/activity/EventActivity.java" line="214" class="me.levar.activity.EventActivity" package="me.levar.activity">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="REMOVE_AFTER_HIT" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/src/me/levar/activity/FriendActivity.java" line="377" class="me.levar.activity.FriendActivity" package="me.levar.activity">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -217,20 +267,20 @@
     <option name="changedFiles">
       <list>
         <option value="$PROJECT_DIR$/res/layout/events.xml" />
-        <option value="$PROJECT_DIR$/src/me/levar/activity/EventActivity.java" />
         <option value="$PROJECT_DIR$/src/me/levar/adapter/EventAdapter.java" />
         <option value="$PROJECT_DIR$/res/layout/rowevent.xml" />
         <option value="$PROJECT_DIR$/src/me/levar/entity/Pessoa.java" />
         <option value="$PROJECT_DIR$/res/layout/main.xml" />
         <option value="$PROJECT_DIR$/src/me/levar/activity/MainActivity.java" />
         <option value="$PROJECT_DIR$/src/me/levar/fragment/FaceFragment.java" />
-        <option value="$PROJECT_DIR$/src/me/levar/activity/FriendActivity.java" />
         <option value="$PROJECT_DIR$/src/me/levar/chat/ChatListAdapter.java" />
-        <option value="$PROJECT_DIR$/src/me/levar/activity/ChatActivity.java" />
         <option value="$PROJECT_DIR$/res/layout/rowchat.xml" />
         <option value="$PROJECT_DIR$/res/layout/chat.xml" />
-        <option value="$PROJECT_DIR$/src/me/levar/activity/LevarmeActivity.java" />
         <option value="$PROJECT_DIR$/src/me/levar/fragment/MixPanelHelper.java" />
+        <option value="$PROJECT_DIR$/src/me/levar/activity/LevarmeActivity.java" />
+        <option value="$PROJECT_DIR$/src/me/levar/activity/ChatActivity.java" />
+        <option value="$PROJECT_DIR$/src/me/levar/activity/FriendActivity.java" />
+        <option value="$PROJECT_DIR$/src/me/levar/activity/EventActivity.java" />
         <option value="$PROJECT_DIR$/AndroidManifest.xml" />
       </list>
     </option>
@@ -712,7 +762,11 @@
       <created>1391998125335</created>
       <updated>1391998125335</updated>
     </task>
-    <option name="localTasksCounter" value="42" />
+    <task id="LOCAL-00042" summary="Versão 4.4">
+      <created>1391998197525</created>
+      <updated>1391998197525</updated>
+    </task>
+    <option name="localTasksCounter" value="43" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -812,7 +866,7 @@
     <option name="WRAP_WHEN_TYPING_REACHES_RIGHT_MARGIN" value="false" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Tava setando o id errado do Google Sender" />
+    <option name="LAST_COMMIT_MESSAGE" value="Versão 4.4" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -826,7 +880,6 @@
     <option name="UPDATE_FILTER_BY_SCOPE" value="false" />
     <option name="SHOW_FILE_HISTORY_AS_TREE" value="false" />
     <option name="FILE_HISTORY_SPLITTER_PROPORTION" value="0.6" />
-    <MESSAGE value="Versão 2.9 - Alterando os speech bubbles no chat !" />
     <MESSAGE value="Verificando se o usuário já possui o app. Se já possuir, não enviamos a notificação do face pra ele!" />
     <MESSAGE value="Mudando novamente o layout do chat do Levar.me" />
     <MESSAGE value="Correção de bugs - notificação pro face estava sendo exibida sempre." />
@@ -851,6 +904,7 @@
     <MESSAGE value="Colocando msg inicial no chat. Otimizando consulta ao usuário logado" />
     <MESSAGE value="push notifications" />
     <MESSAGE value="Tava setando o id errado do Google Sender" />
+    <MESSAGE value="Versão 4.4" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -864,11 +918,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://C:/Java/facebook-android-sdk-3.0.1/facebook-android-sdk-3.0.1/facebook/src/com/facebook/RequestAsyncTask.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
     <entry file="file://C:/Java/adt-bundle-windows-x86_64-20130219/adt-bundle-windows-x86_64-20130219/sdk/sources/android-19/android/os/AsyncTask.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="481" column="24" selection-start="19123" selection-end="19123" vertical-scroll-proportion="0.33295062" />
@@ -887,13 +936,6 @@
       </provider>
       <provider editor-type-id="android-designer">
         <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/me/levar/activity/FriendActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="268" column="65" selection-start="10170" selection-end="10170" vertical-scroll-proportion="0.1672394">
-          <folding />
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/me/levar/fragment/FaceFragment.java">
@@ -916,18 +958,6 @@
       </provider>
       <provider editor-type-id="android-designer">
         <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/me/levar/activity/ChatActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="165" column="40" selection-start="5471" selection-end="5471" vertical-scroll-proportion="0.64408726">
-          <folding>
-            <element signature="e#2501#2867#0" expanded="true" />
-            <element signature="e#2856#2857#0" expanded="true" />
-            <element signature="e#2928#3078#0" expanded="true" />
-            <element signature="e#3067#3068#0" expanded="true" />
-          </folding>
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/res/layout/chat.xml">
@@ -963,21 +993,42 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/me/levar/activity/LevarmeActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="37" column="1" selection-start="1060" selection-end="1060" vertical-scroll-proportion="0.83157897">
+        <state line="23" column="0" selection-start="595" selection-end="595" vertical-scroll-proportion="0.3673938">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/me/levar/activity/EventActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="214" column="0" selection-start="6929" selection-end="6929" vertical-scroll-proportion="0.17680827">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/me/levar/activity/ChatActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="252" column="0" selection-start="8353" selection-end="8353" vertical-scroll-proportion="0.8346728">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/me/levar/activity/FriendActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="377" column="0" selection-start="13815" selection-end="13815" vertical-scroll-proportion="0.72445464">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/me/levar/fragment/MixPanelHelper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="37" column="24" selection-start="1286" selection-end="1286" vertical-scroll-proportion="0.71929824">
+        <state line="31" column="0" selection-start="952" selection-end="952" vertical-scroll-proportion="0.5143513">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="34" selection-start="206" selection-end="206" vertical-scroll-proportion="0.028070176">
+        <state line="4" column="34" selection-start="206" selection-end="206" vertical-scroll-proportion="0.07347876">
           <folding />
         </state>
       </provider>

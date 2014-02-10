@@ -21,6 +21,7 @@ import com.facebook.model.GraphUser;
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.ValueEventListener;
+import com.mixpanel.android.mpmetrics.MixpanelAPI;
 import me.levar.R;
 import me.levar.chat.Chat;
 import me.levar.chat.ChatListAdapter;
@@ -237,6 +238,19 @@ public class ChatActivity extends LevarmeActivity {
         }
 
         return super.onKeyDown(keyCode, event);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
+        MixpanelAPI mixpanel = MixpanelAPI.getInstance(this, MixPanelHelper.MIXPANEL_TOKEN);
+
+        // To preserve battery life, the Mixpanel library will store
+        // events rather than send them immediately. This means it
+        // is important to call flush() to send any unsent events
+        // before your application is taken out of memory.
+        mixpanel.flush();
     }
 
 }

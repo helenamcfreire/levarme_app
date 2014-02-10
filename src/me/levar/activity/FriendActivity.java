@@ -15,6 +15,7 @@ import com.facebook.*;
 import com.facebook.model.GraphObject;
 import com.facebook.model.GraphUser;
 import com.facebook.widget.WebDialog;
+import com.mixpanel.android.mpmetrics.MixpanelAPI;
 import me.levar.R;
 import me.levar.adapter.FriendAdapter;
 import me.levar.entity.Pessoa;
@@ -373,6 +374,9 @@ public class FriendActivity extends LevarmeActivity {
 
             Intent intent = new Intent(this, EventActivity.class);
             startActivity(intent);
+
+            MixpanelAPI mixpanel = MixpanelAPI.getInstance(this, MixPanelHelper.MIXPANEL_TOKEN);
+            mixpanel.flush();
 
             return true;
         }
