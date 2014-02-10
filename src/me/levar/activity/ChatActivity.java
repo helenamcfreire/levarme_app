@@ -129,42 +129,37 @@ public class ChatActivity extends LevarmeActivity {
 
     private void setupCurrentUser() {
 
-        // Make an API call to get user data and define a
-        // new callback to handle the response.
-        Request request = Request.newMeRequest(Session.getActiveSession(),
-                new Request.GraphUserCallback() {
-                    @Override
-                    public void onCompleted(GraphUser user, Response response) {
-                        if (user != null) {
-                            try {
-                                SharedPreferences prefs = getApplication().getSharedPreferences("ChatPrefs", 0);
-                                username = prefs.getString("username", null);
+        try {
+            SharedPreferences prefs = getApplication().getSharedPreferences("ChatPrefs", 0);
+            username = prefs.getString("username", null);
 
-                                if (username == null) {
-                                    username = user.getName();
-                                    prefs.edit().putString("username", username).commit();
-                                }
+            SharedPreferences settings = getSharedPreferences(LevarmeActivity.CURRENT_USER_FILE, 0);
+            String currentUserName = settings.getString("currentUserName", "Anonymous");
 
-                                // Setup our view and list adapter. Ensure it scrolls to the bottom as data changes
-                                final ListView listView = (ListView) findViewById(R.id.list);
-                                // Tell our list adapter that we only want 50 messages at a time
-                                chatListAdapter = new ChatListAdapter(ref.limit(50), ChatActivity.this, R.layout.rowchat, username);
-                                listView.setAdapter(chatListAdapter);
-                                chatListAdapter.registerDataSetObserver(new DataSetObserver() {
-                                    @Override
-                                    public void onChanged() {
-                                        super.onChanged();
-                                        listView.setSelection(chatListAdapter.getCount() - 1);
-                                    }
-                                });
+            if (username == null) {
+                username = currentUserName;
+                prefs.edit().putString("username", username).commit();
+            }
 
-                            } catch (Exception e) {
-                                e.printStackTrace();
-                            }
-                        }
-                    }
-                });
-        request.executeAsync();
+            // Setup our view and list adapter. Ensure it scrolls to the bottom as data changes
+            final ListView listView = (ListView) findViewById(R.id.list);
+
+            listView.setEmptyView(findViewById(android.R.id.empty));
+
+            // Tell our list adapter that we only want 50 messages at a time
+            chatListAdapter = new ChatListAdapter(ref.limit(50), ChatActivity.this, R.layout.rowchat, username);
+            listView.setAdapter(chatListAdapter);
+            chatListAdapter.registerDataSetObserver(new DataSetObserver() {
+                @Override
+                public void onChanged() {
+                    super.onChanged();
+                    listView.setSelection(chatListAdapter.getCount() - 1);
+                }
+            });
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
     }
 

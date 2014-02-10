@@ -13,6 +13,20 @@
         android:divider="@null"
         />
 
+  <TextView
+        android:id="@android:id/empty"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:maxWidth="250dp"
+        android:textColor="@color/white"
+        android:background="@drawable/minichat1"
+        android:gravity="right"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="5dp"
+        android:text="How do you want to get there?"
+        />
+
   <LinearLayout android:id="@+id/listFooter"
       android:layout_width="fill_parent"
       android:layout_height="wrap_content"

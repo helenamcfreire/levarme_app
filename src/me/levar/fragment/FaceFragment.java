@@ -3,6 +3,7 @@ package me.levar.fragment;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -20,10 +21,13 @@ import com.facebook.model.GraphUser;
 import com.facebook.widget.LoginButton;
 import me.levar.R;
 import me.levar.activity.EventActivity;
+import me.levar.activity.LevarmeActivity;
+import me.levar.activity.MainActivity;
 import me.levar.entity.Pessoa;
 import me.levar.task.RequestPessoaTask;
 
 import static java.util.Arrays.asList;
+import static me.levar.activity.LevarmeActivity.CURRENT_USER_FILE;
 
 public class FaceFragment extends Fragment {
 
@@ -171,10 +175,18 @@ public class FaceFragment extends Fragment {
                         if (session == Session.getActiveSession()) {
                             if (user != null) {
                                 Pessoa usuarioLogado = new Pessoa(user.getId(), user.getName());
-                                GraphLocation location = user.getLocation();
-                                new RequestPessoaTask(usuarioLogado).execute("http://www.levar.me/pessoa/create");
                                 String sexo = (String) user.getProperty("gender");
                                 String relationship_status = (String) user.getProperty("relationship_status");
+
+                                GraphLocation location = user.getLocation();
+
+                                new RequestPessoaTask(usuarioLogado).execute("http://www.levar.me/pessoa/create");
+
+                                SharedPreferences settings = getActivity().getSharedPreferences(CURRENT_USER_FILE, 0);
+                                SharedPreferences.Editor editor = settings.edit();
+                                editor.putString("currentUserId", usuarioLogado.getUid());
+                                editor.putString("currentUserName", usuarioLogado.getNome());
+                                editor.commit();
 
                                 Pessoa usuarioMixpanel = new Pessoa(user.getId(), user.getName(), location.getCity(), location.getCountry(), location.getState(), sexo, user.getBirthday(), relationship_status);
                                 MixPanelHelper.createUser(getActivity(), usuarioMixpanel);

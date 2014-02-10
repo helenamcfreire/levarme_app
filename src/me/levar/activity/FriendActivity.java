@@ -2,6 +2,7 @@ package me.levar.activity;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
@@ -174,50 +175,38 @@ public class FriendActivity extends LevarmeActivity {
 
     private void adicionarParticipantesNoChat(final Session session, final Pessoa amigo) {
 
-        // Make an API call to get user data and define a
-        // new callback to handle the response.
-        Request request = Request.newMeRequest(session,
-                new Request.GraphUserCallback() {
-                    @Override
-                    public void onCompleted(GraphUser user, Response response) {
-                        // If the response is successful
-                        if (session == Session.getActiveSession()) {
-                            if (user != null) {
+        SharedPreferences settings = getSharedPreferences(LevarmeActivity.CURRENT_USER_FILE, 0);
+        String currentUserId = settings.getString("currentUserId", "0");
 
-                                List<String> idsParticipantes = new ArrayList<String>();
+        List<String> idsParticipantes = new ArrayList<String>();
 
-                                idsParticipantes.add(user.getId());
-                                idsParticipantes.add(amigo.getUid());
+        idsParticipantes.add(currentUserId);
+        idsParticipantes.add(amigo.getUid());
 
-                                String params = idsParticipantes.toString().replace(" ", "%20");
+        String params = idsParticipantes.toString().replace(" ", "%20");
 
-                                String json = null;
-                                try {
-                                    json = new RequestPessoaTask().execute("http://www.levar.me/pessoa/add_pessoa_chat?idsParticipantes=" + params + "&idEvento=" + getIdEvento()).get();
-                                } catch (Exception e) {
-                                    e.printStackTrace();
-                                }
+        String json = null;
+        try {
+            json = new RequestPessoaTask().execute("http://www.levar.me/pessoa/add_pessoa_chat?idsParticipantes=" + params + "&idEvento=" + getIdEvento()).get();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
-                                JSONObject jsonObject = null;
-                                boolean naoFoiCadastrado = false;
-                                try {
-                                    jsonObject = new JSONObject(json);
-                                    naoFoiCadastrado = jsonObject.getBoolean("naoFoiCadastrado");
-                                } catch (JSONException e) {
-                                    e.printStackTrace();
-                                }
+        JSONObject jsonObject = null;
+        boolean naoFoiCadastrado = false;
+        try {
+            jsonObject = new JSONObject(json);
+            naoFoiCadastrado = jsonObject.getBoolean("naoFoiCadastrado");
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
 
-                                if (!naoFoiCadastrado) {
-                                    enviarNotificacao(amigo);
-                                } else {
-                                    buscarParticipantesDoChat(amigo.getUid());
-                                }
+        if (!naoFoiCadastrado) {
+            enviarNotificacao(amigo);
+        } else {
+            buscarParticipantesDoChat(amigo.getUid());
+        }
 
-                            }
-                        }
-                    }
-                });
-        request.executeAsync();
 
     }
 
@@ -274,51 +263,41 @@ public class FriendActivity extends LevarmeActivity {
 
     private void buscarParticipantesDoChat(final String idAmigo) {
 
-        // Make an API call to get user data and define a
-        // new callback to handle the response.
-        Request request = Request.newMeRequest(Session.getActiveSession(),
-                new Request.GraphUserCallback() {
-                    @Override
-                    public void onCompleted(GraphUser user, Response response) {
-                        // If the response is successful
-                        if (user != null) {
+        SharedPreferences settings = getSharedPreferences(LevarmeActivity.CURRENT_USER_FILE, 0);
+        String currentUserId = settings.getString("currentUserId", "0");
 
-                            List<String> idsParticipantes = new ArrayList<String>();
+        List<String> idsParticipantes = new ArrayList<String>();
 
-                            idsParticipantes.add(user.getId());
-                            idsParticipantes.add(idAmigo);
+        idsParticipantes.add(currentUserId);
+        idsParticipantes.add(idAmigo);
 
-                            String params = idsParticipantes.toString().replace(" ", "%20");
+        String params = idsParticipantes.toString().replace(" ", "%20");
 
-                            ArrayList<String> participantesId = new ArrayList<String>();
+        ArrayList<String> participantesId = new ArrayList<String>();
 
-                            String chats = null;
-                            try {
-                                chats = new RequestPessoaTask().execute("http://www.levar.me/pessoa/list_chat?idsParticipantes=" + params + "&idEvento=" + getIdEvento()).get();
-                            } catch (InterruptedException e) {
-                                e.printStackTrace();
-                            } catch (ExecutionException e) {
-                                e.printStackTrace();
-                            }
+        String chats = null;
+        try {
+            chats = new RequestPessoaTask().execute("http://www.levar.me/pessoa/list_chat?idsParticipantes=" + params + "&idEvento=" + getIdEvento()).get();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
 
-                            JSONArray jsonArray = JsonHelper.newJsonArray(chats);
-                            for (int i = 0; i < (jsonArray.length()); i++) {
+        JSONArray jsonArray = JsonHelper.newJsonArray(chats);
+        for (int i = 0; i < (jsonArray.length()); i++) {
 
-                                JSONObject obj = JsonHelper.getJsonObject(jsonArray, i);
-                                String chatId = JsonHelper.getString(obj, "chat_id");
-                                String participante_1 = JsonHelper.getString(obj, "participante_1_id");
-                                String participante_2 = JsonHelper.getString(obj, "participante_2_id");
+            JSONObject obj = JsonHelper.getJsonObject(jsonArray, i);
+            String chatId = JsonHelper.getString(obj, "chat_id");
+            String participante_1 = JsonHelper.getString(obj, "participante_1_id");
+            String participante_2 = JsonHelper.getString(obj, "participante_2_id");
 
-                                participantesId.add(participante_1);
-                                participantesId.add(participante_2);
+            participantesId.add(participante_1);
+            participantesId.add(participante_2);
 
-                                irParaTelaDeChat(chatId, participantesId);
-                            }
+            irParaTelaDeChat(chatId, participantesId);
+        }
 
-                        }
-                    }
-                });
-        request.executeAsync();
     }
 
     private void irParaTelaDeChat(String idChat, ArrayList<String> participantesId) {

@@ -12,6 +12,8 @@ import android.support.v4.app.FragmentActivity;
  */
 public class LevarmeActivity extends FragmentActivity {
 
+    public static final String CURRENT_USER_FILE = "CurrentUserFile";
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
