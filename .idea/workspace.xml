@@ -26,13 +26,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="88e535d7-1118-48fd-9090-b3a623c09624" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AndroidManifest.xml" afterPath="$PROJECT_DIR$/AndroidManifest.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/me/levar/fragment/MixPanelHelper.java" afterPath="$PROJECT_DIR$/src/me/levar/fragment/MixPanelHelper.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/levarme_app.apk" afterPath="$PROJECT_DIR$/levarme_app.apk" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="levarme_app.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="88e535d7-1118-48fd-9090-b3a623c09624" time="1391997147299" ignored="false" />
+    <file path="/Dummy.txt" changelist="88e535d7-1118-48fd-9090-b3a623c09624" time="1391998106632" ignored="false" />
     <file path="/fragment.java" changelist="88e535d7-1118-48fd-9090-b3a623c09624" time="1391957586695" ignored="false" />
     <file path="/styles.xml" changelist="88e535d7-1118-48fd-9090-b3a623c09624" time="1391574166503" ignored="false" />
     <file path="/LevarmeActivity.java" changelist="88e535d7-1118-48fd-9090-b3a623c09624" time="1391996501549" ignored="false" />
@@ -709,7 +708,11 @@
       <created>1391997157603</created>
       <updated>1391997157603</updated>
     </task>
-    <option name="localTasksCounter" value="41" />
+    <task id="LOCAL-00041" summary="Tava setando o id errado do Google Sender">
+      <created>1391998125335</created>
+      <updated>1391998125335</updated>
+    </task>
+    <option name="localTasksCounter" value="42" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -809,7 +812,7 @@
     <option name="WRAP_WHEN_TYPING_REACHES_RIGHT_MARGIN" value="false" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="push notifications" />
+    <option name="LAST_COMMIT_MESSAGE" value="Tava setando o id errado do Google Sender" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -823,7 +826,6 @@
     <option name="UPDATE_FILTER_BY_SCOPE" value="false" />
     <option name="SHOW_FILE_HISTORY_AS_TREE" value="false" />
     <option name="FILE_HISTORY_SPLITTER_PROPORTION" value="0.6" />
-    <MESSAGE value="Versão 2.8 - Correção de 2 bugs" />
     <MESSAGE value="Versão 2.9 - Alterando os speech bubbles no chat !" />
     <MESSAGE value="Verificando se o usuário já possui o app. Se já possuir, não enviamos a notificação do face pra ele!" />
     <MESSAGE value="Mudando novamente o layout do chat do Levar.me" />
@@ -848,6 +850,7 @@
     <MESSAGE value="Mixpanel" />
     <MESSAGE value="Colocando msg inicial no chat. Otimizando consulta ao usuário logado" />
     <MESSAGE value="push notifications" />
+    <MESSAGE value="Tava setando o id errado do Google Sender" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -965,16 +968,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
+    <entry file="file://$PROJECT_DIR$/src/me/levar/fragment/MixPanelHelper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="34" selection-start="206" selection-end="206" vertical-scroll-proportion="0.112280704">
+        <state line="37" column="24" selection-start="1286" selection-end="1286" vertical-scroll-proportion="0.71929824">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/me/levar/fragment/MixPanelHelper.java">
+    <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="37" column="24" selection-start="1286" selection-end="1286" vertical-scroll-proportion="0.71929824">
+        <state line="4" column="34" selection-start="206" selection-end="206" vertical-scroll-proportion="0.028070176">
           <folding />
         </state>
       </provider>
