@@ -35,6 +35,8 @@ public class MixPanelHelper {
         mixpanel.getPeople().set("Sexo", pessoa.getSexo());
         mixpanel.getPeople().set("Aniversario", pessoa.getAniversario());
         mixpanel.getPeople().set("Status de relacionamento", pessoa.getRelationship_status());
+
+        mixpanel.getPeople().initPushHandling(pessoa.getUid());
     }
 
 }

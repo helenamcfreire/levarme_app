@@ -2,6 +2,8 @@ package me.levar.activity;
 
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import com.mixpanel.android.mpmetrics.MixpanelAPI;
+import me.levar.fragment.MixPanelHelper;
 
 /**
  * Created with IntelliJ IDEA.
@@ -18,6 +20,19 @@ public class LevarmeActivity extends FragmentActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
+        MixpanelAPI mixpanel = MixpanelAPI.getInstance(this, MixPanelHelper.MIXPANEL_TOKEN);
+
+        // To preserve battery life, the Mixpanel library will store
+        // events rather than send them immediately. This means it
+        // is important to call flush() to send any unsent events
+        // before your application is taken out of memory.
+        mixpanel.flush();
     }
 
 }
