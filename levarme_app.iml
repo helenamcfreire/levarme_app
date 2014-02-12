@@ -64,6 +64,17 @@
       </library>
     </orderEntry>
     <orderEntry type="module" module-name="main" />
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../CloneProjects/gcm/gcm-client-deprecated/dist/gcm.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$MODULE_DIR$/../../CloneProjects/gcm/gcm-client-deprecated/dist/gcm-src.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
   </component>
 </module>
 

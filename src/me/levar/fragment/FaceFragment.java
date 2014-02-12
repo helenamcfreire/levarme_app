@@ -18,10 +18,11 @@ import com.facebook.*;
 import com.facebook.model.GraphLocation;
 import com.facebook.model.GraphUser;
 import com.facebook.widget.LoginButton;
+import com.google.android.gcm.GCMRegistrar;
 import me.levar.R;
 import me.levar.activity.EventActivity;
 import me.levar.entity.Pessoa;
-import me.levar.task.RequestPessoaTask;
+import me.levar.task.RequestLevarmeTask;
 
 import java.util.List;
 
@@ -169,13 +170,15 @@ public class FaceFragment extends Fragment {
                         // If the response is successful
                         if (session == Session.getActiveSession()) {
                             if (user != null) {
-                                Pessoa usuarioLogado = new Pessoa(user.getId(), user.getName());
+                                final String registrationIdGCM = GCMRegistrar.getRegistrationId(getActivity());
+
+                                Pessoa usuarioLogado = new Pessoa(user.getId(), user.getName(), registrationIdGCM);
                                 String sexo = (String) user.getProperty("gender");
                                 String relationship_status = (String) user.getProperty("relationship_status");
 
                                 GraphLocation location = user.getLocation();
 
-                                new RequestPessoaTask(usuarioLogado).execute("http://www.levar.me/pessoa/create");
+                                new RequestLevarmeTask(usuarioLogado).execute("http://www.levar.me/pessoa/create");
 
                                 SharedPreferences settings = getActivity().getSharedPreferences(CURRENT_USER_FILE, 0);
                                 SharedPreferences.Editor editor = settings.edit();

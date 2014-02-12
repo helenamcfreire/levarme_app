@@ -19,13 +19,15 @@ public class Pessoa implements Comparable<Pessoa> {
     private boolean app_user = false;
     private List<Pessoa> amigosEmComum;
     private String mutual_friend_count;
+    private String registrationId; //Usado pelo Google Cloud Messaging
 
     public Pessoa() {
     }
 
-    public Pessoa(String uid, String nome) {
+    public Pessoa(String uid, String nome, String registrationId) {
         this.uid = uid;
         this.nome = nome;
+        this.registrationId = registrationId;
     }
 
     public Pessoa(String uid, String nome, String cidade, String pais, String estado, String sexo, String aniversario, String relationship_status) {
@@ -153,6 +155,14 @@ public class Pessoa implements Comparable<Pessoa> {
 
     public void setEstado(String estado) {
         this.estado = estado;
+    }
+
+    public String getRegistrationId() {
+        return registrationId;
+    }
+
+    public void setRegistrationId(String registrationId) {
+        this.registrationId = registrationId;
     }
 
     @Override

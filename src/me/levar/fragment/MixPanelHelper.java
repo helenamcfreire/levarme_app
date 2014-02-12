@@ -2,8 +2,8 @@ package me.levar.fragment;
 
 import com.mixpanel.android.mpmetrics.MixpanelAPI;
 import me.levar.entity.Pessoa;
+import me.levar.gcm.CommonUtilities;
 
-import static org.apache.commons.lang3.StringUtils.isNotBlank;
 
 /**
  * Created with IntelliJ IDEA.
@@ -15,7 +15,6 @@ import static org.apache.commons.lang3.StringUtils.isNotBlank;
 public class MixPanelHelper {
 
     public static final String MIXPANEL_TOKEN = "571ec076911ca93d1c6c1a2e429049d1";
-    public static final String GOOGLE_SENDER_ID = "868056535109";
 
     public static void sendEvent(android.content.Context context, String eventTitle) {
 
@@ -29,7 +28,7 @@ public class MixPanelHelper {
         MixpanelAPI mixpanel = MixpanelAPI.getInstance(context, MIXPANEL_TOKEN);
 
         mixpanel.getPeople().identify(pessoa.getUid());
-        mixpanel.getPeople().initPushHandling(GOOGLE_SENDER_ID);
+        mixpanel.getPeople().initPushHandling(CommonUtilities.SENDER_ID);
 
         mixpanel.getPeople().set("Nome", pessoa.getNome());
         mixpanel.getPeople().set("Cidade", pessoa.getCidade());
@@ -37,6 +36,7 @@ public class MixPanelHelper {
         mixpanel.getPeople().set("Sexo", pessoa.getSexo());
         mixpanel.getPeople().set("Aniversario", pessoa.getAniversario());
         mixpanel.getPeople().set("Status de relacionamento", pessoa.getRelationship_status());
+
     }
 
 }

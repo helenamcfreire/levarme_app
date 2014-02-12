@@ -13,7 +13,6 @@ import android.widget.Toast;
 import com.bugsense.trace.BugSenseHandler;
 import com.facebook.*;
 import com.facebook.model.GraphObject;
-import com.facebook.model.GraphUser;
 import com.facebook.widget.WebDialog;
 import com.mixpanel.android.mpmetrics.MixpanelAPI;
 import me.levar.R;
@@ -21,7 +20,7 @@ import me.levar.adapter.FriendAdapter;
 import me.levar.entity.Pessoa;
 import me.levar.fragment.JsonHelper;
 import me.levar.fragment.MixPanelHelper;
-import me.levar.task.RequestPessoaTask;
+import me.levar.task.RequestLevarmeTask;
 import org.apache.commons.lang3.StringUtils;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -188,7 +187,7 @@ public class FriendActivity extends LevarmeActivity {
 
         String json = null;
         try {
-            json = new RequestPessoaTask().execute("http://www.levar.me/pessoa/add_pessoa_chat?idsParticipantes=" + params + "&idEvento=" + getIdEvento()).get();
+            json = new RequestLevarmeTask().execute("http://www.levar.me/pessoa/add_pessoa_chat?idsParticipantes=" + params + "&idEvento=" + getIdEvento()).get();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -267,18 +266,9 @@ public class FriendActivity extends LevarmeActivity {
         SharedPreferences settings = getSharedPreferences(LevarmeActivity.CURRENT_USER_FILE, 0);
         String currentUserId = settings.getString("currentUserId", "0");
 
-        List<String> idsParticipantes = new ArrayList<String>();
-
-        idsParticipantes.add(currentUserId);
-        idsParticipantes.add(idAmigo);
-
-        String params = idsParticipantes.toString().replace(" ", "%20");
-
-        ArrayList<String> participantesId = new ArrayList<String>();
-
         String chats = null;
         try {
-            chats = new RequestPessoaTask().execute("http://www.levar.me/pessoa/list_chat?idsParticipantes=" + params + "&idEvento=" + getIdEvento()).get();
+            chats = new RequestLevarmeTask().execute("http://www.levar.me/pessoa/list_chat?currentUserId=" + currentUserId + "&idAmigo=" + idAmigo + "&idEvento=" + getIdEvento()).get();
         } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (ExecutionException e) {
@@ -292,20 +282,19 @@ public class FriendActivity extends LevarmeActivity {
             String chatId = JsonHelper.getString(obj, "chat_id");
             String participante_1 = JsonHelper.getString(obj, "participante_1_id");
             String participante_2 = JsonHelper.getString(obj, "participante_2_id");
+            String registration_id = JsonHelper.getString(obj, "registration_id");
 
-            participantesId.add(participante_1);
-            participantesId.add(participante_2);
-
-            irParaTelaDeChat(chatId, participantesId);
+            irParaTelaDeChat(chatId, idAmigo, registration_id);
         }
 
     }
 
-    private void irParaTelaDeChat(String idChat, ArrayList<String> participantesId) {
+    private void irParaTelaDeChat(String idChat, String idAmigo, String registration_id) {
 
         Intent intent = new Intent(this, ChatActivity.class);
         intent.putExtra("idChat", idChat);
-        intent.putStringArrayListExtra("idsParticipantes", participantesId);
+        intent.putExtra("idAmigo", idAmigo);
+        intent.putExtra("registration_id", registration_id);
         startActivity(intent);
 
     }
@@ -316,7 +305,7 @@ public class FriendActivity extends LevarmeActivity {
 
         String pessoasCadastradas = null;
         try {
-            pessoasCadastradas = new RequestPessoaTask().execute("http://www.levar.me/pessoa/list").get();
+            pessoasCadastradas = new RequestLevarmeTask().execute("http://www.levar.me/pessoa/list").get();
         } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (ExecutionException e) {

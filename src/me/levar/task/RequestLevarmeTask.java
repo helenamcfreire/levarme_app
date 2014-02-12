@@ -19,14 +19,14 @@ import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
 
-public class RequestPessoaTask extends AsyncTask<String, String, String> {
+public class RequestLevarmeTask extends AsyncTask<String, String, String> {
 
     private Pessoa usuarioLogado;
 
-    public RequestPessoaTask() {
+    public RequestLevarmeTask() {
     }
 
-    public RequestPessoaTask(Pessoa usuarioLogado) {
+    public RequestLevarmeTask(Pessoa usuarioLogado) {
         this.usuarioLogado = usuarioLogado;
     }
 
@@ -73,6 +73,7 @@ public class RequestPessoaTask extends AsyncTask<String, String, String> {
 
         params.add(new BasicNameValuePair("uid", usuarioLogado.getUid()));
         params.add(new BasicNameValuePair("nome", usuarioLogado.getNome()));
+        params.add(new BasicNameValuePair("registrationId", usuarioLogado.getRegistrationId()));
 
         String paramString = URLEncodedUtils.format(params, "utf-8");
 

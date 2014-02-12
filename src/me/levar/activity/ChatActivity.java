@@ -1,7 +1,6 @@
 package me.levar.activity;
 
 import android.app.ProgressDialog;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.DataSetObserver;
 import android.os.Bundle;
@@ -17,7 +16,6 @@ import com.facebook.HttpMethod;
 import com.facebook.Request;
 import com.facebook.Response;
 import com.facebook.Session;
-import com.facebook.model.GraphUser;
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.ValueEventListener;
@@ -27,12 +25,12 @@ import me.levar.chat.Chat;
 import me.levar.chat.ChatListAdapter;
 import me.levar.fragment.JsonHelper;
 import me.levar.fragment.MixPanelHelper;
+import me.levar.task.RequestLevarmeTask;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import java.util.ArrayList;
-
-import static org.apache.commons.lang3.StringUtils.join;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 
 /**
  * Created with IntelliJ IDEA.
@@ -59,11 +57,7 @@ public class ChatActivity extends LevarmeActivity {
 
         setContentView(R.layout.chat);
 
-        Intent intent = getIntent();
-        String idChat = intent.getStringExtra("idChat");
-        ArrayList<String> idsParticipantes = intent.getStringArrayListExtra("idsParticipantes");
-
-        setTitleChat(idsParticipantes);
+        setTitleChat();
 
         spinner = new ProgressDialog(this);
         spinner.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -72,7 +66,7 @@ public class ChatActivity extends LevarmeActivity {
         spinner.show();
 
         // Setup our Firebase ref
-        ref = new Firebase(FIREBASE_URL).child(idChat); //mudar de chat para o id do user que esta começando o chat
+        ref = new Firebase(FIREBASE_URL).child(getIdChat()); //mudar de chat para o id do user que esta começando o chat
 
         // Setup our input methods. Enter key on the keyboard or pushing the send button
         EditText inputText = (EditText) findViewById(R.id.messageInput);
@@ -97,6 +91,18 @@ public class ChatActivity extends LevarmeActivity {
         MixPanelHelper.sendEvent(this, "Inicializou o chat");
 
         spinner.dismiss();
+    }
+
+    private String getIdAmigo() {
+        return getIntent().getStringExtra("idAmigo");
+    }
+
+    private String getIdChat() {
+        return getIntent().getStringExtra("idChat");
+    }
+
+    private String getRegistrationId() {
+        return getIntent().getStringExtra("registration_id");
     }
 
     @Override
@@ -173,16 +179,25 @@ public class ChatActivity extends LevarmeActivity {
             // Create a new, auto-generated child of that chat location, and save our chat data there
             ref.push().setValue(chat);
             inputText.setText("");
+
+            String message = null;
+            try {
+                message = URLEncoder.encode(input, "utf-8");
+            } catch (UnsupportedEncodingException e) {
+                e.printStackTrace();
+            }
+
+            new RequestLevarmeTask().execute("http://www.levar.me/gcm/register?regId=" + getRegistrationId() + "&idChat=" + getIdChat() + "&idAmigo=" + getIdAmigo() + "&message=" + message);
         }
     }
 
-    private void setTitleChat(ArrayList<String> idsParticipantes) {
+    private void setTitleChat() {
 
         final Session session = Session.getActiveSession();
 
         if (session != null) {
 
-            String fqlQuery = getFQLQuery(idsParticipantes);
+            String fqlQuery = getFQLQuery(getIdAmigo());
 
             final Bundle params = new Bundle();
             params.putString("q", fqlQuery);
@@ -217,13 +232,11 @@ public class ChatActivity extends LevarmeActivity {
 
     }
 
-    private String getFQLQuery(ArrayList<String> idsParticipantes) {
+    private String getFQLQuery(String idAmigo) {
 
         StringBuilder builder = new StringBuilder();
-        builder.append(" SELECT name, pic_square, uid FROM user WHERE uid IN (  ");
-        builder.append(join(idsParticipantes, ","));
-        builder.append(" ) ");
-        builder.append(" AND uid != me() ");
+        builder.append(" SELECT name, pic_square, uid FROM user WHERE uid = ");
+        builder.append(idAmigo);
 
         return builder.toString();
     }
@@ -242,6 +255,7 @@ public class ChatActivity extends LevarmeActivity {
 
     @Override
     protected void onDestroy() {
+
         super.onDestroy();
 
         MixpanelAPI mixpanel = MixpanelAPI.getInstance(this, MixPanelHelper.MIXPANEL_TOKEN);
@@ -250,7 +264,7 @@ public class ChatActivity extends LevarmeActivity {
         // events rather than send them immediately. This means it
         // is important to call flush() to send any unsent events
         // before your application is taken out of memory.
-        mixpanel.flush();
+            mixpanel.flush();
     }
 
 }
