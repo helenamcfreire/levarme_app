@@ -11,6 +11,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import com.bugsense.trace.BugSenseHandler;
 import com.google.android.gcm.GCMRegistrar;
+import me.levar.R;
 import me.levar.fragment.FaceFragment;
 import me.levar.gcm.CommonUtilities;
 import me.levar.gcm.ServerUtilities;
@@ -46,6 +47,12 @@ public class MainActivity extends FragmentActivity {
                     .findFragmentById(android.R.id.content);
         }
 
+    }
+
+    @Override
+    protected void onResume() {
+        com.facebook.Settings.publishInstallAsync(this, getResources().getString(R.string.app_id));
+        super.onResume();
     }
 
     @Override

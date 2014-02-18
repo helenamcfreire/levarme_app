@@ -93,6 +93,12 @@ public class ChatActivity extends LevarmeActivity {
         spinner.dismiss();
     }
 
+    @Override
+    protected void onResume() {
+        com.facebook.Settings.publishInstallAsync(this, getResources().getString(R.string.app_id));
+        super.onResume();
+    }
+
     private String getIdAmigo() {
         return getIntent().getStringExtra("idAmigo");
     }

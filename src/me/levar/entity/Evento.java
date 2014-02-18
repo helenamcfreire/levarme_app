@@ -1,4 +1,4 @@
-package me.levar.activity;
+package me.levar.entity;
 
 /**
  * Created with IntelliJ IDEA.

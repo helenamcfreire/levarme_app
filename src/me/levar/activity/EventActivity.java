@@ -1,6 +1,5 @@
 package me.levar.activity;
 
-import android.app.ListActivity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -10,7 +9,6 @@ import android.os.Bundle;
 import android.view.*;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 import com.bugsense.trace.BugSenseHandler;
 import com.facebook.*;
@@ -18,6 +16,7 @@ import com.facebook.widget.WebDialog;
 import com.mixpanel.android.mpmetrics.MixpanelAPI;
 import me.levar.R;
 import me.levar.adapter.EventAdapter;
+import me.levar.entity.Evento;
 import me.levar.fragment.JsonHelper;
 import me.levar.fragment.MixPanelHelper;
 import org.json.JSONArray;
@@ -84,6 +83,12 @@ public class EventActivity extends LevarmeActivity {
             Toast.makeText(this, MSG_ERROR_NO_INTERNET, Toast.LENGTH_LONG).show();
         }
 
+    }
+
+    @Override
+    protected void onResume() {
+        com.facebook.Settings.publishInstallAsync(this, getResources().getString(R.string.app_id));
+        super.onResume();
     }
 
     private void carregarEventos() {

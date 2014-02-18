@@ -65,6 +65,12 @@ public class FriendActivity extends LevarmeActivity {
         carregarAmigosQueEstaoNoEvento(idEvento);
     }
 
+    @Override
+    protected void onResume() {
+        com.facebook.Settings.publishInstallAsync(this, getResources().getString(R.string.app_id));
+        super.onResume();
+    }
+
     private String getIdEvento() {
         Intent intent = getIntent();
         return intent.getStringExtra("idEvento");

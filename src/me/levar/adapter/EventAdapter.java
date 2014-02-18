@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 import me.levar.R;
-import me.levar.activity.Evento;
+import me.levar.entity.Evento;
 
 import java.util.ArrayList;
 import java.util.List;
