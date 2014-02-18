@@ -23,9 +23,12 @@ import android.content.Intent;
 import android.util.Log;
 import com.google.android.gcm.GCMBaseIntentService;
 import me.levar.activity.ChatActivity;
+import me.levar.activity.EventActivity;
 import me.levar.activity.MainActivity;
 import me.levar.gcm.CommonUtilities;
 import me.levar.gcm.ServerUtilities;
+
+import static org.apache.commons.lang3.StringUtils.isNotBlank;
 
 
 /**
@@ -59,8 +62,13 @@ public class GCMIntentService extends GCMBaseIntentService {
         String idChat = (String) intent.getExtras().get("idChat");
         String idAmigo = (String) intent.getExtras().get("idAmigo");
         String regId = (String) intent.getExtras().get("regId");
-        // notifies user
-        generateNotification(context, message, idChat, idAmigo, regId);
+        String mixpanelMessage = intent.getExtras().getString("mp_message");
+
+        if (isNotBlank(mixpanelMessage)) {
+            generateNotification(context, mixpanelMessage);
+        } else {
+            generateNotification(context, message, idChat, idAmigo, regId);
+        }
     }
 
     @Override
@@ -94,6 +102,24 @@ public class GCMIntentService extends GCMBaseIntentService {
         notificationIntent.putExtra("idChat", idChat);
         notificationIntent.putExtra("idAmigo", idAmigo);
         notificationIntent.putExtra("registration_id", regId);
+        // set intent so it does not start a new activity
+        notificationIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP |
+                Intent.FLAG_ACTIVITY_SINGLE_TOP);
+        PendingIntent intent =
+                PendingIntent.getActivity(context, 0, notificationIntent, 0);
+        notification.setLatestEventInfo(context, title, message, intent);
+        notification.flags |= Notification.FLAG_AUTO_CANCEL;
+        notificationManager.notify(0, notification);
+    }
+
+    private static void generateNotification(Context context, String message) {
+        int icon = R.drawable.app_icon;
+        long when = System.currentTimeMillis();
+        NotificationManager notificationManager = (NotificationManager)
+                context.getSystemService(Context.NOTIFICATION_SERVICE);
+        Notification notification = new Notification(icon, message, when);
+        String title = context.getString(R.string.app_name);
+        Intent notificationIntent = new Intent(context, EventActivity.class);
         // set intent so it does not start a new activity
         notificationIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP |
                 Intent.FLAG_ACTIVITY_SINGLE_TOP);
