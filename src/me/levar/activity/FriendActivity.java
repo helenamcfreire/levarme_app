@@ -156,11 +156,14 @@ public class FriendActivity extends LevarmeActivity {
 
     private void postarNoMuralDoEvento(final Pessoa amigo) {
 
+        SharedPreferences settings = getSharedPreferences(MY_LOCATION_FILE, 0);
+        String bairroCurrentUser = settings.getString("bairroCurrentUser", "Bronx");
+
         final Session session = Session.getActiveSession();
 
         JSONObject json = new JSONObject();
         try {
-            json.put("message", "Alguém quer pegar uma carona/rachar um taxi comigo?");
+            json.put("message", "I'm coming from "+ bairroCurrentUser + ". Does anyone want to share a cab/catch a ride with me?");
             json.put("link", "http://www.levar.me/?utm_source=android&utm_medium=mobile&utm_campaign=postwall");
         } catch (JSONException e) {
             e.printStackTrace();

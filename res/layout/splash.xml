@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:background="#41B6EB"
+                xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <ImageView
+            android:id="@+id/logo"
+            android:layout_width="212dp"
+            android:layout_height="212dp"
+            android:background="@drawable/app_icon"
+            android:gravity="center"
+            android:layout_centerInParent="true"/>
+
+    <TextView
+            android:id="@+id/wait_message"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Wait...we're loading your events..."
+            android:textColor="@color/white"
+            android:textSize="15dp"
+            android:gravity="center"
+            android:layout_below="@id/logo"
+            android:layout_marginTop="5dp"
+            />
+
+
+</RelativeLayout>

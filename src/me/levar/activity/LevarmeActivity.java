@@ -2,8 +2,6 @@ package me.levar.activity;
 
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
-import com.mixpanel.android.mpmetrics.MixpanelAPI;
-import me.levar.fragment.MixPanelHelper;
 
 /**
  * Created with IntelliJ IDEA.
@@ -15,6 +13,7 @@ import me.levar.fragment.MixPanelHelper;
 public class LevarmeActivity extends FragmentActivity {
 
     public static final String CURRENT_USER_FILE = "CurrentUserFile";
+    public static final String MY_LOCATION_FILE = "LocationPrefsFile";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

@@ -1,33 +1,42 @@
 package me.levar.activity;
 
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.graphics.Typeface;
+import android.location.Address;
+import android.location.Geocoder;
+import android.location.Location;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
-import android.view.*;
-import android.widget.AdapterView;
-import android.widget.ListView;
+import android.view.KeyEvent;
+import android.view.Window;
+import android.view.WindowManager;
+import android.widget.TextView;
 import android.widget.Toast;
-import com.bugsense.trace.BugSenseHandler;
-import com.facebook.*;
-import com.facebook.widget.WebDialog;
+import com.facebook.HttpMethod;
+import com.facebook.Request;
+import com.facebook.Response;
+import com.facebook.Session;
 import com.mixpanel.android.mpmetrics.MixpanelAPI;
+import me.levar.CurrentLocation;
 import me.levar.R;
-import me.levar.adapter.EventAdapter;
 import me.levar.entity.Evento;
 import me.levar.fragment.JsonHelper;
 import me.levar.fragment.MixPanelHelper;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
+
+import static org.apache.commons.lang3.StringUtils.isNotBlank;
 
 /**
  * Created with IntelliJ IDEA.
@@ -38,51 +47,61 @@ import java.util.Locale;
  */
 public class EventActivity extends LevarmeActivity {
 
-    private EventAdapter<Evento> eventosAdapter;
-    private ListView eventsListView;
-    private ProgressDialog spinner;
     private static final String MSG_ERROR_USER_WITHOUT_EVENTS = "You don't seem to have any parties lined up.";
     private static final String MSG_ERROR_NO_INTERNET = "No internet detected :(";
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.main_menu, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle item selection
-        switch (item.getItemId()) {
-            case R.id.share:
-                enviarNotificacao();
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
-    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.events);
+        //Remove title bar
+        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        //Remove notification bar
+        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
-        setTitle("   Which party?");
+        setContentView(R.layout.splash);
 
-        eventsListView = (ListView) findViewById(R.id.eventList);
-
-        spinner = new ProgressDialog(this);
-        spinner.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        spinner.setMessage(getString(com.facebook.android.R.string.com_facebook_loading));
-
-        carregarEventos();
+        TextView waitMessage = (TextView) findViewById(R.id.wait_message);
+        Typeface waitFont = Typeface.createFromAsset(getAssets(), "fonts/GothamLight.otf");
+        waitMessage.setTypeface(waitFont);
 
         if (!isOnline()) {
             Toast.makeText(this, MSG_ERROR_NO_INTERNET, Toast.LENGTH_LONG).show();
         }
 
+        findBairroCurrentUser();
+
+        carregarEventos();
+    }
+
+    private void findBairroCurrentUser() {
+        CurrentLocation.LocationResult locationResult = new CurrentLocation.LocationResult(){
+            @Override
+            public void gotLocation(Location location){
+
+                Geocoder geocoder = new Geocoder(EventActivity.this, Locale.getDefault());
+                List<Address> addresses = null;
+                try {
+                    addresses = geocoder.getFromLocation(location.getLatitude(), location.getLongitude(), 1);
+
+                    if (!addresses.isEmpty()) {
+                        String bairro = addresses.get(0).getSubLocality();
+
+                        if (isNotBlank(bairro)) {
+                            SharedPreferences settings = getSharedPreferences(MY_LOCATION_FILE, 0);
+                            SharedPreferences.Editor editor = settings.edit();
+                            editor.putString("bairroCurrentUser", bairro);
+                            editor.commit();
+                        }
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        };
+
+        CurrentLocation currentLocation = new CurrentLocation();
+        currentLocation.getLocation(this, locationResult);
     }
 
     @Override
@@ -92,8 +111,6 @@ public class EventActivity extends LevarmeActivity {
     }
 
     private void carregarEventos() {
-
-        spinner.show();
 
         Session session = Session.getActiveSession();
 
@@ -112,28 +129,9 @@ public class EventActivity extends LevarmeActivity {
 
                             final List<Evento> eventos = getEventosLevarMe(response);
 
-                            eventosAdapter = new EventAdapter<Evento>(EventActivity.this, R.layout.rowevent, eventos);
-                            eventsListView.setAdapter(eventosAdapter);
-                            eventsListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-
-                                public void onItemClick(AdapterView<?> arg0, View v, int position, long id) {
-
-                                    BugSenseHandler.sendEvent("Clicou no evento");
-                                    MixPanelHelper.sendEvent(EventActivity.this, "Clicou no evento");
-
-                                    Evento evento = (Evento) eventsListView.getItemAtPosition(position);
-
-                                    if (evento != null) {
-                                        irParaTelaDeParticipantesDoEvento(evento.getEid(), evento.getNome());
-                                    }
-                                }
-                            });
-
-                            try {
-                                spinner.dismiss();
-                            } catch (Exception e) {
-                                // nothing
-                            }
+                            Intent intent = new Intent(EventActivity.this, EventListActivity.class);
+                            intent.putParcelableArrayListExtra("eventos", (ArrayList<Evento>) eventos);
+                            startActivity(intent);
 
                         }
                     });
@@ -152,16 +150,6 @@ public class EventActivity extends LevarmeActivity {
         builder.append(" ORDER BY start_time ");
 
         return builder.toString();
-    }
-
-    private void irParaTelaDeParticipantesDoEvento(String idEvento, String nomeEvento) {
-
-        //Mudar para a view de amigos
-        Intent intent = new Intent(this, FriendActivity.class);
-        intent.putExtra("idEvento", idEvento);
-        intent.putExtra("nomeEvento", nomeEvento);
-        startActivity(intent);
-
     }
 
     private List<Evento> getEventosLevarMe(Response response) {
@@ -232,42 +220,5 @@ public class EventActivity extends LevarmeActivity {
         NetworkInfo netInfo = cm.getActiveNetworkInfo();
         return netInfo != null && netInfo.isConnectedOrConnecting();
     }
-
-    private void enviarNotificacao() {
-
-        Bundle params = new Bundle();
-        String message = "Venha participar do Levar.me";
-        params.putString("message", message);
-
-        WebDialog requestsDialog = (
-                new WebDialog.RequestsDialogBuilder(this,
-                        Session.getActiveSession(),
-                        params))
-                .setTitle("Chame seus amigos")
-                .setOnCompleteListener(new WebDialog.OnCompleteListener() {
-
-                    @Override
-                    public void onComplete(Bundle values, FacebookException error) {
-                        if (error != null) {
-                                BugSenseHandler.sendEvent("Share Cancelado");
-                                MixPanelHelper.sendEvent(EventActivity.this, "Share Cancelado");
-                        } else {
-                            final String requestId = values.getString("request");
-                            if (requestId != null) {
-                                BugSenseHandler.sendEvent("Share Enviado");
-                                MixPanelHelper.sendEvent(EventActivity.this, "Share Enviado");
-                                Toast.makeText(EventActivity.this.getApplicationContext(), "Seus amigos foram convidados com sucesso", Toast.LENGTH_SHORT).show();
-                            } else {
-                                BugSenseHandler.sendEvent("Share Cancelado");
-                                MixPanelHelper.sendEvent(EventActivity.this, "Share Cancelado");
-                            }
-                        }
-                    }
-
-                })
-                .build();
-        requestsDialog.show();
-    }
-
 
 }
