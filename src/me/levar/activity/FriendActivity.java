@@ -156,11 +156,22 @@ public class FriendActivity extends LevarmeActivity {
 
     private void postarNoMuralDoEvento(final Pessoa amigo) {
 
-        SharedPreferences settings = getSharedPreferences(MY_LOCATION_FILE, 0);
-        String bairroCurrentUser = settings.getString("bairroCurrentUser", "Bronx");
+        SharedPreferences settingsLocation = getSharedPreferences(MY_LOCATION_FILE, 0);
+        String bairroCurrentUser = settingsLocation.getString("bairroCurrentUser", "Bronx");
 
         final Session session = Session.getActiveSession();
 
+        SharedPreferences settingsEvent = getSharedPreferences(LevarmeActivity.EVENT_FILE, 0);
+        boolean jaPostouNoMuralDesseEvento = settingsEvent.getBoolean(getIdEvento(), false);
+
+        if (jaPostouNoMuralDesseEvento) {
+            adicionarParticipantesNoChat(session, amigo);
+        } else {
+            postarNoMural(amigo, bairroCurrentUser, session);
+        }
+    }
+
+    private void postarNoMural(final Pessoa amigo, String bairroCurrentUser, final Session session) {
         JSONObject json = new JSONObject();
         try {
             json.put("message", "I'm coming from "+ bairroCurrentUser + ". Does anyone want to share a cab/catch a ride with me?");
@@ -174,12 +185,16 @@ public class FriendActivity extends LevarmeActivity {
             @Override
             public void onCompleted(Response response) {
 
+                SharedPreferences settings = getSharedPreferences(EVENT_FILE, 0);
+                SharedPreferences.Editor editor = settings.edit();
+                editor.putBoolean(getIdEvento(), true);
+                editor.commit();
+
                 adicionarParticipantesNoChat(session, amigo);
 
             }
         });
         request.executeAsync();
-
     }
 
     private void adicionarParticipantesNoChat(final Session session, final Pessoa amigo) {

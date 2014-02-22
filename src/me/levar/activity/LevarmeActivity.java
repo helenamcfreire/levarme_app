@@ -13,6 +13,7 @@ import android.support.v4.app.FragmentActivity;
 public class LevarmeActivity extends FragmentActivity {
 
     public static final String CURRENT_USER_FILE = "CurrentUserFile";
+    public static final String EVENT_FILE = "EventFile";
     public static final String MY_LOCATION_FILE = "LocationPrefsFile";
 
     @Override
