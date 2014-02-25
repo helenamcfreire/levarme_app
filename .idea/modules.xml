@@ -4,7 +4,7 @@
     <modules>
       <module fileurl="file://C:/Java/facebook-android-sdk-3.0.1/facebook-android-sdk-3.0.1/facebook/facebook.iml" filepath="C:/Java/facebook-android-sdk-3.0.1/facebook-android-sdk-3.0.1/facebook/facebook.iml" />
       <module fileurl="file://$PROJECT_DIR$/levarme_app.iml" filepath="$PROJECT_DIR$/levarme_app.iml" />
-      <module fileurl="file://$USER_HOME$/Downloads/mixpanel-android-latest/mixpanel-android-latest/src/main/main.iml" filepath="$USER_HOME$/Downloads/mixpanel-android-latest/mixpanel-android-latest/src/main/main.iml" />
+      <module fileurl="file://C:/Java/mixpanel-android-4.0.0/mixpanel-android-4.0.0/src/main/main1.iml" filepath="C:/Java/mixpanel-android-4.0.0/mixpanel-android-4.0.0/src/main/main1.iml" />
     </modules>
   </component>
 </project>

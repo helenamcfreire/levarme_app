@@ -1,6 +1,7 @@
 package me.levar.activity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
@@ -9,6 +10,8 @@ import android.widget.ListView;
 import com.bugsense.trace.BugSenseHandler;
 import com.facebook.Settings;
 import com.mixpanel.android.mpmetrics.MixpanelAPI;
+import com.mixpanel.android.mpmetrics.Survey;
+import com.mixpanel.android.mpmetrics.SurveyCallbacks;
 import me.levar.R;
 import me.levar.adapter.EventAdapter;
 import me.levar.entity.Evento;
@@ -49,6 +52,20 @@ public class EventListActivity extends LevarmeActivity {
     }
 
     private void carregarEventos() {
+
+        SharedPreferences settings = getSharedPreferences(LevarmeActivity.CURRENT_USER_FILE, 0);
+        String currentUserId = settings.getString("currentUserId", "Anonymous");
+
+        final MixpanelAPI mMixpanel = MixpanelAPI.getInstance(this, MixPanelHelper.MIXPANEL_TOKEN);
+        mMixpanel.getPeople().identify(currentUserId);
+        mMixpanel.getPeople().checkForSurvey(new SurveyCallbacks() {
+            @Override
+            public void foundSurvey(Survey survey) {
+                if (survey != null) {
+                    mMixpanel.getPeople().showSurvey(survey, EventListActivity.this);
+                }
+            }
+        });
 
 
         final List<Evento> eventos = getIntent().getParcelableArrayListExtra("eventos");

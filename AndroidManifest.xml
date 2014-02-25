@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="me.levar"
-          android:versionCode="39"
-          android:versionName="4.8">
+          android:versionCode="41"
+          android:versionName="5.0">
 
     <permission android:name="me.levar.permission.C2D_MESSAGE" android:protectionLevel="signature" />
 
@@ -54,6 +54,7 @@
         <activity android:name=".activity.FriendActivity" />
         <activity android:name=".activity.ChatActivity" />
         <activity android:name=".activity.LevarmeActivity" />
+        <activity android:name="com.mixpanel.android.surveys.SurveyActivity" />
 
 
         <service android:name=".GCMIntentService" />
